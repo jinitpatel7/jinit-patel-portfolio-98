@@ -35,11 +35,12 @@ const Home = () => {
       <section className="min-h-[90vh] flex items-center justify-center px-4">
         <div className="container mx-auto max-w-5xl">
           <motion.div variants={containerVariants} initial="hidden" animate="visible" className="text-center space-y-8">
-            <motion.p variants={itemVariants} className="text-xl md:text-2xl font-medium tracking-wide text-foreground mb-0">Hello! I'm</motion.p>
-
-            <motion.h1 variants={itemVariants} className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold -mt-6">
-              <span className="gradient-text">Jinit Patel</span>
-            </motion.h1>
+            <div className="space-y-1">
+              <motion.p variants={itemVariants} className="text-xl md:text-2xl font-medium tracking-wide text-foreground">Hello! I'm</motion.p>
+              <motion.h1 variants={itemVariants} className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold">
+                <span className="gradient-text">Jinit Patel</span>
+              </motion.h1>
+            </div>
 
             {/* Circular Image Placeholder - Larger, no border */}
             <motion.div variants={itemVariants} className="flex justify-center pt-4">
