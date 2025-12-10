@@ -120,11 +120,11 @@ const ProjectDetail = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="space-y-6"
           >
-            {/* Tech Stack */}
+            {/* Skills & Tools */}
             <div className="glass rounded-xl p-6 space-y-4">
               <h3 className="font-display text-lg font-semibold flex items-center gap-2">
                 <Tag size={18} className="text-primary" />
-                Tech Stack
+                Skills & Tools
               </h3>
               <div className="flex flex-wrap gap-2">
                 {project.skills.map((skill) => (

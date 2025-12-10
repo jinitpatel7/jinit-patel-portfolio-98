@@ -107,8 +107,8 @@ const ProjectCard = ({
             <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-60" />
           </div>
 
-          {/* Content */}
-          <div className="p-6 space-y-4">
+          {/* Content - use flex-grow and min-height to ensure uniform card sizes */}
+          <div className="p-6 space-y-4 flex flex-col min-h-[220px]">
             <div className="flex items-start justify-between gap-4">
               <h3 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
                 {title}
@@ -116,17 +116,17 @@ const ProjectCard = ({
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.15 }}
-                className="p-2 rounded-lg bg-secondary text-muted-foreground group-hover:text-primary group-hover:bg-primary/10 transition-all duration-200"
+                className="p-2 rounded-lg bg-secondary text-muted-foreground group-hover:text-primary group-hover:bg-primary/10 transition-all duration-200 flex-shrink-0"
               >
                 <ExternalLink size={18} />
               </motion.div>
             </div>
 
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-muted-foreground text-sm leading-relaxed flex-grow line-clamp-3">
               {description}
             </p>
 
-            {/* Skills */}
+            {/* Skills & Tools */}
             <div className="flex flex-wrap gap-2">
               {skills.map((skill) => (
                 <span
@@ -138,7 +138,7 @@ const ProjectCard = ({
               ))}
             </div>
 
-            <p className="text-xs text-muted-foreground">{dates}</p>
+            <p className="text-xs text-muted-foreground mt-auto">{dates}</p>
           </div>
           </div>
         </div>
