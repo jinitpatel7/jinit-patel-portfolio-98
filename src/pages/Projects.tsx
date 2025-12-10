@@ -74,7 +74,7 @@ const Projects = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-display text-4xl md:text-5xl lg:text-6xl font-bold"
           >
-            My <span className="gradient-text">Projects</span>
+            <span className="font-display">My</span> <span className="gradient-text">Projects</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

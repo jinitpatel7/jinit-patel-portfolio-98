@@ -46,11 +46,22 @@ const Header = () => {
         {/* Logo */}
         <Link
           to="/"
-          className="relative font-display text-2xl md:text-3xl font-bold header-name hover:opacity-80 transition-opacity"
+          className="group relative flex items-baseline gap-2 transition-all duration-300"
         >
-          Jinit Patel
-          {/* Gradient underline */}
-          <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-primary rounded-full" />
+          <motion.span 
+            className="font-display text-2xl md:text-3xl font-bold header-name"
+            whileHover={{ scale: 1.02, y: -2 }}
+            transition={{ duration: 0.2 }}
+          >
+            Jinit Patel
+            {/* Gradient underline */}
+            <span className="absolute -bottom-1 left-0 right-[calc(100%-10ch)] h-[2px] bg-gradient-primary rounded-full" />
+            {/* Hover glow outline */}
+            <span className="absolute -inset-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none border border-primary/50 shadow-[0_0_15px_rgba(139,92,246,0.3)]" />
+          </motion.span>
+          <span className="text-base md:text-lg font-medium text-muted-foreground">
+            – Portfolio
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -102,7 +113,15 @@ const Header = () => {
               onClick={() => setIsDark(!isDark)}
               className="rounded-lg text-muted-foreground hover:text-primary hover:bg-secondary"
             >
-              {isDark ? <Sun size={18} /> : <Moon size={18} />}
+              <motion.div
+                key={isDark ? "sun" : "moon"}
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                exit={{ scale: 0, rotate: 180 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                {isDark ? <Sun size={18} /> : <Moon size={18} />}
+              </motion.div>
             </Button>
           </div>
         </div>
@@ -166,7 +185,14 @@ const Header = () => {
                   onClick={() => setIsDark(!isDark)}
                   className="ml-auto"
                 >
-                  {isDark ? <Sun size={20} /> : <Moon size={20} />}
+                  <motion.div
+                    key={isDark ? "sun-mobile" : "moon-mobile"}
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  >
+                    {isDark ? <Sun size={20} /> : <Moon size={20} />}
+                  </motion.div>
                 </Button>
               </div>
             </div>
