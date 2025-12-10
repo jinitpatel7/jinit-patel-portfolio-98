@@ -56,11 +56,11 @@ const Home = () => {
               className="flex justify-center pt-4"
             >
               <div className="relative group">
-                <div className="w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full bg-secondary flex items-center justify-center overflow-hidden">
+                {/* Glow effect - behind the image */}
+                <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300 -z-10" />
+                <div className="w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full bg-secondary flex items-center justify-center overflow-hidden relative z-10">
                   <img src={heroPhoto} alt="Jinit Patel" className="w-full h-full object-cover" />
                 </div>
-                {/* Glow effect */}
-                <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300" />
               </div>
             </motion.div>
 
@@ -193,7 +193,9 @@ const Home = () => {
               className="relative"
             >
               <div className="gradient-border aspect-square max-w-md mx-auto overflow-hidden">
-                <img src={heroPhoto} alt="Jinit Patel" className="w-full h-full object-cover" />
+                <div className="w-full h-full bg-secondary flex items-center justify-center">
+                  <span className="text-muted-foreground">Profile Image</span>
+                </div>
               </div>
               {/* Decorative elements */}
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-2xl" />
