@@ -91,14 +91,17 @@ const Gallery = () => {
               transition={{ duration: 0.2, ease: "easeOut" }}
               onClick={() => openLightbox(item)}
             >
-              {/* Hover glow effect */}
-              <div className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 pointer-events-none rounded-xl" />
+              {/* Hover glow effect - behind card */}
+              <div className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 pointer-events-none rounded-xl -z-10" />
               
               {/* Card */}
-              <div className="relative rounded-xl overflow-hidden bg-card border border-border shadow-lg group-hover:border-primary/50 transition-colors duration-300">
+              <div className="relative rounded-xl overflow-hidden bg-card border border-border shadow-lg group-hover:border-primary/50 transition-colors duration-300 z-10">
                 {/* Image placeholder */}
-                <div className="aspect-[4/3] bg-secondary flex items-center justify-center">
-                  <div className="w-full h-full bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+                <div className="aspect-[4/3] bg-secondary relative">
+                  {/* Background gradient - behind media */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-0" />
+                  {/* Media container - above gradient */}
+                  <div className="relative z-10 w-full h-full flex items-center justify-center">
                     <span className="text-muted-foreground text-sm">Photo Placeholder</span>
                   </div>
                 </div>
@@ -148,8 +151,11 @@ const Gallery = () => {
               
               {/* Image Container */}
               <div className="rounded-xl overflow-hidden bg-card border border-border shadow-2xl">
-                <div className="aspect-[4/3] bg-secondary flex items-center justify-center">
-                  <div className="w-full h-full bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+                <div className="aspect-[4/3] bg-secondary relative">
+                  {/* Background gradient - behind media */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-0" />
+                  {/* Media container - above gradient */}
+                  <div className="relative z-10 w-full h-full flex items-center justify-center">
                     <span className="text-muted-foreground text-lg">Photo Placeholder</span>
                   </div>
                 </div>

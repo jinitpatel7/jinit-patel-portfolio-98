@@ -186,6 +186,27 @@
     transform: scale(1.02);
   }
 
+  /* Global media layer - ensures images/videos/gifs always render above decorative effects */
+  .media-layer {
+    @apply relative z-20;
+  }
+
+  .media-layer img,
+  .media-layer video {
+    @apply relative z-20;
+  }
+
+  /* Decorative elements layer - always behind media */
+  .decorative-layer {
+    @apply pointer-events-none;
+    z-index: -1;
+  }
+
+  .glow-layer {
+    @apply pointer-events-none;
+    z-index: 0;
+  }
+
   /* Light mode: ensure gradient buttons have high contrast text */
   .light .bg-gradient-primary {
     color: hsl(0 0% 100%);

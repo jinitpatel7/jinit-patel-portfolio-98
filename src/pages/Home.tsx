@@ -200,15 +200,15 @@ const Home = () => {
           }} transition={{
             duration: 0.8,
             delay: 0.3
-          }} className="relative">
-              <div className="gradient-border aspect-square max-w-md mx-auto overflow-hidden">
-                <div className="w-full h-full bg-secondary flex items-center justify-center">
+           }} className="relative">
+              {/* Decorative elements - behind media */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-2xl -z-10 pointer-events-none" />
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-2xl -z-10 pointer-events-none" />
+              <div className="gradient-border aspect-square max-w-md mx-auto overflow-hidden relative z-10">
+                <div className="w-full h-full bg-secondary flex items-center justify-center relative z-10">
                   <span className="text-muted-foreground">Profile Image</span>
                 </div>
               </div>
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-2xl" />
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-2xl" />
             </motion.div>
           </motion.div>
         </div>
