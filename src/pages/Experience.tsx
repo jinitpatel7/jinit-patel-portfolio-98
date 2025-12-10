@@ -86,9 +86,9 @@ const Experience = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 whileHover={{ scale: 1.05 }}
-                className="glass rounded-lg p-4 text-center border border-border hover:border-primary/30 transition-colors"
+                className="glass rounded-lg p-4 border border-border hover:border-primary/30 transition-colors flex items-center justify-center min-h-[60px]"
               >
-                <span className="text-sm font-medium text-muted-foreground">{skill}</span>
+                <span className="text-sm font-medium text-muted-foreground text-center">{skill}</span>
               </motion.div>
             ))}
           </div>
