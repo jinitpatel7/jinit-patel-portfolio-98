@@ -55,11 +55,11 @@ const Home = () => {
               className="flex justify-center pt-4"
             >
               <div className="relative group">
-                <div className="w-52 h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full bg-secondary flex items-center justify-center overflow-hidden">
+                <div className="w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full bg-secondary flex items-center justify-center overflow-hidden">
                   <span className="text-muted-foreground text-sm">Profile Image</span>
                 </div>
                 {/* Glow effect */}
-                <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500" />
+                <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300" />
               </div>
             </motion.div>
 
@@ -76,30 +76,54 @@ const Home = () => {
               className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
             >
               <Link to="/projects">
-                <Button size="lg" className="group card-hover-glow bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8">
-                  View Projects
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.15, ease: "easeOut" }}
+                  className="relative group"
+                >
+                  <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-lg" />
+                  <Button size="lg" className="relative bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8">
+                    View Projects
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-150" />
+                  </Button>
+                </motion.div>
               </Link>
               <Link to="/experience">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="card-hover-glow border-border hover:border-primary/50 hover:bg-secondary/80 text-foreground hover:text-foreground"
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.15, ease: "easeOut" }}
+                  className="relative group"
                 >
-                  <Briefcase className="mr-2 w-4 h-4" />
-                  Experience
-                </Button>
+                  <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-30 blur-lg transition-opacity duration-200 rounded-lg" />
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="relative border-border hover:border-primary/50 hover:bg-secondary/80 text-foreground hover:text-foreground"
+                  >
+                    <Briefcase className="mr-2 w-4 h-4" />
+                    Experience
+                  </Button>
+                </motion.div>
               </Link>
               <Link to="/contact">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="card-hover-glow border-border hover:border-primary/50 hover:bg-secondary/80 text-foreground hover:text-foreground"
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.15, ease: "easeOut" }}
+                  className="relative group"
                 >
-                  <MessageSquare className="mr-2 w-4 h-4" />
-                  Contact
-                </Button>
+                  <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-30 blur-lg transition-opacity duration-200 rounded-lg" />
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="relative border-border hover:border-primary/50 hover:bg-secondary/80 text-foreground hover:text-foreground"
+                  >
+                    <MessageSquare className="mr-2 w-4 h-4" />
+                    Contact
+                  </Button>
+                </motion.div>
               </Link>
             </motion.div>
           </motion.div>
@@ -187,23 +211,33 @@ const Home = () => {
             initial={{ opacity: 0, y: 50, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            whileHover={{ scale: 1.02 }}
-            className="glass rounded-2xl p-8 md:p-12 text-center space-y-6 card-hover-glow transition-all duration-300"
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            whileHover={{ scale: 1.02, y: -4 }}
+            className="relative group glass rounded-2xl p-8 md:p-12 text-center space-y-6 transition-all duration-200"
           >
-            <h3 className="font-display text-2xl md:text-3xl font-bold">
+            {/* Hover glow */}
+            <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-200 rounded-2xl pointer-events-none" />
+            <h3 className="font-display text-2xl md:text-3xl font-bold relative">
               Interested in my work?
             </h3>
-            <p className="text-muted-foreground max-w-md mx-auto">
+            <p className="text-muted-foreground max-w-md mx-auto relative">
               Download my resume to learn more about my experience, skills, and achievements.
             </p>
-            <Button
-              size="lg"
-              className="bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8"
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.15, ease: "easeOut" }}
+              className="relative inline-block"
             >
-              <Download className="mr-2 w-4 h-4" />
-              Download Resume
-            </Button>
+              <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-lg" />
+              <Button
+                size="lg"
+                className="relative bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8"
+              >
+                <Download className="mr-2 w-4 h-4" />
+                Download Resume
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </section>

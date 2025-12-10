@@ -46,32 +46,33 @@ const Header = () => {
         {/* Logo */}
         <Link
           to="/"
-          className="group relative flex items-baseline gap-2 transition-all duration-300"
+          className="group relative flex items-baseline gap-4 transition-all duration-200"
         >
           <motion.span 
-            className="font-display text-2xl md:text-3xl font-bold header-name"
-            whileHover={{ scale: 1.02, y: -2 }}
-            transition={{ duration: 0.2 }}
+            className="font-display text-2xl md:text-3xl font-bold header-name relative"
+            whileHover={{ scale: 1.03, y: -2 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
           >
             Jinit Patel
             {/* Gradient underline */}
-            <span className="absolute -bottom-1 left-0 right-[calc(100%-10ch)] h-[2px] bg-gradient-primary rounded-full" />
-            {/* Hover glow outline */}
-            <span className="absolute -inset-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none border border-primary/50 shadow-[0_0_15px_rgba(139,92,246,0.3)]" />
+            <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-primary rounded-full" />
+            {/* Smooth gradient glow on hover */}
+            <span className="absolute -inset-3 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none bg-gradient-to-r from-primary/10 via-accent/15 to-primary/10 blur-md" />
+            <span className="absolute -inset-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none border border-transparent bg-gradient-primary bg-clip-border [mask:linear-gradient(#fff_0_0)_padding-box,linear-gradient(#fff_0_0)] [-webkit-mask-composite:xor] [mask-composite:exclude]" style={{ padding: '1px' }} />
           </motion.span>
-          <span className="text-base md:text-lg font-medium text-muted-foreground">
+          <span className="text-sm md:text-base font-medium text-muted-foreground pointer-events-none select-none">
             – Portfolio
           </span>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          <ul className="flex items-center gap-6">
+          <ul className="flex items-center gap-8">
             {navLinks.map((link) => (
               <li key={link.path}>
                 <Link
                   to={link.path}
-                  className={`relative font-medium text-sm transition-colors hover:text-primary ${
+                  className={`relative font-medium text-sm transition-colors duration-200 hover:text-primary ${
                     isActive(link.path) ? "text-primary" : "text-muted-foreground"
                   }`}
                 >
