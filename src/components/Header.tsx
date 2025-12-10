@@ -46,10 +46,10 @@ const Header = () => {
         {/* Logo */}
         <Link
           to="/"
-          className="group relative flex items-baseline gap-4 transition-all duration-200"
+          className="group relative flex items-baseline transition-all duration-200"
         >
           <motion.span 
-            className="font-display text-2xl md:text-3xl font-bold relative header-name group-hover:bg-gradient-to-r group-hover:from-primary group-hover:via-accent group-hover:to-primary group-hover:bg-clip-text group-hover:text-transparent transition-all duration-200"
+            className="font-display text-2xl md:text-3xl font-bold relative header-name group-hover:text-primary transition-colors duration-200"
             whileHover={{ scale: 1.03, y: -2 }}
             transition={{ duration: 0.15, ease: "easeOut" }}
           >
@@ -57,8 +57,11 @@ const Header = () => {
             {/* Gradient underline */}
             <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-primary rounded-full" />
           </motion.span>
-          <span className="text-sm md:text-base font-medium text-muted-foreground pointer-events-none select-none">
-            – Portfolio
+          <span className="text-sm md:text-base font-medium text-muted-foreground pointer-events-none select-none ml-3">
+            –
+          </span>
+          <span className="text-sm md:text-base font-medium text-muted-foreground pointer-events-none select-none ml-2">
+            Portfolio
           </span>
         </Link>
 
