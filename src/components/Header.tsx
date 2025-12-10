@@ -46,9 +46,11 @@ const Header = () => {
         {/* Logo */}
         <Link
           to="/"
-          className="font-display text-xl md:text-2xl font-bold gradient-text hover:opacity-80 transition-opacity"
+          className="relative font-display text-2xl md:text-3xl font-bold header-name hover:opacity-80 transition-opacity"
         >
           Jinit Patel
+          {/* Gradient underline */}
+          <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-primary rounded-full" />
         </Link>
 
         {/* Desktop Navigation */}
