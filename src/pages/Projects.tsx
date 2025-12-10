@@ -103,7 +103,7 @@ const Projects = () => {
       <footer className="mt-24 py-8 px-4 border-t border-border">
         <div className="container mx-auto text-center">
           <p className="text-sm text-muted-foreground">
-            © 2024 Jinit Patel. All rights reserved.
+            © Jinit Patel 2025
           </p>
         </div>
       </footer>
