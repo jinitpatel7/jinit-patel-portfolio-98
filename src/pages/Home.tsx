@@ -37,14 +37,14 @@ const Home = () => {
           >
             <motion.p
               variants={itemVariants}
-              className="font-medium tracking-wide text-foreground"
+              className="text-xl md:text-2xl font-medium tracking-wide text-foreground"
             >
               Hello, I'm
             </motion.p>
 
             <motion.h1
               variants={itemVariants}
-              className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold"
+              className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold -mt-2"
             >
               <span className="gradient-text">Jinit Patel</span>
             </motion.h1>

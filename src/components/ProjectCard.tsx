@@ -52,18 +52,15 @@ const ProjectCard = ({
         whileHover={{ y: -8, scale: 1.02 }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="group relative overflow-hidden cursor-pointer rounded-xl"
+        className="group relative cursor-pointer"
       >
-        {/* Gradient border - always visible, stronger on hover */}
-        <div className="absolute inset-0 rounded-xl p-[3px] bg-gradient-primary opacity-80 group-hover:opacity-100 transition-all duration-300 group-hover:p-[4px]">
-          <div className="absolute inset-[3px] rounded-[9px] bg-card group-hover:inset-[4px]" />
-        </div>
+        {/* Hover glow effect - behind everything */}
+        <div className="absolute -inset-4 bg-gradient-primary opacity-0 group-hover:opacity-30 blur-2xl transition-opacity duration-300 pointer-events-none" />
         
-        {/* Hover glow effect */}
-        <div className="absolute -inset-3 bg-gradient-primary opacity-0 group-hover:opacity-25 blur-2xl transition-opacity duration-300 pointer-events-none" />
-
-        {/* Card content */}
-        <div className="relative z-10 bg-card rounded-xl overflow-hidden">
+        {/* Gradient border wrapper - visible outline */}
+        <div className="relative rounded-xl p-[3px] bg-gradient-to-br from-primary via-accent to-primary group-hover:p-[3px]">
+          {/* Card content with background */}
+          <div className="bg-card rounded-[9px] overflow-hidden">
           {/* Image/Video Thumbnail */}
           <div className="relative aspect-video overflow-hidden bg-secondary">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
@@ -142,6 +139,7 @@ const ProjectCard = ({
             </div>
 
             <p className="text-xs text-muted-foreground">{dates}</p>
+          </div>
           </div>
         </div>
       </motion.div>
