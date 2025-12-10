@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Download, Linkedin, Github, Mail, Briefcase, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import heroPhoto from "@/assets/hero-photo.jpg";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -56,7 +57,7 @@ const Home = () => {
             >
               <div className="relative group">
                 <div className="w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full bg-secondary flex items-center justify-center overflow-hidden">
-                  <span className="text-muted-foreground text-sm">Profile Image</span>
+                  <img src={heroPhoto} alt="Jinit Patel" className="w-full h-full object-cover" />
                 </div>
                 {/* Glow effect */}
                 <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300" />
@@ -192,9 +193,7 @@ const Home = () => {
               className="relative"
             >
               <div className="gradient-border aspect-square max-w-md mx-auto overflow-hidden">
-                <div className="w-full h-full bg-secondary flex items-center justify-center">
-                  <span className="text-muted-foreground">Profile Image</span>
-                </div>
+                <img src={heroPhoto} alt="Jinit Patel" className="w-full h-full object-cover" />
               </div>
               {/* Decorative elements */}
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-2xl" />
