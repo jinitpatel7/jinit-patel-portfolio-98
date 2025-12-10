@@ -55,15 +55,18 @@ const ProjectCard = ({
         className="group relative cursor-pointer"
       >
         {/* Hover glow effect - behind everything */}
-        <div className="absolute -inset-4 bg-gradient-primary opacity-0 group-hover:opacity-30 blur-2xl transition-opacity duration-300 pointer-events-none" />
+        <div className="absolute -inset-4 bg-gradient-primary opacity-0 group-hover:opacity-30 blur-2xl transition-opacity duration-300 pointer-events-none -z-10" />
         
         {/* Gradient border wrapper - only visible on hover */}
-        <div className="relative rounded-xl p-[3px] bg-transparent group-hover:bg-gradient-to-br group-hover:from-primary group-hover:via-accent group-hover:to-primary transition-all duration-300">
+        <div className="relative rounded-xl p-[3px] bg-transparent group-hover:bg-gradient-to-br group-hover:from-primary group-hover:via-accent group-hover:to-primary transition-all duration-300 z-10">
           {/* Card content with background and default border */}
           <div className="bg-card rounded-[9px] overflow-hidden border border-border group-hover:border-transparent transition-colors duration-300">
           {/* Image/Video Thumbnail */}
           <div className="relative aspect-video overflow-hidden bg-secondary">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+            {/* Background gradient - behind media */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 z-0" />
+            {/* Media container - above gradient */}
+            <div className="relative z-10 w-full h-full flex items-center justify-center">
               {videoUrl ? (
                 <>
                   {/* Static image (poster) - shown when not hovered */}
@@ -104,7 +107,8 @@ const ProjectCard = ({
                 </div>
               )}
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-60" />
+            {/* Gradient overlay at bottom - behind media but styled */}
+            <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-60 z-5 pointer-events-none" />
           </div>
 
           {/* Content - use flex-grow and min-height to ensure uniform card sizes */}
