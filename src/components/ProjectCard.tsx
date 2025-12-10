@@ -57,10 +57,10 @@ const ProjectCard = ({
         {/* Hover glow effect - behind everything */}
         <div className="absolute -inset-4 bg-gradient-primary opacity-0 group-hover:opacity-30 blur-2xl transition-opacity duration-300 pointer-events-none" />
         
-        {/* Gradient border wrapper - visible outline */}
-        <div className="relative rounded-xl p-[3px] bg-gradient-to-br from-primary via-accent to-primary group-hover:p-[3px]">
-          {/* Card content with background */}
-          <div className="bg-card rounded-[9px] overflow-hidden">
+        {/* Gradient border wrapper - only visible on hover */}
+        <div className="relative rounded-xl p-[3px] bg-transparent group-hover:bg-gradient-to-br group-hover:from-primary group-hover:via-accent group-hover:to-primary transition-all duration-300">
+          {/* Card content with background and default border */}
+          <div className="bg-card rounded-[9px] overflow-hidden border border-border group-hover:border-transparent transition-colors duration-300">
           {/* Image/Video Thumbnail */}
           <div className="relative aspect-video overflow-hidden bg-secondary">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
