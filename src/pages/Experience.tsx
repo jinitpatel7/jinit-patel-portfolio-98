@@ -40,7 +40,7 @@ const Experience = () => {
           className="text-center mb-16 space-y-4"
         >
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold">
-            My <span className="gradient-text">Experience</span>
+            <span className="font-display">My</span> <span className="gradient-text">Experience</span>
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             A journey through my professional career, highlighting key roles and achievements along the way.

@@ -37,7 +37,7 @@ const Home = () => {
           >
             <motion.p
               variants={itemVariants}
-              className="text-primary font-medium tracking-wide"
+              className="font-medium tracking-wide text-foreground"
             >
               Hello, I'm
             </motion.p>
@@ -49,23 +49,14 @@ const Home = () => {
               <span className="gradient-text">Jinit Patel</span>
             </motion.h1>
 
-            <motion.p
-              variants={itemVariants}
-              className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto"
-            >
-              Engineering Portfolio
-            </motion.p>
-
-            {/* Circular Image Placeholder */}
+            {/* Circular Image Placeholder - Larger, no border */}
             <motion.div
               variants={itemVariants}
               className="flex justify-center pt-4"
             >
               <div className="relative group">
-                <div className="w-40 h-40 md:w-48 md:h-48 rounded-full p-[3px] bg-gradient-primary">
-                  <div className="w-full h-full rounded-full bg-secondary flex items-center justify-center overflow-hidden">
-                    <span className="text-muted-foreground text-sm">Profile Image</span>
-                  </div>
+                <div className="w-52 h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full bg-secondary flex items-center justify-center overflow-hidden">
+                  <span className="text-muted-foreground text-sm">Profile Image</span>
                 </div>
                 {/* Glow effect */}
                 <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500" />
@@ -94,7 +85,7 @@ const Home = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="card-hover-glow border-border hover:border-primary/50 hover:bg-secondary/50"
+                  className="card-hover-glow border-border hover:border-primary/50 hover:bg-secondary/80 text-foreground hover:text-foreground"
                 >
                   <Briefcase className="mr-2 w-4 h-4" />
                   Experience
@@ -104,7 +95,7 @@ const Home = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="card-hover-glow border-border hover:border-primary/50 hover:bg-secondary/50"
+                  className="card-hover-glow border-border hover:border-primary/50 hover:bg-secondary/80 text-foreground hover:text-foreground"
                 >
                   <MessageSquare className="mr-2 w-4 h-4" />
                   Contact

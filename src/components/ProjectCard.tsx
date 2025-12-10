@@ -31,9 +31,9 @@ const ProjectCard = ({
         whileHover={{ y: -10, scale: 1.02 }}
         className="group relative overflow-hidden cursor-pointer rounded-xl project-card-hover"
       >
-        {/* Gradient border that expands on hover */}
-        <div className="absolute inset-0 rounded-xl p-[2px] bg-gradient-primary opacity-50 group-hover:opacity-100 transition-opacity duration-500">
-          <div className="absolute inset-[2px] rounded-[10px] bg-card" />
+        {/* Gradient border - always visible, stronger on hover */}
+        <div className="absolute inset-0 rounded-xl p-[2px] bg-gradient-primary opacity-70 group-hover:opacity-100 transition-all duration-500 group-hover:p-[3px]">
+          <div className="absolute inset-[2px] rounded-[10px] bg-card group-hover:inset-[3px]" />
         </div>
         
         {/* Hover glow effect */}
