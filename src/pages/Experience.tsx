@@ -74,10 +74,10 @@ const Experience = () => {
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {[
-              "JavaScript", "TypeScript", "Python", "Java",
-              "React", "Node.js", "AWS", "Docker",
-              "PostgreSQL", "MongoDB", "Git", "Linux",
-              "REST APIs", "GraphQL", "CI/CD", "Agile"
+              "MATLAB", "SolidWorks", "Creo", "Ansys Fluent",
+              "Ansys Mechanical", "FEA", "CFD", "Python",
+              "ML (TensorFlow, NumPy, Keras)", "C++", "3D Printing (SLA/FDM)", "CURA",
+              "DFMA", "GD&T", "Design Reviews", "Kaizen"
             ].map((skill, index) => (
               <motion.div
                 key={skill}

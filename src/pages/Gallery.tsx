@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 
 const galleryItems = [
   { id: 1, title: "Photo Title 1", placeholder: true },
@@ -34,6 +36,16 @@ const itemVariants = {
 };
 
 const Gallery = () => {
+  const [selectedImage, setSelectedImage] = useState<typeof galleryItems[0] | null>(null);
+
+  const openLightbox = (item: typeof galleryItems[0]) => {
+    setSelectedImage(item);
+  };
+
+  const closeLightbox = () => {
+    setSelectedImage(null);
+  };
+
   return (
     <main className="relative z-10 min-h-screen pt-24 pb-16 px-4">
       <div className="container mx-auto max-w-6xl">
@@ -74,9 +86,10 @@ const Gallery = () => {
             <motion.div
               key={item.id}
               variants={itemVariants}
-              className="group relative"
+              className="group relative cursor-pointer"
               whileHover={{ scale: 1.02, y: -4 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
+              onClick={() => openLightbox(item)}
             >
               {/* Hover glow effect */}
               <div className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 pointer-events-none rounded-xl" />
@@ -101,6 +114,57 @@ const Gallery = () => {
           ))}
         </motion.div>
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            onClick={closeLightbox}
+          >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-background/90 backdrop-blur-sm" />
+            
+            {/* Modal Content */}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              className="relative max-w-4xl w-full max-h-[85vh] z-10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={closeLightbox}
+                className="absolute -top-12 right-0 p-2 rounded-full bg-card border border-border hover:border-primary/50 transition-colors"
+              >
+                <X className="w-6 h-6 text-foreground" />
+              </button>
+              
+              {/* Image Container */}
+              <div className="rounded-xl overflow-hidden bg-card border border-border shadow-2xl">
+                <div className="aspect-[4/3] bg-secondary flex items-center justify-center">
+                  <div className="w-full h-full bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+                    <span className="text-muted-foreground text-lg">Photo Placeholder</span>
+                  </div>
+                </div>
+                
+                {/* Caption */}
+                <div className="p-6 text-center">
+                  <h3 className="font-display text-xl font-semibold text-foreground">
+                    {selectedImage.title}
+                  </h3>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Footer */}
       <footer className="mt-24 py-8 px-4 border-t border-border">
