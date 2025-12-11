@@ -3,6 +3,7 @@ import { ArrowRight, Download, Linkedin, Github, Mail, Briefcase, MessageSquare 
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import heroPhoto from "@/assets/hero-photo.jpg";
+import aboutPhoto from "@/assets/about-photo.jpg";
 const containerVariants = {
   hidden: {
     opacity: 0
@@ -204,11 +205,15 @@ const Home = () => {
               {/* Decorative elements - behind media */}
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-2xl -z-10 pointer-events-none" />
               <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-2xl -z-10 pointer-events-none" />
-              <div className="relative aspect-square max-w-md mx-auto">
+              <div className="relative max-w-md mx-auto" style={{ aspectRatio: '3/4' }}>
                 {/* Gradient outline - sits behind media */}
                 <div className="absolute -inset-[2px] rounded-2xl bg-gradient-to-br from-primary via-accent to-primary opacity-70 -z-10" />
-                <div className="w-full h-full rounded-2xl bg-secondary flex items-center justify-center overflow-hidden relative z-10">
-                  <span className="text-muted-foreground">Profile Image</span>
+                <div className="w-full h-full rounded-2xl bg-secondary overflow-hidden relative z-10">
+                  <img 
+                    src={aboutPhoto} 
+                    alt="Jinit Patel" 
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
               </div>
             </motion.div>
