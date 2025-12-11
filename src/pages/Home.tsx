@@ -253,7 +253,7 @@ const Home = () => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }} className="relative inline-block will-change-transform">
               <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-lg" />
               <Button asChild size="lg" className="relative bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8">
-                <a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/jinitpatel7/jinit-patel-portfolio-98/a7b84ea4ad92bf4ad694755bd590c69c85527278/public/Patel_Jinit_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                <a href="/Patel_Jinit_Resume.pdf" target="_blank" rel="noopener noreferrer">
                   <Download className="mr-2 w-4 h-4" />
                   Download Resume
                 </a>
