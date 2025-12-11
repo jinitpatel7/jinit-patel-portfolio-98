@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import ParticleBackground from "./components/ParticleBackground";
+import Particles from "./components/particles";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
@@ -21,7 +21,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <ParticleBackground />
+        <Particles className="fixed inset-0 -z-10 pointer-events-none" quantity={50} />
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
