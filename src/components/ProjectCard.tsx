@@ -57,7 +57,7 @@ const ProjectCard = ({
         onMouseLeave={handleMouseLeave}
         ref={cardRef}
         data-hovered="false"
-        className="group relative cursor-pointer hover:-translate-y-2 hover:scale-[1.02] transition-transform duration-200 ease-out will-change-transform"
+        className="group relative cursor-pointer transform hover:-translate-y-2 hover:scale-[1.04] transition-transform duration-150 ease-out will-change-transform"
       >
         {/* Hover glow effect - behind everything */}
         <div className="absolute -inset-4 bg-gradient-primary opacity-0 group-hover:opacity-30 blur-2xl transition-opacity duration-300 pointer-events-none -z-10" />
