@@ -44,9 +44,10 @@ const Home = () => {
 
             {/* Circular Image Placeholder - Larger, no border */}
             <motion.div variants={itemVariants} className="flex justify-center pt-4">
-              <div className="relative group">
-                {/* Glow effect - behind the image */}
-                <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300 -z-10" />
+              <div className="relative">
+                {/* Permanent glow effect - behind the image */}
+                <div className="absolute -inset-4 rounded-full bg-gradient-primary opacity-50 blur-2xl -z-10" />
+                <div className="absolute -inset-2 rounded-full bg-gradient-primary opacity-30 blur-xl -z-10" />
                 <div className="w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full bg-secondary flex items-center justify-center overflow-hidden relative z-10">
                   <img src={heroPhoto} alt="Jinit Patel" className="w-full h-full object-cover" />
                 </div>
