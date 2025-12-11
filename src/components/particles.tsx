@@ -13,15 +13,16 @@ interface ParticlesProps {
 
 // Theme colors in HSL format
 const getThemeColors = () => {
-	if (typeof window === "undefined") return { primary: [265, 89, 66], accent: [210, 100, 60] };
+	if (typeof window === "undefined") return { primary: [265, 89, 66], accent: [210, 100, 60], isLight: false };
 	
 	const root = document.documentElement;
 	const isLight = root.classList.contains("light");
 	
-	// Dark mode: bright purple/blue, Light mode: darker variants
+	// Dark mode: bright purple/blue, Light mode: much darker/more saturated for visibility
 	return {
-		primary: isLight ? [265, 89, 50] : [265, 89, 66],
-		accent: isLight ? [210, 100, 50] : [210, 100, 60],
+		primary: isLight ? [265, 95, 35] : [265, 89, 66],
+		accent: isLight ? [210, 100, 35] : [210, 100, 60],
+		isLight,
 	};
 };
 
@@ -114,9 +115,13 @@ export default function Particles({
 		const y = Math.floor(Math.random() * canvasSize.current.h);
 		const translateX = 0;
 		const translateY = 0;
-		const size = Math.floor(Math.random() * 2) + 0.1;
+		// Increased base size: 1-4 range instead of 0.1-2.1
+		const size = Math.floor(Math.random() * 3) + 1;
 		const alpha = 0;
-		const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
+		// Light mode: higher target alpha for better visibility
+		const targetAlpha = themeColors.current.isLight 
+			? parseFloat((Math.random() * 0.7 + 0.4).toFixed(1))  // Light: 0.4-1.1 range
+			: parseFloat((Math.random() * 0.6 + 0.1).toFixed(1)); // Dark: 0.1-0.7 range
 		const dx = (Math.random() - 0.5) * 0.2;
 		const dy = (Math.random() - 0.5) * 0.2;
 		const magnetism = 0.1 + Math.random() * 4;
