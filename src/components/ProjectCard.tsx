@@ -53,11 +53,12 @@ const ProjectCard = ({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+        whileHover={{ y: -8, scale: 1.02 }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         ref={cardRef}
         data-hovered="false"
-        className="group relative cursor-pointer transform hover:-translate-y-2 hover:scale-[1.04] transition-transform duration-150 ease-out will-change-transform"
+        className="group relative cursor-pointer will-change-transform"
       >
         {/* Hover glow effect - behind everything */}
         <div className="absolute -inset-4 bg-gradient-primary opacity-0 group-hover:opacity-30 blur-2xl transition-opacity duration-300 pointer-events-none -z-10" />

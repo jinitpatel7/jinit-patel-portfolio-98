@@ -238,7 +238,10 @@ const Home = () => {
         }} transition={{
           duration: 0.5,
           ease: "easeOut"
-        }} className="relative group glass rounded-2xl p-8 md:p-12 text-center space-y-6 transform hover:scale-[1.04] hover:-translate-y-1 transition-transform duration-150 ease-out will-change-transform">
+        }} whileHover={{
+          scale: 1.03,
+          y: -4
+        }} className="relative group glass rounded-2xl p-8 md:p-12 text-center space-y-6 will-change-transform">
             {/* Hover glow */}
             <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-200 rounded-2xl pointer-events-none" />
             <h3 className="font-display text-2xl md:text-3xl font-bold relative">
@@ -247,13 +250,13 @@ const Home = () => {
             <p className="text-muted-foreground max-w-md mx-auto relative">
               Download my resume to learn more about my experience, skills, and achievements.
             </p>
-            <div className="relative inline-block hover:scale-105 active:scale-[0.98] transition-transform duration-150 ease-out will-change-transform">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }} className="relative inline-block will-change-transform">
               <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-lg" />
               <Button size="lg" className="relative bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8">
                 <Download className="mr-2 w-4 h-4" />
                 Download Resume
               </Button>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
