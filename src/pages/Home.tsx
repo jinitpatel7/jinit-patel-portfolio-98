@@ -238,7 +238,7 @@ const Home = () => {
         }} transition={{
           duration: 0.5,
           ease: "easeOut"
-        }} className="relative group glass rounded-2xl p-8 md:p-12 text-center space-y-6 hover:scale-[1.02] hover:-translate-y-1 transition-transform duration-200 ease-out will-change-transform">
+        }} className="relative group glass rounded-2xl p-8 md:p-12 text-center space-y-6 transform hover:scale-[1.04] hover:-translate-y-1 transition-transform duration-150 ease-out will-change-transform">
             {/* Hover glow */}
             <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-200 rounded-2xl pointer-events-none" />
             <h3 className="font-display text-2xl md:text-3xl font-bold relative">
