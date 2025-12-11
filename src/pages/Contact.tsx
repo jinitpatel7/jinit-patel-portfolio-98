@@ -115,19 +115,19 @@ const Contact = () => {
         }} className="glass rounded-2xl p-8 border border-border">
             <h2 className="font-display text-2xl font-bold mb-6">Send a Message</h2>
             
-            <form className="space-y-6">
+            <form action="https://formspree.io/f/xpwvoljo" method="POST" className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-muted-foreground">
                     Name
                   </label>
-                  <Input id="name" placeholder="Your name" className="bg-secondary border-border focus:border-primary/50" />
+                  <Input id="name" name="name" placeholder="Your name" className="bg-secondary border-border focus:border-primary/50" />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-muted-foreground">
                     Email
                   </label>
-                  <Input id="email" type="email" placeholder="your@email.com" className="bg-secondary border-border focus:border-primary/50" />
+                  <Input id="email" name="email" type="email" placeholder="your@email.com" className="bg-secondary border-border focus:border-primary/50" />
                 </div>
               </div>
 
@@ -135,14 +135,14 @@ const Contact = () => {
                 <label htmlFor="subject" className="text-sm font-medium text-muted-foreground">
                   Subject
                 </label>
-                <Input id="subject" placeholder="What's this about?" className="bg-secondary border-border focus:border-primary/50" />
+                <Input id="subject" name="subject" placeholder="What's this about?" className="bg-secondary border-border focus:border-primary/50" />
               </div>
 
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-medium text-muted-foreground">
                   Message
                 </label>
-                <Textarea id="message" placeholder="Your message..." rows={5} className="bg-secondary border-border focus:border-primary/50 resize-none" />
+                <Textarea id="message" name="message" placeholder="Your message..." rows={5} className="bg-secondary border-border focus:border-primary/50 resize-none" />
               </div>
 
               <Button type="submit" size="lg" className="w-full bg-gradient-primary hover:opacity-90 text-foreground font-medium">
