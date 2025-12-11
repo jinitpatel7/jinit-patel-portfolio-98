@@ -11,9 +11,23 @@ interface ParticlesProps {
 	refresh?: boolean;
 }
 
+// Theme colors in HSL format
+const getThemeColors = () => {
+	if (typeof window === "undefined") return { primary: [265, 89, 66], accent: [210, 100, 60] };
+	
+	const root = document.documentElement;
+	const isLight = root.classList.contains("light");
+	
+	// Dark mode: bright purple/blue, Light mode: darker variants
+	return {
+		primary: isLight ? [265, 89, 50] : [265, 89, 66],
+		accent: isLight ? [210, 100, 50] : [210, 100, 60],
+	};
+};
+
 export default function Particles({
 	className = "",
-	quantity = 30,
+	quantity = 100,
 	staticity = 50,
 	ease = 50,
 	refresh = false,
@@ -26,6 +40,7 @@ export default function Particles({
 	const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 	const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
 	const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+	const themeColors = useRef(getThemeColors());
 
 	useEffect(() => {
 		if (canvasRef.current) {
@@ -78,6 +93,7 @@ export default function Particles({
 		dx: number;
 		dy: number;
 		magnetism: number;
+		color: number[];
 	};
 
 	const resizeCanvas = () => {
@@ -104,6 +120,7 @@ export default function Particles({
 		const dx = (Math.random() - 0.5) * 0.2;
 		const dy = (Math.random() - 0.5) * 0.2;
 		const magnetism = 0.1 + Math.random() * 4;
+		const color = Math.random() > 0.5 ? themeColors.current.primary : themeColors.current.accent;
 		return {
 			x,
 			y,
@@ -115,16 +132,17 @@ export default function Particles({
 			dx,
 			dy,
 			magnetism,
+			color,
 		};
 	};
 
 	const drawCircle = (circle: Circle, update = false) => {
 		if (context.current) {
-			const { x, y, translateX, translateY, size, alpha } = circle;
+			const { x, y, translateX, translateY, size, alpha, color } = circle;
 			context.current.translate(translateX, translateY);
 			context.current.beginPath();
 			context.current.arc(x, y, size, 0, 2 * Math.PI);
-			context.current.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+			context.current.fillStyle = `hsla(${color[0]}, ${color[1]}%, ${color[2]}%, ${alpha})`;
 			context.current.fill();
 			context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
 
