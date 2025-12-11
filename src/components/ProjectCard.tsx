@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useRef, useCallback } from "react";
 
 interface ProjectCardProps {
   id: string;
@@ -10,7 +10,7 @@ interface ProjectCardProps {
   skills: string[];
   dates: string;
   imageUrl?: string;
-  videoUrl?: string; // Support for GIF/video
+  videoUrl?: string;
   index: number;
 }
 
@@ -24,23 +24,27 @@ const ProjectCard = ({
   videoUrl,
   index,
 }: ProjectCardProps) => {
-  const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
+  const handleMouseEnter = useCallback(() => {
     if (videoRef.current) {
       videoRef.current.play();
     }
-  };
+    if (cardRef.current) {
+      cardRef.current.dataset.hovered = "true";
+    }
+  }, []);
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
+  const handleMouseLeave = useCallback(() => {
     if (videoRef.current) {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
     }
-  };
+    if (cardRef.current) {
+      cardRef.current.dataset.hovered = "false";
+    }
+  }, []);
 
   return (
     <Link to={`/projects/${id}`}>
@@ -49,10 +53,11 @@ const ProjectCard = ({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
-        whileHover={{ y: -8, scale: 1.02 }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="group relative cursor-pointer"
+        ref={cardRef}
+        data-hovered="false"
+        className="group relative cursor-pointer hover:-translate-y-2 hover:scale-[1.02] transition-transform duration-200 ease-out will-change-transform"
       >
         {/* Hover glow effect - behind everything */}
         <div className="absolute -inset-4 bg-gradient-primary opacity-0 group-hover:opacity-30 blur-2xl transition-opacity duration-300 pointer-events-none -z-10" />
@@ -70,11 +75,11 @@ const ProjectCard = ({
               {videoUrl ? (
                 <>
                   {/* Static image (poster) - shown when not hovered */}
-                  {imageUrl && !isHovered && (
+                  {imageUrl && (
                     <img
                       src={imageUrl}
                       alt={title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-[[data-hovered='true']]:opacity-0 transition-opacity duration-300"
                     />
                   )}
                   {/* Video - plays on hover */}
@@ -84,13 +89,11 @@ const ProjectCard = ({
                     muted
                     loop
                     playsInline
-                    className={`w-full h-full object-cover transition-opacity duration-300 ${
-                      isHovered ? "opacity-100" : "opacity-0 absolute inset-0"
-                    }`}
+                    className="w-full h-full object-cover absolute inset-0 opacity-0 group-[[data-hovered='true']]:opacity-100 transition-opacity duration-300"
                   />
                   {/* Fallback if no poster image */}
-                  {!imageUrl && !isHovered && (
-                    <div className="text-muted-foreground text-sm">
+                  {!imageUrl && (
+                    <div className="text-muted-foreground text-sm group-[[data-hovered='true']]:opacity-0 transition-opacity duration-300">
                       Hover to preview
                     </div>
                   )}
@@ -117,13 +120,9 @@ const ProjectCard = ({
               <h3 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
                 {title}
               </h3>
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.15 }}
-                className="p-2 rounded-lg bg-secondary text-muted-foreground group-hover:text-primary group-hover:bg-primary/10 transition-all duration-200 flex-shrink-0"
-              >
+              <div className="p-2 rounded-lg bg-secondary text-muted-foreground group-hover:text-primary group-hover:bg-primary/10 transition-all duration-200 flex-shrink-0 hover:scale-110 will-change-transform">
                 <ExternalLink size={18} />
-              </motion.div>
+              </div>
             </div>
 
             <p className="text-muted-foreground text-sm leading-relaxed flex-grow line-clamp-3">
