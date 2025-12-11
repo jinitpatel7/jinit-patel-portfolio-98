@@ -3,28 +3,34 @@ import ExperienceCard from "@/components/ExperienceCard";
 
 const experiences = [
   {
-    company: "Company Name One",
-    role: "Software Engineer",
-    dates: "Jan 2024 - Present",
-    description: "Leading development of key features and collaborating with cross-functional teams to deliver high-quality software solutions. Mentoring junior developers and driving best practices.",
+    company: "Vertiv",
+    role: "Mechanical Engineering Intern",
+    dates: "May 2025 – Sep 2025",
+    description: "Rapid prototyped a patent-pending actuation lever mechanism using carbon fiber composite FDM 3D printing. Developed 75+ electromechanical components in Creo with GD&T/MBD. Cut manual engineering hours by 80% via Python automation. Executed ECOs and BOM management in Oracle Agile.",
   },
   {
-    company: "Company Name Two",
-    role: "Full Stack Developer",
-    dates: "Jun 2022 - Dec 2023",
-    description: "Developed and maintained web applications using modern frameworks. Implemented RESTful APIs and optimized database performance for improved scalability.",
+    company: "OSU Aerospace Research Center",
+    role: "Undergraduate Research Intern",
+    dates: "May 2024 – Dec 2024",
+    description: "Realized $10,000 production cost savings developing Flexible Reaction Surface nozzle in SolidWorks. Achieved 15° deflection at Mach 0.9 for plasma-actuated thrust vectoring. Ran RANS CFD in ANSYS Fluent within ±5% of experimental results. AIAA published research at 33rd Ohio Space Grant Consortium Symposium.",
   },
   {
-    company: "Company Name Three",
-    role: "Software Engineering Intern",
-    dates: "May 2021 - Aug 2021",
-    description: "Contributed to the development of internal tools and automation scripts. Gained hands-on experience with agile methodologies and version control systems.",
+    company: "Sigma Gamma Tau",
+    role: "Treasurer",
+    dates: "Dec 2024 – Present",
+    description: "Oversee financial planning & operations for Aerospace Honors Society, managing a $6,000 annual budget to support events, professional development, and chapter activities in coordination with the executive board.",
   },
   {
-    company: "Company Name Four",
-    role: "Research Assistant",
-    dates: "Sep 2020 - Apr 2021",
-    description: "Assisted in research projects involving data analysis and machine learning. Published findings in academic journals and presented at conferences.",
+    company: "Buckeye Vertical",
+    role: "Avionics and Structures Member",
+    dates: "Aug 2024 – May 2025",
+    description: "Collaborated with a 20-member competition team to develop a UAS payload drone with autopilot & 15-mile range. Fine-tuned ArduPilot in QGroundControl by optimizing PID loops to enhance flight stability.",
+  },
+  {
+    company: "BSLI - NASA Student Launch",
+    role: "Team Member",
+    dates: "Aug 2022 – May 2024",
+    description: "Fabricated rocket fuselage and fins via wet layups, CNC routing, and laser cutting for a 12-ft carbon fiber fuselage. Achieved +50 ft increase in peak altitude through aerodynamic geometry optimization in OpenRocket. Contributed to three successful launches.",
   },
 ];
 
