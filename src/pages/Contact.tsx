@@ -6,23 +6,23 @@ import { Textarea } from "@/components/ui/textarea";
 const contactInfo = [{
   icon: Mail,
   label: "Email",
-  value: "hello@example.com",
-  href: "mailto:hello@example.com"
+  value: "patel.4780@osu.edu",
+  href: "mailto:patel.4780@osu.edu"
 }, {
   icon: Phone,
   label: "Phone",
-  value: "+1 (555) 123-4567",
-  href: "tel:+15551234567"
+  value: "(740) 803-4681",
+  href: "tel:+17408034681"
 }, {
   icon: Linkedin,
   label: "LinkedIn",
-  value: "linkedin.com/in/jinitpatel",
-  href: "https://linkedin.com"
+  value: "linkedin.com/in/jinitpatel1",
+  href: "https://linkedin.com/in/jinitpatel1"
 }, {
   icon: Github,
   label: "GitHub",
   value: "github.com/jinitpatel",
-  href: "https://github.com"
+  href: "https://github.com/jinitpatel"
 }];
 const Contact = () => {
   return <main className="relative z-10 min-h-screen pt-24 pb-16 px-4">
@@ -93,9 +93,11 @@ const Contact = () => {
             duration: 0.4,
             delay: 0.7
           }} className="pt-4">
-              <Button size="lg" className="w-full bg-gradient-primary hover:opacity-90 text-foreground font-medium">
-                <Download className="mr-2 w-4 h-4" />
-                Download Resume
+              <Button asChild size="lg" className="w-full bg-gradient-primary hover:opacity-90 text-foreground font-medium">
+                <a href="/Patel_Jinit_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                  <Download className="mr-2 w-4 h-4" />
+                  Download Resume
+                </a>
               </Button>
             </motion.div>
           </motion.div>
