@@ -94,7 +94,7 @@ const Contact = () => {
             delay: 0.7
           }} className="pt-4">
               <Button asChild size="lg" className="w-full bg-gradient-primary hover:opacity-90 text-foreground font-medium">
-                <a href="https://raw.githubusercontent.com/jinitpatel7/jinit-patel-portfolio-98/a7b84ea4ad92bf4ad694755bd590c69c85527278/public/Patel_Jinit_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                <a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/jinitpatel7/jinit-patel-portfolio-98/a7b84ea4ad92bf4ad694755bd590c69c85527278/public/Patel_Jinit_Resume.pdf" target="_blank" rel="noopener noreferrer">
                   <Download className="mr-2 w-4 h-4" />
                   Download Resume
                 </a>
