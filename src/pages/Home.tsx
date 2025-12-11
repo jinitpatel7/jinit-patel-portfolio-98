@@ -252,9 +252,11 @@ const Home = () => {
             </p>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }} className="relative inline-block will-change-transform">
               <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-lg" />
-              <Button size="lg" className="relative bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8">
-                <Download className="mr-2 w-4 h-4" />
-                Download Resume
+              <Button asChild size="lg" className="relative bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8">
+                <a href="/Patel_Jinit_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                  <Download className="mr-2 w-4 h-4" />
+                  Download Resume
+                </a>
               </Button>
             </motion.div>
           </motion.div>
@@ -282,15 +284,15 @@ const Home = () => {
               {[{
               icon: Linkedin,
               label: "LinkedIn",
-              href: "https://linkedin.com"
+              href: "https://www.linkedin.com/in/jinitpatel1/"
             }, {
               icon: Github,
               label: "GitHub",
-              href: "https://github.com"
+              href: "https://github.com/jinitpatel7"
             }, {
               icon: Mail,
               label: "Email",
-              href: "mailto:hello@example.com"
+              href: "mailto:patel.4780@osu.edu"
             }].map((social, index) => <motion.a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" initial={{
               opacity: 0,
               y: 20
