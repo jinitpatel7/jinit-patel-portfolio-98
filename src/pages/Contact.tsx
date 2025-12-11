@@ -17,12 +17,12 @@ const contactInfo = [{
   icon: Linkedin,
   label: "LinkedIn",
   value: "linkedin.com/in/jinitpatel1",
-  href: "https://linkedin.com/in/jinitpatel1"
+  href: "https://www.linkedin.com/in/jinitpatel1/"
 }, {
   icon: Github,
   label: "GitHub",
-  value: "github.com/jinitpatel",
-  href: "https://github.com/jinitpatel"
+  value: "github.com/jinitpatel7",
+  href: "https://github.com/jinitpatel7"
 }];
 const Contact = () => {
   return <main className="relative z-10 min-h-screen pt-24 pb-16 px-4">
