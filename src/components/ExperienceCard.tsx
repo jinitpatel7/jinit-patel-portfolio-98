@@ -21,7 +21,7 @@ const ExperienceCard = ({
   index,
 }: ExperienceCardProps) => {
   const logoContent = (
-    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-secondary flex items-center justify-center overflow-hidden">
+    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-secondary flex items-center justify-center overflow-hidden transition-all duration-200 ease-in-out hover:scale-110 hover:shadow-lg hover:shadow-primary/20">
       {logoUrl ? (
         <img
           src={logoUrl}
