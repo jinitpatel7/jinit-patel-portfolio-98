@@ -7,6 +7,7 @@ interface ExperienceCardProps {
   dates: string;
   description: string;
   logoUrl?: string;
+  companyUrl?: string;
   index: number;
 }
 
@@ -16,8 +17,23 @@ const ExperienceCard = ({
   dates,
   description,
   logoUrl,
+  companyUrl,
   index,
 }: ExperienceCardProps) => {
+  const logoContent = (
+    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-secondary flex items-center justify-center overflow-hidden">
+      {logoUrl ? (
+        <img
+          src={logoUrl}
+          alt={`${company} logo`}
+          className="w-full h-full object-cover"
+        />
+      ) : (
+        <Building2 className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
+      )}
+    </div>
+  );
+
   return (
     <motion.div
       initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
@@ -29,17 +45,18 @@ const ExperienceCard = ({
     >
       <div className="flex items-start gap-4">
         {/* Company Logo */}
-        <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-secondary flex items-center justify-center overflow-hidden">
-          {logoUrl ? (
-            <img
-              src={logoUrl}
-              alt={company}
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <Building2 className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
-          )}
-        </div>
+        {companyUrl ? (
+          <a
+            href={companyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-shrink-0"
+          >
+            {logoContent}
+          </a>
+        ) : (
+          logoContent
+        )}
 
         {/* Content */}
         <div className="flex-1 space-y-2">
