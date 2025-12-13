@@ -5,8 +5,17 @@ import osuArcLogo from "@/assets/logos/osu-arc.jpg";
 import sgtLogo from "@/assets/logos/sgt.jpg";
 import buckeyeVerticalLogo from "@/assets/logos/buckeye-vertical.jpg";
 import bsliLogo from "@/assets/logos/bsli.png";
+import hondajetLogo from "@/assets/logos/hondajet.png";
 
 const experiences = [
+  {
+    company: "Honda Aircraft Company",
+    role: "Propulsion Engineering Intern",
+    dates: "May 2026 – August 2026",
+    description: "Incoming Summer 2026",
+    logoUrl: hondajetLogo,
+    companyUrl: "https://www.hondajet.com/",
+  },
   {
     company: "Vertiv",
     role: "Mechanical Engineering Intern",
