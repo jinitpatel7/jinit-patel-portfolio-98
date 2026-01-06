@@ -37,8 +37,7 @@ const Contact = () => {
       }} transition={{
         duration: 0.6
       }} className="text-center mb-16 space-y-4">
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold">get in Touch<span className="gradient-text">Touch</span>
-          </h1>
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold">get in <span className="gradient-text">Touch</span></h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">Have a question or want to work together? I'd love to hear from you. Feel free to reach out to talk about anything :)</p>
         </motion.div>
 
