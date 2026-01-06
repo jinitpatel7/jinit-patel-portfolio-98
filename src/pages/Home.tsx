@@ -145,7 +145,7 @@ const Home = () => {
             duration: 0.6,
             delay: 0.2
           }} className="space-y-6">
-              <h2 className="font-display text-3xl md:text-4xl font-bold">about <span className="gradient-text">me</span></h2>
+              <h2 className="font-display text-3xl md:text-4xl font-bold">about Me<span className="gradient-text">me</span></h2>
               <p className="text-muted-foreground leading-relaxed">
                 I'm a dedicated engineer with a passion for building impactful solutions. 
                 My journey in technology has equipped me with a diverse skill set spanning 
@@ -240,7 +240,7 @@ const Home = () => {
         }} className="relative group glass rounded-2xl p-8 md:p-12 text-center space-y-6 will-change-transform">
             {/* Hover glow */}
             <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-200 rounded-2xl pointer-events-none" />
-            <h3 className="font-display text-2xl md:text-3xl font-bold relative">interested in my work?</h3>
+            <h3 className="font-display text-2xl md:text-3xl font-bold relative">Interested in my work?</h3>
             <p className="text-muted-foreground max-w-md mx-auto relative">
               Download my resume to learn more about my experience, skills, and achievements.
             </p>
