@@ -39,7 +39,7 @@ const Home = () => {
             <div className="space-y-1">
               <motion.p variants={itemVariants} className="text-xl md:text-2xl font-medium tracking-wide text-foreground">Hello! I'm</motion.p>
               <motion.h1 variants={itemVariants} className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold">
-                <span className="gradient-text">Jinit Patel</span>
+                <span className="gradient-text">jinit patel</span>
               </motion.h1>
             </div>
 
@@ -145,8 +145,7 @@ const Home = () => {
             duration: 0.6,
             delay: 0.2
           }} className="space-y-6">
-              <h2 className="font-display text-3xl md:text-4xl font-bold">
-                About <span className="gradient-text">Me</span>
+              <h2 className="font-display text-3xl md:text-4xl font-bold">about Me<span className="gradient-text">me</span>
               </h2>
               <p className="text-muted-foreground leading-relaxed">
                 I'm a dedicated engineer with a passion for building impactful solutions. 
@@ -201,19 +200,17 @@ const Home = () => {
           }} transition={{
             duration: 0.8,
             delay: 0.3
-           }} className="relative">
+          }} className="relative">
               {/* Decorative elements - behind media */}
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-2xl -z-10 pointer-events-none" />
               <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-2xl -z-10 pointer-events-none" />
-              <div className="relative max-w-md mx-auto" style={{ aspectRatio: '3/4' }}>
+              <div className="relative max-w-md mx-auto" style={{
+              aspectRatio: '3/4'
+            }}>
                 {/* Gradient outline - sits behind media */}
                 <div className="absolute -inset-[2px] rounded-2xl bg-gradient-to-br from-primary via-accent to-primary opacity-70 -z-10" />
                 <div className="w-full h-full rounded-2xl bg-secondary overflow-hidden relative z-10">
-                  <img 
-                    src={aboutPhoto} 
-                    alt="Jinit Patel" 
-                    className="w-full h-full object-cover object-top"
-                  />
+                  <img src={aboutPhoto} alt="Jinit Patel" className="w-full h-full object-cover object-top" />
                 </div>
               </div>
             </motion.div>
@@ -244,13 +241,15 @@ const Home = () => {
         }} className="relative group glass rounded-2xl p-8 md:p-12 text-center space-y-6 will-change-transform">
             {/* Hover glow */}
             <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-200 rounded-2xl pointer-events-none" />
-            <h3 className="font-display text-2xl md:text-3xl font-bold relative">
-              Interested in my work?
-            </h3>
+            <h3 className="font-display text-2xl md:text-3xl font-bold relative">interested in my work?</h3>
             <p className="text-muted-foreground max-w-md mx-auto relative">
               Download my resume to learn more about my experience, skills, and achievements.
             </p>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }} className="relative inline-block will-change-transform">
+            <motion.div whileHover={{
+            scale: 1.05
+          }} whileTap={{
+            scale: 0.98
+          }} className="relative inline-block will-change-transform">
               <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-lg" />
               <Button asChild size="lg" className="relative bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8">
                 <a href="/Patel_Jinit_Resume.pdf" target="_blank" rel="noopener noreferrer">
