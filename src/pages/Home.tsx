@@ -145,8 +145,7 @@ const Home = () => {
             duration: 0.6,
             delay: 0.2
           }} className="space-y-6">
-              <h2 className="font-display text-3xl md:text-4xl font-bold">about me<span className="gradient-text">me</span>
-              </h2>
+              <h2 className="font-display text-3xl md:text-4xl font-bold">about <span className="gradient-text">me</span></h2>
               <p className="text-muted-foreground leading-relaxed">
                 I'm a dedicated engineer with a passion for building impactful solutions. 
                 My journey in technology has equipped me with a diverse skill set spanning 
