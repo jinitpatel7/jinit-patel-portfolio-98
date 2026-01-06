@@ -3,6 +3,7 @@ import { Mail, Phone, Linkedin, Github, Download, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import AnimatedButtonWrapper from "@/components/AnimatedButtonWrapper";
 const contactInfo = [{
   icon: Mail,
   label: "Email",
@@ -91,12 +92,14 @@ const Contact = () => {
             duration: 0.4,
             delay: 0.7
           }} className="pt-4">
-              <Button asChild size="lg" className="w-full bg-gradient-primary hover:opacity-90 text-foreground font-medium">
-                <a href="/Patel_Jinit_Resume.pdf" target="_blank" rel="noopener noreferrer">
-                  <Download className="mr-2 w-4 h-4" />
-                  Download Resume
-                </a>
-              </Button>
+              <AnimatedButtonWrapper className="w-full">
+                <Button asChild size="lg" className="relative w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium">
+                  <a href="/Patel_Jinit_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                    <Download className="mr-2 w-4 h-4" />
+                    Download Resume
+                  </a>
+                </Button>
+              </AnimatedButtonWrapper>
             </motion.div>
           </motion.div>
 
@@ -143,10 +146,12 @@ const Contact = () => {
                 <Textarea id="message" name="message" placeholder="Your message..." rows={5} className="bg-secondary border-border focus:border-primary/50 resize-none" />
               </div>
 
-              <Button type="submit" size="lg" className="w-full bg-gradient-primary hover:opacity-90 text-foreground font-medium">
-                <Send className="mr-2 w-4 h-4" />
-                Send Message
-              </Button>
+              <AnimatedButtonWrapper className="w-full">
+                <Button type="submit" size="lg" className="relative w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium">
+                  <Send className="mr-2 w-4 h-4" />
+                  Send Message
+                </Button>
+              </AnimatedButtonWrapper>
             </form>
           </motion.div>
         </div>
