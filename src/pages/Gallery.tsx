@@ -1,96 +1,128 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-
-const galleryItems = [
-  { id: 1, title: "Photo Title 1", placeholder: true },
-  { id: 2, title: "Photo Title 2", placeholder: true },
-  { id: 3, title: "Photo Title 3", placeholder: true },
-  { id: 4, title: "Photo Title 4", placeholder: true },
-  { id: 5, title: "Photo Title 5", placeholder: true },
-  { id: 6, title: "Photo Title 6", placeholder: true },
-  { id: 7, title: "Photo Title 7", placeholder: true },
-  { id: 8, title: "Photo Title 8", placeholder: true },
-  { id: 9, title: "Photo Title 9", placeholder: true },
-];
-
+const galleryItems = [{
+  id: 1,
+  title: "Photo Title 1",
+  placeholder: true
+}, {
+  id: 2,
+  title: "Photo Title 2",
+  placeholder: true
+}, {
+  id: 3,
+  title: "Photo Title 3",
+  placeholder: true
+}, {
+  id: 4,
+  title: "Photo Title 4",
+  placeholder: true
+}, {
+  id: 5,
+  title: "Photo Title 5",
+  placeholder: true
+}, {
+  id: 6,
+  title: "Photo Title 6",
+  placeholder: true
+}, {
+  id: 7,
+  title: "Photo Title 7",
+  placeholder: true
+}, {
+  id: 8,
+  title: "Photo Title 8",
+  placeholder: true
+}, {
+  id: 9,
+  title: "Photo Title 9",
+  placeholder: true
+}];
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: {
+    opacity: 0
+  },
   visible: {
     opacity: 1,
     transition: {
       staggerChildren: 0.08,
-      delayChildren: 0.2,
-    },
-  },
+      delayChildren: 0.2
+    }
+  }
 };
-
 const itemVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.95 },
+  hidden: {
+    opacity: 0,
+    y: 20,
+    scale: 0.95
+  },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] as const },
-  },
+    transition: {
+      duration: 0.4,
+      ease: [0.4, 0, 0.2, 1] as const
+    }
+  }
 };
-
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<typeof galleryItems[0] | null>(null);
-
   const openLightbox = (item: typeof galleryItems[0]) => {
     setSelectedImage(item);
   };
-
   const closeLightbox = () => {
     setSelectedImage(null);
   };
-
-  return (
-    <main className="relative z-10 min-h-screen pt-24 pb-16 px-4">
+  return <main className="relative z-10 min-h-screen pt-24 pb-16 px-4">
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-center mb-16 space-y-4"
-        >
-          <motion.h1
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-display text-4xl md:text-5xl lg:text-6xl font-bold"
-          >
-            <span className="font-display">My</span>{" "}
+        <motion.div initial={{
+        opacity: 0,
+        y: 50
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        duration: 0.7,
+        ease: "easeOut"
+      }} className="text-center mb-16 space-y-4">
+          <motion.h1 initial={{
+          opacity: 0,
+          scale: 0.9
+        }} animate={{
+          opacity: 1,
+          scale: 1
+        }} transition={{
+          duration: 0.6,
+          delay: 0.2
+        }} className="font-display text-4xl md:text-5xl lg:text-6xl font-bold">
+            <span className="font-display">my</span>{" "}
             <span className="gradient-text">Gallery</span>
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-muted-foreground max-w-2xl mx-auto"
-          >
+          <motion.p initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.6,
+          delay: 0.4
+        }} className="text-muted-foreground max-w-2xl mx-auto">
             A visual collection of photography and creative work capturing moments and perspectives.
           </motion.p>
         </motion.div>
 
         {/* Gallery Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {galleryItems.map((item) => (
-            <motion.div
-              key={item.id}
-              variants={itemVariants}
-              className="group relative cursor-pointer"
-              whileHover={{ scale: 1.02, y: -4 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              onClick={() => openLightbox(item)}
-            >
+        <motion.div variants={containerVariants} initial="hidden" animate="visible" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {galleryItems.map(item => <motion.div key={item.id} variants={itemVariants} className="group relative cursor-pointer" whileHover={{
+          scale: 1.02,
+          y: -4
+        }} transition={{
+          duration: 0.2,
+          ease: "easeOut"
+        }} onClick={() => openLightbox(item)}>
               {/* Hover glow effect - behind card */}
               <div className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 pointer-events-none rounded-xl -z-10" />
               
@@ -113,39 +145,40 @@ const Gallery = () => {
                   </h3>
                 </div>
               </div>
-            </motion.div>
-          ))}
+            </motion.div>)}
         </motion.div>
       </div>
 
       {/* Lightbox Modal */}
       <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
-            onClick={closeLightbox}
-          >
+        {selectedImage && <motion.div initial={{
+        opacity: 0
+      }} animate={{
+        opacity: 1
+      }} exit={{
+        opacity: 0
+      }} transition={{
+        duration: 0.3
+      }} className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={closeLightbox}>
             {/* Backdrop */}
             <div className="absolute inset-0 bg-background/90 backdrop-blur-sm" />
             
             {/* Modal Content */}
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="relative max-w-4xl w-full max-h-[85vh] z-10"
-              onClick={(e) => e.stopPropagation()}
-            >
+            <motion.div initial={{
+          scale: 0.9,
+          opacity: 0
+        }} animate={{
+          scale: 1,
+          opacity: 1
+        }} exit={{
+          scale: 0.9,
+          opacity: 0
+        }} transition={{
+          duration: 0.3,
+          ease: [0.4, 0, 0.2, 1]
+        }} className="relative max-w-4xl w-full max-h-[85vh] z-10" onClick={e => e.stopPropagation()}>
               {/* Close Button */}
-              <button
-                onClick={closeLightbox}
-                className="absolute -top-12 right-0 p-2 rounded-full bg-card border border-border hover:border-primary/50 transition-colors"
-              >
+              <button onClick={closeLightbox} className="absolute -top-12 right-0 p-2 rounded-full bg-card border border-border hover:border-primary/50 transition-colors">
                 <X className="w-6 h-6 text-foreground" />
               </button>
               
@@ -168,8 +201,7 @@ const Gallery = () => {
                 </div>
               </div>
             </motion.div>
-          </motion.div>
-        )}
+          </motion.div>}
       </AnimatePresence>
 
       {/* Footer */}
@@ -180,8 +212,6 @@ const Gallery = () => {
           </p>
         </div>
       </footer>
-    </main>
-  );
+    </main>;
 };
-
 export default Gallery;
