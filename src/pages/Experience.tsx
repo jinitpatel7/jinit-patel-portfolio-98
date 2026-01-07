@@ -65,7 +65,7 @@ const Experience = () => {
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold">
             <span className="font-display">my</span> <span className="gradient-text">Experience</span>
           </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">A journey through my career, highlighting key roles along the way.</p>
+          <p className="text-muted-foreground max-w-2xl mx-auto">A selection of roles where I’ve gained experience across industry, research, and engineering teams.</p>
         </motion.div>
 
         {/* Experience Timeline */}
