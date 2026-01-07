@@ -120,7 +120,7 @@ const Home = () => {
           onClick={() => {
             document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' });
           }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 group"
+          className="absolute bottom-16 left-1/2 -translate-x-1/2 group"
           aria-label="Scroll to About section"
         >
           <motion.div
