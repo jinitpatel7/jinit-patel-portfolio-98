@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Linkedin, Github, Mail, Briefcase, MessageSquare } from "lucide-react";
+import { ArrowRight, Download, Linkedin, Github, Mail, Briefcase, MessageSquare, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import heroPhoto from "@/assets/hero-photo.jpg";
@@ -109,12 +109,42 @@ const Home = () => {
                 </motion.div>
               </Link>
             </motion.div>
+
+            {/* Scroll Cue Button */}
+            <motion.button
+              variants={itemVariants}
+              onClick={() => {
+                document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="relative group mt-8"
+              aria-label="Scroll to About section"
+            >
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                whileHover={{
+                  scale: 1.15,
+                  y: -2
+                }}
+                className="relative"
+              >
+                {/* Hover glow effect */}
+                <div className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-full" />
+                <div className="p-3 rounded-full border border-border bg-secondary/50 text-muted-foreground group-hover:text-primary group-hover:border-primary/50 transition-colors duration-200">
+                  <ChevronDown className="w-6 h-6" />
+                </div>
+              </motion.div>
+            </motion.button>
           </motion.div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="py-24 px-4">
+      <section id="about-section" className="py-24 px-4">
         <div className="container mx-auto max-w-6xl">
           <motion.div initial={{
           opacity: 0,
