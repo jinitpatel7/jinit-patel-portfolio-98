@@ -37,7 +37,7 @@ const Home = () => {
         <div className="container mx-auto max-w-5xl">
           <motion.div variants={containerVariants} initial="hidden" animate="visible" className="text-center space-y-8">
             <div className="space-y-1">
-              <motion.p variants={itemVariants} className="text-xl md:text-2xl font-medium tracking-wide text-foreground">hi!</motion.p>
+              
               <motion.h1 variants={itemVariants} className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold">
                 <span className="gradient-text">Jinit Patel</span>
               </motion.h1>
@@ -54,10 +54,7 @@ const Home = () => {
               </div>
             </motion.div>
 
-            <motion.p variants={itemVariants} className="text-muted-foreground max-w-lg mx-auto leading-relaxed">
-              Building innovative solutions at the intersection of technology and creativity.
-              Passionate about crafting elegant, efficient, and scalable systems.
-            </motion.p>
+            <motion.p variants={itemVariants} className="text-muted-foreground max-w-lg mx-auto leading-relaxed font-medium">Hey! Welcome to my personal portfolio website. Feel free to look around to learn more about myself and my work!</motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Link to="/projects">
