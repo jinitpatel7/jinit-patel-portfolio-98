@@ -109,9 +109,7 @@ const Gallery = () => {
         }} transition={{
           duration: 0.6,
           delay: 0.4
-        }} className="text-muted-foreground max-w-2xl mx-auto">
-            A visual collection of photography and creative work capturing moments and perspectives.
-          </motion.p>
+        }} className="text-muted-foreground max-w-2xl mx-auto">The world through my lens.</motion.p>
         </motion.div>
 
         {/* Gallery Grid */}
