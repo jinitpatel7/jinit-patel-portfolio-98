@@ -33,7 +33,7 @@ const itemVariants = {
 const Home = () => {
   return <main className="relative z-10 min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="min-h-[90vh] flex items-center justify-center px-4">
+      <section className="relative min-h-[90vh] flex items-center justify-center px-4">
         <div className="container mx-auto max-w-5xl">
           <motion.div variants={containerVariants} initial="hidden" animate="visible" className="text-center space-y-8">
             <div className="space-y-1">
@@ -109,38 +109,40 @@ const Home = () => {
                 </motion.div>
               </Link>
             </motion.div>
-
-            {/* Scroll Cue Button */}
-            <motion.button
-              variants={itemVariants}
-              onClick={() => {
-                document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="relative group mt-8"
-              aria-label="Scroll to About section"
-            >
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                whileHover={{
-                  scale: 1.15,
-                  y: -2
-                }}
-                className="relative"
-              >
-                {/* Hover glow effect */}
-                <div className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-full" />
-                <div className="p-3 rounded-full border border-border bg-secondary/50 text-muted-foreground group-hover:text-primary group-hover:border-primary/50 transition-colors duration-200">
-                  <ChevronDown className="w-6 h-6" />
-                </div>
-              </motion.div>
-            </motion.button>
           </motion.div>
         </div>
+
+        {/* Scroll Cue Button - Positioned at bottom of hero */}
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1 }}
+          onClick={() => {
+            document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 group"
+          aria-label="Scroll to About section"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            whileHover={{
+              scale: 1.15,
+              y: -2
+            }}
+            className="relative"
+          >
+            {/* Hover glow effect */}
+            <div className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-full" />
+            <div className="p-3 rounded-full border border-border bg-secondary/50 text-muted-foreground group-hover:text-primary group-hover:border-primary/50 transition-colors duration-200">
+              <ChevronDown className="w-6 h-6" />
+            </div>
+          </motion.div>
+        </motion.button>
       </section>
 
       {/* About Section */}
