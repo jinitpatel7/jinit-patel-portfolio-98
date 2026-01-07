@@ -84,9 +84,7 @@ const Projects = () => {
         }} transition={{
           duration: 0.6,
           delay: 0.4
-        }} className="text-muted-foreground max-w-2xl mx-auto">
-            A collection of projects that showcase my skills, creativity, and passion for building impactful solutions.
-          </motion.p>
+        }} className="text-muted-foreground max-w-2xl mx-auto"> I enjoy bringing ideas to life in my free time. My personal projects are where my creativity and love for engineering intersect—take a look!    </motion.p>
         </motion.div>
 
         {/* Projects Grid */}
