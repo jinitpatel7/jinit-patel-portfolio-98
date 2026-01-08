@@ -1,5 +1,17 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
+// Import new gallery images
+import img8245 from "@/assets/gallery/IMG_8245-2.jpg";
+import img8281 from "@/assets/gallery/IMG_8281-2.jpg";
+import img3507 from "@/assets/gallery/IMG_3507-2.jpg";
+import img3526 from "@/assets/gallery/IMG_3526-2.jpg";
+import img4152 from "@/assets/gallery/IMG_4152-2.jpg";
+import img2510 from "@/assets/gallery/IMG_2510-2.jpg";
+import img5991 from "@/assets/gallery/IMG_5991-2.jpg";
+import img8425 from "@/assets/gallery/IMG_8425-2.jpg";
+import img4529 from "@/assets/gallery/IMG_4529-2.jpg";
+import img0579 from "@/assets/gallery/IMG_0579-2.jpg";
 
 // Gallery items with mixed aspect ratios - easily replaceable
 // aspectRatio: "square" (1:1), "horizontal" (4:3), "vertical" (3:4)
@@ -50,7 +62,40 @@ const galleryItems = [
   { id: 43, name: "Stone Bridge", aspectRatio: "square" as const },
   { id: 44, name: "Morning Fog", aspectRatio: "vertical" as const },
   { id: 45, name: "Last Light", aspectRatio: "horizontal" as const },
+  // New square images with actual photos
+  { id: 46, name: "IMG_8245-2", aspectRatio: "square" as const, src: img8245 },
+  { id: 47, name: "IMG_8281-2", aspectRatio: "square" as const, src: img8281 },
+  { id: 48, name: "IMG_3507-2", aspectRatio: "square" as const, src: img3507 },
+  { id: 49, name: "IMG_3526-2", aspectRatio: "square" as const, src: img3526 },
+  { id: 50, name: "IMG_4152-2", aspectRatio: "square" as const, src: img4152 },
+  { id: 51, name: "IMG_2510-2", aspectRatio: "square" as const, src: img2510 },
+  { id: 52, name: "IMG_5991-2", aspectRatio: "square" as const, src: img5991 },
+  { id: 53, name: "IMG_8425-2", aspectRatio: "square" as const, src: img8425 },
+  { id: 54, name: "IMG_4529-2", aspectRatio: "square" as const, src: img4529 },
+  { id: 55, name: "IMG_0579-2", aspectRatio: "square" as const, src: img0579 },
 ];
+
+// Seeded shuffle function for consistent randomization
+const seededShuffle = <T,>(array: T[], seed: number): T[] => {
+  const shuffled = [...array];
+  let currentIndex = shuffled.length;
+  
+  const random = () => {
+    seed = (seed * 9301 + 49297) % 233280;
+    return seed / 233280;
+  };
+
+  while (currentIndex !== 0) {
+    const randomIndex = Math.floor(random() * currentIndex);
+    currentIndex--;
+    [shuffled[currentIndex], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[currentIndex]];
+  }
+
+  return shuffled;
+};
+
+// Pre-shuffled gallery items with consistent order
+const shuffledGalleryItems = seededShuffle(galleryItems, 42);
 
 // Placeholder image URLs - replace these with actual image sources
 const getPlaceholderStyle = (aspectRatio: "square" | "horizontal" | "vertical") => {
@@ -144,7 +189,7 @@ const Gallery = () => {
           animate="visible"
           className="columns-1 sm:columns-2 md:columns-3 gap-8"
         >
-          {galleryItems.map((item) => (
+          {shuffledGalleryItems.map((item) => (
             <motion.div
               key={item.id}
               variants={itemVariants}
@@ -160,17 +205,26 @@ const Gallery = () => {
                 {/* Hover glow effect */}
                 <div className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-25 blur-lg transition-opacity duration-300 pointer-events-none" />
 
-                {/* Placeholder gradient - replace with actual images */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${getPlaceholderStyle(item.aspectRatio)}`}
-                />
-
-                {/* Image placeholder content */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-muted-foreground/40 text-sm select-none">
-                    {item.aspectRatio}
-                  </span>
-                </div>
+                {/* Show actual image if src exists, otherwise placeholder */}
+                {item.src ? (
+                  <img
+                    src={item.src}
+                    alt={item.name}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                ) : (
+                  <>
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${getPlaceholderStyle(item.aspectRatio)}`}
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-muted-foreground/40 text-sm select-none">
+                        {item.aspectRatio}
+                      </span>
+                    </div>
+                  </>
+                )}
               </motion.div>
             </motion.div>
           ))}
@@ -209,17 +263,25 @@ const Gallery = () => {
                 className={`relative ${getAspectClass(selectedImage.aspectRatio)} w-full max-h-[75vh] bg-secondary overflow-hidden`}
                 style={{ maxWidth: selectedImage.aspectRatio === "vertical" ? "500px" : "100%" }}
               >
-                {/* Placeholder gradient - replace with actual images */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${getPlaceholderStyle(selectedImage.aspectRatio)}`}
-                />
-
-                {/* Image placeholder content */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-muted-foreground/40 text-lg select-none">
-                    {selectedImage.aspectRatio}
-                  </span>
-                </div>
+                {/* Show actual image if src exists, otherwise placeholder */}
+                {selectedImage.src ? (
+                  <img
+                    src={selectedImage.src}
+                    alt={selectedImage.name}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                ) : (
+                  <>
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${getPlaceholderStyle(selectedImage.aspectRatio)}`}
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-muted-foreground/40 text-lg select-none">
+                        {selectedImage.aspectRatio}
+                      </span>
+                    </div>
+                  </>
+                )}
               </div>
 
               {/* Image name */}
