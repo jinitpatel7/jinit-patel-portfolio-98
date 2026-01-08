@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 
 // Gallery items with mixed aspect ratios - easily replaceable
 // aspectRatio: "square" (1:1), "horizontal" (4:3), "vertical" (3:4)
@@ -98,15 +99,14 @@ const itemVariants = {
 };
 
 const Gallery = () => {
-  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [selectedImage, setSelectedImage] = useState<typeof galleryItems[0] | null>(null);
 
-  const handleImageClick = (id: number) => {
-    setSelectedId(selectedId === id ? null : id);
+  const handleImageClick = (item: typeof galleryItems[0]) => {
+    setSelectedImage(item);
   };
 
-  const handleOverlayClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setSelectedId(null);
+  const handleClose = () => {
+    setSelectedImage(null);
   };
 
   return (
@@ -150,7 +150,7 @@ const Gallery = () => {
               key={item.id}
               variants={itemVariants}
               className="group relative cursor-pointer mb-8 break-inside-avoid"
-              onClick={() => handleImageClick(item.id)}
+              onClick={() => handleImageClick(item)}
             >
               {/* Image tile */}
               <motion.div
@@ -172,35 +172,81 @@ const Gallery = () => {
                     {item.aspectRatio}
                   </span>
                 </div>
-
-                {/* Click-to-show name overlay */}
-                <AnimatePresence>
-                  {selectedId === item.id && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute inset-0 bg-background/70 backdrop-blur-sm flex items-end justify-center pb-6 z-20"
-                      onClick={handleOverlayClick}
-                    >
-                      <motion.span
-                        initial={{ y: 10, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: 10, opacity: 0 }}
-                        transition={{ duration: 0.2, delay: 0.05 }}
-                        className="font-display text-base font-medium text-foreground px-4 py-2 bg-card/80 backdrop-blur-sm"
-                      >
-                        {item.name}
-                      </motion.span>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </motion.div>
             </motion.div>
           ))}
         </motion.div>
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
+            onClick={handleClose}
+          >
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-background/80 backdrop-blur-md"
+            />
+
+            {/* Close button */}
+            <button
+              onClick={handleClose}
+              className="absolute top-6 right-6 z-50 p-2 text-foreground/70 hover:text-foreground transition-colors"
+            >
+              <X className="w-8 h-8" />
+            </button>
+
+            {/* Enlarged image container */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              className="relative z-10 max-w-4xl w-full max-h-[85vh] flex flex-col items-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Image */}
+              <div
+                className={`relative ${getAspectClass(selectedImage.aspectRatio)} w-full max-h-[75vh] bg-secondary overflow-hidden`}
+                style={{ maxWidth: selectedImage.aspectRatio === "vertical" ? "500px" : "100%" }}
+              >
+                {/* Placeholder gradient - replace with actual images */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${getPlaceholderStyle(selectedImage.aspectRatio)}`}
+                />
+
+                {/* Image placeholder content */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-muted-foreground/40 text-lg select-none">
+                    {selectedImage.aspectRatio}
+                  </span>
+                </div>
+              </div>
+
+              {/* Image name */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+                className="mt-4 px-6 py-3 bg-card/80 backdrop-blur-sm"
+              >
+                <span className="font-display text-lg font-medium text-foreground">
+                  {selectedImage.name}
+                </span>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Footer */}
       <footer className="mt-24 py-8 px-4 border-t border-border">
