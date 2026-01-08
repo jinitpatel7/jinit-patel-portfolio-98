@@ -56,53 +56,67 @@ import img3642 from "@/assets/gallery/IMG_3642.jpg";
 // Ordered to maximize alternation: square → horizontal → vertical (repeating pattern)
 // aspectRatio: "square" (1:1), "horizontal" (4:3), "vertical" (3:4)
 const galleryItems = [
-  // Alternating pattern: square, horizontal, vertical (repeat 15 times)
-  // 10 horizontal images replaced with real photos, 5 horizontal placeholders remain
+  // Reordered to avoid adjacent same-aspect tiles per row for the desktop column layout.
+  // Pattern cycles per row: (S,H,V) → (H,V,S) → (V,S,H)
   { id: 1, name: "IMG_8245-2", aspectRatio: "square" as const, src: img8245 },
   { id: 2, name: "IMG_5195", aspectRatio: "horizontal" as const, src: img5195 },
   { id: 3, name: "IMG_3643", aspectRatio: "vertical" as const, src: img3643 },
-  { id: 4, name: "IMG_8281-2", aspectRatio: "square" as const, src: img8281 },
+
   { id: 5, name: "IMG_0768", aspectRatio: "horizontal" as const, src: img0768 },
   { id: 6, name: "IMG_5586", aspectRatio: "vertical" as const, src: img5586 },
+  { id: 4, name: "IMG_8281-2", aspectRatio: "square" as const, src: img8281 },
+
+  { id: 9, name: "IMG_9746", aspectRatio: "vertical" as const, src: img9746 },
   { id: 7, name: "IMG_3507-2", aspectRatio: "square" as const, src: img3507 },
   { id: 8, name: "IMG_4450", aspectRatio: "horizontal" as const, src: img4450 },
-  { id: 9, name: "IMG_9746", aspectRatio: "vertical" as const, src: img9746 },
+
   { id: 10, name: "IMG_3526-2", aspectRatio: "square" as const, src: img3526 },
   { id: 11, name: "IMG_3343", aspectRatio: "horizontal" as const, src: img3343 },
   { id: 12, name: "IMG_1987", aspectRatio: "vertical" as const, src: img1987 },
-  { id: 13, name: "IMG_4152-2", aspectRatio: "square" as const, src: img4152 },
+
   { id: 14, name: "IMG_3612", aspectRatio: "horizontal" as const, src: img3612 },
   { id: 15, name: "IMG_3314", aspectRatio: "vertical" as const, src: img3314 },
+  { id: 13, name: "IMG_4152-2", aspectRatio: "square" as const, src: img4152 },
+
+  { id: 18, name: "IMG_3464", aspectRatio: "vertical" as const, src: img3464 },
   { id: 16, name: "IMG_2510-2", aspectRatio: "square" as const, src: img2510 },
   { id: 17, name: "IMG_4751", aspectRatio: "horizontal" as const, src: img4751 },
-  { id: 18, name: "IMG_3464", aspectRatio: "vertical" as const, src: img3464 },
+
   { id: 19, name: "IMG_5991-2", aspectRatio: "square" as const, src: img5991 },
   { id: 20, name: "IMG_5653", aspectRatio: "horizontal" as const, src: img5653 },
   { id: 21, name: "IMG_4308", aspectRatio: "vertical" as const, src: img4308 },
-  { id: 22, name: "IMG_8425-2", aspectRatio: "square" as const, src: img8425 },
+
   { id: 23, name: "IMG_5994", aspectRatio: "horizontal" as const, src: img5994 },
   { id: 24, name: "IMG_7387", aspectRatio: "vertical" as const, src: img7387 },
+  { id: 22, name: "IMG_8425-2", aspectRatio: "square" as const, src: img8425 },
+
+  { id: 27, name: "IMG_1364", aspectRatio: "vertical" as const, src: img1364 },
   { id: 25, name: "IMG_4529-2", aspectRatio: "square" as const, src: img4529 },
   { id: 26, name: "IMG_2611", aspectRatio: "horizontal" as const, src: img2611 },
-  { id: 27, name: "IMG_1364", aspectRatio: "vertical" as const, src: img1364 },
+
   { id: 28, name: "IMG_0579-2", aspectRatio: "square" as const, src: img0579 },
   { id: 29, name: "IMG_3730", aspectRatio: "horizontal" as const, src: img3730 },
   { id: 30, name: "IMG_1826", aspectRatio: "vertical" as const, src: img1826 },
-  { id: 31, name: "IMG_4715", aspectRatio: "square" as const, src: img4715 },
+
   { id: 32, name: "IMG_9885", aspectRatio: "horizontal" as const, src: img9885 },
   { id: 33, name: "IMG_3653", aspectRatio: "vertical" as const, src: img3653 },
+  { id: 31, name: "IMG_4715", aspectRatio: "square" as const, src: img4715 },
+
+  { id: 36, name: "IMG_3844", aspectRatio: "vertical" as const, src: img3844 },
   { id: 34, name: "IMG_1632", aspectRatio: "square" as const, src: img1632 },
   { id: 35, name: "IMG_4101", aspectRatio: "horizontal" as const, src: img4101 },
-  { id: 36, name: "IMG_3844", aspectRatio: "vertical" as const, src: img3844 },
+
   { id: 37, name: "IMG_8895", aspectRatio: "square" as const, src: img8895 },
   { id: 38, name: "IMG_3609", aspectRatio: "horizontal" as const, src: img3609 },
   { id: 39, name: "IMG_3991", aspectRatio: "vertical" as const, src: img3991 },
-  { id: 40, name: "IMG_6372", aspectRatio: "square" as const, src: img6372 },
+
   { id: 41, name: "IMG_4963", aspectRatio: "horizontal" as const, src: img4963 },
   { id: 42, name: "IMG_1911", aspectRatio: "vertical" as const, src: img1911 },
+  { id: 40, name: "IMG_6372", aspectRatio: "square" as const, src: img6372 },
+
+  { id: 45, name: "IMG_3642", aspectRatio: "vertical" as const, src: img3642 },
   { id: 43, name: "IMG_6375", aspectRatio: "square" as const, src: img6375 },
   { id: 44, name: "IMG_5183", aspectRatio: "horizontal" as const, src: img5183 },
-  { id: 45, name: "IMG_3642", aspectRatio: "vertical" as const, src: img3642 },
 ];
 
 // Gallery items are ordered as: square → horizontal → vertical (repeating)
