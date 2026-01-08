@@ -104,13 +104,13 @@ const lockedLayoutPattern: ("square" | "horizontal" | "vertical")[] = [
 // Image pools by aspect ratio (15 each) - name is used as the description
 // AI-analyzed descriptions based on image content
 const squareImages = [
-  { name: "Sun-drenched clouds frame a basketball hoop from below", src: img8245 },
+  { name: "Apple Farm in Pataskala, OH", src: img8245 },
   { name: "Lynd's Farm sunset", src: img8281 },
   { name: "Toronto skyline", src: img3507 },
   { name: "Niagra Falls rainbow", src: img3526 },
   { name: "Lunar Corona", src: img4152 },
   { name: "Travis Scott concert stage", src: img2510 },
-  { name: "Deep orange and pink gradients across evening clouds", src: img5991 },
+  { name: "Clouded sky behind my backyard basketball hoop", src: img5991 },
   { name: "Lewis Center, OH parking lot sunset", src: img8425 },
   { name: "Palm trees in Disney Springs", src: img4529 },
   { name: "Small town sunset in Gujarat, India", src: img0579 },
