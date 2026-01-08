@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Image } from "lucide-react";
 import { ArrowRight, Download, Linkedin, Github, Mail, Briefcase, MessageSquare, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -119,6 +120,32 @@ const Home = () => {
                   >
                     <Briefcase className="mr-2 w-4 h-4" />
                     Experience
+                  </Button>
+                </motion.div>
+              </Link>
+              <Link to="/gallery">
+                <motion.div
+                  whileHover={{
+                    scale: 1.05,
+                    y: -3,
+                  }}
+                  whileTap={{
+                    scale: 0.98,
+                  }}
+                  transition={{
+                    duration: 0.15,
+                    ease: "easeOut",
+                  }}
+                  className="relative group"
+                >
+                  <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-30 blur-lg transition-opacity duration-200 rounded-lg" />
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="relative border-border hover:border-primary/50 hover:bg-secondary/80 text-foreground hover:text-foreground"
+                  >
+                    <Image className="mr-2 w-4 h-4" />
+                    Gallery
                   </Button>
                 </motion.div>
               </Link>
