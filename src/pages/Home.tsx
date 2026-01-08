@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { Image } from "lucide-react";
-import { ArrowRight, Download, Linkedin, Github, Mail, Briefcase, MessageSquare, ChevronDown } from "lucide-react";
+import { ArrowRight, Download, Linkedin, Github, Mail, Briefcase, MessageSquare, ChevronDown, Image, FolderOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import heroPhoto from "@/assets/hero-photo.jpg";
@@ -92,8 +91,8 @@ const Home = () => {
                     size="lg"
                     className="relative bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8"
                   >
+                    <FolderOpen className="mr-2 w-4 h-4" />
                     View Projects
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-150" />
                   </Button>
                 </motion.div>
               </Link>
