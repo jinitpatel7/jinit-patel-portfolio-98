@@ -46,8 +46,13 @@ import img4308 from "@/assets/gallery/IMG_4308.jpg";
 import img7387 from "@/assets/gallery/IMG_7387.jpg";
 import img1364 from "@/assets/gallery/IMG_1364.jpg";
 import img1826 from "@/assets/gallery/IMG_1826.jpg";
+import img3653 from "@/assets/gallery/IMG_3653.jpg";
+import img3844 from "@/assets/gallery/IMG_3844.jpg";
+import img3991 from "@/assets/gallery/IMG_3991.jpg";
+import img1911 from "@/assets/gallery/IMG_1911.jpg";
+import img3642 from "@/assets/gallery/IMG_3642.jpg";
 
-// Gallery items with mixed aspect ratios - 45 total (15 square real, 15 horizontal real, 10 vertical real + 5 placeholder)
+// Gallery items with mixed aspect ratios - 45 total (all real images: 15 square, 15 horizontal, 15 vertical)
 // Ordered to maximize alternation: square → horizontal → vertical (repeating pattern)
 // aspectRatio: "square" (1:1), "horizontal" (4:3), "vertical" (3:4)
 const galleryItems = [
@@ -85,19 +90,19 @@ const galleryItems = [
   { id: 30, name: "IMG_1826", aspectRatio: "vertical" as const, src: img1826 },
   { id: 31, name: "IMG_4715", aspectRatio: "square" as const, src: img4715 },
   { id: 32, name: "IMG_9885", aspectRatio: "horizontal" as const, src: img9885 },
-  { id: 33, name: "Cafe Corner", aspectRatio: "vertical" as const },
+  { id: 33, name: "IMG_3653", aspectRatio: "vertical" as const, src: img3653 },
   { id: 34, name: "IMG_1632", aspectRatio: "square" as const, src: img1632 },
   { id: 35, name: "IMG_4101", aspectRatio: "horizontal" as const, src: img4101 },
-  { id: 36, name: "Waterfall Mist", aspectRatio: "vertical" as const },
+  { id: 36, name: "IMG_3844", aspectRatio: "vertical" as const, src: img3844 },
   { id: 37, name: "IMG_8895", aspectRatio: "square" as const, src: img8895 },
   { id: 38, name: "IMG_3609", aspectRatio: "horizontal" as const, src: img3609 },
-  { id: 39, name: "Old Town", aspectRatio: "vertical" as const },
+  { id: 39, name: "IMG_3991", aspectRatio: "vertical" as const, src: img3991 },
   { id: 40, name: "IMG_6372", aspectRatio: "square" as const, src: img6372 },
   { id: 41, name: "IMG_4963", aspectRatio: "horizontal" as const, src: img4963 },
-  { id: 42, name: "Alley Light", aspectRatio: "vertical" as const },
+  { id: 42, name: "IMG_1911", aspectRatio: "vertical" as const, src: img1911 },
   { id: 43, name: "IMG_6375", aspectRatio: "square" as const, src: img6375 },
   { id: 44, name: "IMG_5183", aspectRatio: "horizontal" as const, src: img5183 },
-  { id: 45, name: "Morning Fog", aspectRatio: "vertical" as const },
+  { id: 45, name: "IMG_3642", aspectRatio: "vertical" as const, src: img3642 },
 ];
 
 // Seeded shuffle function for consistent randomization
