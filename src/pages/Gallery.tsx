@@ -143,13 +143,13 @@ const Gallery = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="columns-1 sm:columns-2 md:columns-3 gap-4"
+          className="columns-1 sm:columns-2 md:columns-3 gap-8"
         >
           {galleryItems.map((item) => (
             <motion.div
               key={item.id}
               variants={itemVariants}
-              className="group relative cursor-pointer mb-4 break-inside-avoid"
+              className="group relative cursor-pointer mb-8 break-inside-avoid"
               onClick={() => handleImageClick(item.id)}
             >
               {/* Image tile */}
