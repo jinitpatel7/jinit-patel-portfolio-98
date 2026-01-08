@@ -64,7 +64,23 @@ const getPlaceholderStyle = (aspectRatio: "square" | "horizontal" | "vertical") 
   return gradients[aspectRatio];
 };
 
-const getAspectRatioClass = (aspectRatio: "square" | "horizontal" | "vertical") => {
+// Grid span classes for each aspect ratio
+const getGridSpanClass = (aspectRatio: "square" | "horizontal" | "vertical") => {
+  switch (aspectRatio) {
+    case "square":
+      // 1 col x 1 row - smallest
+      return "col-span-1 row-span-1";
+    case "horizontal":
+      // 2 cols x 1 row - wider
+      return "col-span-2 row-span-1";
+    case "vertical":
+      // 1 col x 2 rows - taller
+      return "col-span-1 row-span-2";
+  }
+};
+
+// Inner aspect ratio for the tile content
+const getInnerAspectClass = (aspectRatio: "square" | "horizontal" | "vertical") => {
   switch (aspectRatio) {
     case "square":
       return "aspect-square";
@@ -139,23 +155,23 @@ const Gallery = () => {
           </motion.p>
         </motion.div>
 
-        {/* Photo Wall Grid */}
+        {/* Photo Wall Grid - CSS Grid with spanning */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1 sm:gap-1.5"
+          className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 auto-rows-[80px] sm:auto-rows-[100px] md:auto-rows-[120px] gap-0.5"
         >
           {galleryItems.map((item) => (
             <motion.div
               key={item.id}
               variants={itemVariants}
-              className="group relative cursor-pointer overflow-hidden"
+              className={`group relative cursor-pointer overflow-hidden ${getGridSpanClass(item.aspectRatio)}`}
               onClick={() => handleImageClick(item.id)}
             >
               {/* Image tile */}
               <motion.div
-                className={`relative ${getAspectRatioClass(item.aspectRatio)} bg-secondary overflow-hidden`}
+                className="relative w-full h-full bg-secondary overflow-hidden"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
               >
