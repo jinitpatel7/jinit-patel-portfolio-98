@@ -369,11 +369,60 @@ const Home = () => {
               </div>
             </motion.div>
           </motion.div>
+
+          {/* Scroll Cue Button - About to Resume */}
+          <div className="flex items-center justify-center mt-16">
+            <motion.button
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.6,
+              }}
+              onClick={() => {
+                document.getElementById("resume-section")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
+              className="group"
+              aria-label="Scroll to Resume section"
+            >
+              <motion.div
+                animate={{
+                  y: [0, 8, 0],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                whileHover={{
+                  scale: 1.15,
+                  y: -2,
+                }}
+                className="relative"
+              >
+                {/* Hover glow effect */}
+                <div className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-full" />
+                <div className="p-3 rounded-full border border-border bg-secondary/50 text-muted-foreground group-hover:text-primary group-hover:border-primary/50 transition-colors duration-200">
+                  <ChevronDown className="w-6 h-6" />
+                </div>
+              </motion.div>
+            </motion.button>
+          </div>
         </div>
       </section>
 
       {/* Resume Download Card */}
-      <section className="py-16 px-4">
+      <section id="resume-section" className="py-16 px-4">
         <div className="container mx-auto max-w-3xl">
           <motion.div
             initial={{
