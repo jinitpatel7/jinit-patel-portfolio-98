@@ -53,9 +53,7 @@ const galleryItems = [
 ];
 
 // Placeholder image URLs - replace these with actual image sources
-// Structure: { [id]: "url" } or import statements
 const getPlaceholderStyle = (aspectRatio: "square" | "horizontal" | "vertical") => {
-  // Different gradient directions for visual variety
   const gradients = {
     square: "from-primary/20 via-accent/10 to-secondary",
     horizontal: "from-accent/20 via-primary/10 to-secondary",
@@ -64,23 +62,8 @@ const getPlaceholderStyle = (aspectRatio: "square" | "horizontal" | "vertical") 
   return gradients[aspectRatio];
 };
 
-// Grid span classes for each aspect ratio
-const getGridSpanClass = (aspectRatio: "square" | "horizontal" | "vertical") => {
-  switch (aspectRatio) {
-    case "square":
-      // 1 col x 1 row - smallest
-      return "col-span-1 row-span-1";
-    case "horizontal":
-      // 2 cols x 1 row - wider
-      return "col-span-2 row-span-1";
-    case "vertical":
-      // 1 col x 2 rows - taller
-      return "col-span-1 row-span-2";
-  }
-};
-
-// Inner aspect ratio for the tile content
-const getInnerAspectClass = (aspectRatio: "square" | "horizontal" | "vertical") => {
+// Aspect ratio classes for each type
+const getAspectClass = (aspectRatio: "square" | "horizontal" | "vertical") => {
   switch (aspectRatio) {
     case "square":
       return "aspect-square";
@@ -155,31 +138,28 @@ const Gallery = () => {
           </motion.p>
         </motion.div>
 
-        {/* Photo Wall Grid - CSS Grid with spanning */}
+        {/* Photo Wall Grid - Clean masonry-style with columns */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 auto-rows-[80px] sm:auto-rows-[100px] md:auto-rows-[120px] gap-0.5"
+          className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4"
         >
           {galleryItems.map((item) => (
             <motion.div
               key={item.id}
               variants={itemVariants}
-              className={`group relative cursor-pointer overflow-hidden ${getGridSpanClass(item.aspectRatio)}`}
+              className="group relative cursor-pointer mb-4 break-inside-avoid"
               onClick={() => handleImageClick(item.id)}
             >
               {/* Image tile */}
               <motion.div
-                className="relative w-full h-full bg-secondary overflow-hidden"
+                className={`relative ${getAspectClass(item.aspectRatio)} bg-secondary overflow-hidden`}
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
               >
-                {/* Hover glow effect - behind image */}
-                <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-30 blur-md transition-opacity duration-300 pointer-events-none" />
-
-                {/* Hover shadow overlay */}
-                <div className="absolute inset-0 shadow-none group-hover:shadow-[0_8px_30px_-8px_hsl(var(--primary)/0.4)] transition-shadow duration-300 pointer-events-none z-10" />
+                {/* Hover glow effect */}
+                <div className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-25 blur-lg transition-opacity duration-300 pointer-events-none" />
 
                 {/* Placeholder gradient - replace with actual images */}
                 <div
@@ -188,7 +168,7 @@ const Gallery = () => {
 
                 {/* Image placeholder content */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-muted-foreground/50 text-xs select-none">
+                  <span className="text-muted-foreground/40 text-sm select-none">
                     {item.aspectRatio}
                   </span>
                 </div>
@@ -201,7 +181,7 @@ const Gallery = () => {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute inset-0 bg-background/70 backdrop-blur-sm flex items-end justify-center pb-4 z-20"
+                      className="absolute inset-0 bg-background/70 backdrop-blur-sm flex items-end justify-center pb-6 z-20"
                       onClick={handleOverlayClick}
                     >
                       <motion.span
@@ -209,7 +189,7 @@ const Gallery = () => {
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: 10, opacity: 0 }}
                         transition={{ duration: 0.2, delay: 0.05 }}
-                        className="font-display text-sm sm:text-base font-medium text-foreground px-3 py-1.5 bg-card/80 backdrop-blur-sm"
+                        className="font-display text-base font-medium text-foreground px-4 py-2 bg-card/80 backdrop-blur-sm"
                       >
                         {item.name}
                       </motion.span>
