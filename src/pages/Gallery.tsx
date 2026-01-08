@@ -12,6 +12,11 @@ import img5991 from "@/assets/gallery/IMG_5991-2.jpg";
 import img8425 from "@/assets/gallery/IMG_8425-2.jpg";
 import img4529 from "@/assets/gallery/IMG_4529-2.jpg";
 import img0579 from "@/assets/gallery/IMG_0579-2.jpg";
+import img4715 from "@/assets/gallery/IMG_4715.jpg";
+import img1632 from "@/assets/gallery/IMG_1632.jpg";
+import img8895 from "@/assets/gallery/IMG_8895.jpg";
+import img6372 from "@/assets/gallery/IMG_6372.jpg";
+import img6375 from "@/assets/gallery/IMG_6375.jpg";
 
 // Gallery items with mixed aspect ratios - easily replaceable
 // aspectRatio: "square" (1:1), "horizontal" (4:3), "vertical" (3:4)
@@ -73,6 +78,11 @@ const galleryItems = [
   { id: 53, name: "IMG_8425-2", aspectRatio: "square" as const, src: img8425 },
   { id: 54, name: "IMG_4529-2", aspectRatio: "square" as const, src: img4529 },
   { id: 55, name: "IMG_0579-2", aspectRatio: "square" as const, src: img0579 },
+  { id: 56, name: "IMG_4715", aspectRatio: "square" as const, src: img4715 },
+  { id: 57, name: "IMG_1632", aspectRatio: "square" as const, src: img1632 },
+  { id: 58, name: "IMG_8895", aspectRatio: "square" as const, src: img8895 },
+  { id: 59, name: "IMG_6372", aspectRatio: "square" as const, src: img6372 },
+  { id: 60, name: "IMG_6375", aspectRatio: "square" as const, src: img6375 },
 ];
 
 // Seeded shuffle function for consistent randomization
