@@ -71,59 +71,59 @@ const lockedLayoutPattern: ("square" | "horizontal" | "vertical")[] = [
   "vertical", "square", "horizontal",
 ];
 
-// Image pools by aspect ratio (15 each) - each image has its own description
+// Image pools by aspect ratio (15 each) - name is used as the description
 const squareImages = [
-  { name: "IMG_8245-2", src: img8245, description: "Golden hour reflections on still water" },
-  { name: "IMG_8281-2", src: img8281, description: "Urban geometry in morning light" },
-  { name: "IMG_3507-2", src: img3507, description: "A moment of quiet contemplation" },
-  { name: "IMG_3526-2", src: img3526, description: "Shadows dancing across textured walls" },
-  { name: "IMG_4152-2", src: img4152, description: "Nature's intricate patterns revealed" },
-  { name: "IMG_2510-2", src: img2510, description: "Street life in motion" },
-  { name: "IMG_5991-2", src: img5991, description: "Colors of the evening sky" },
-  { name: "IMG_8425-2", src: img8425, description: "Architectural symmetry" },
-  { name: "IMG_4529-2", src: img4529, description: "Peaceful solitude" },
-  { name: "IMG_0579-2", src: img0579, description: "Light breaking through clouds" },
-  { name: "IMG_4715", src: img4715, description: "Textures of the earth" },
-  { name: "IMG_1632", src: img1632, description: "A fleeting moment captured" },
-  { name: "IMG_8895", src: img8895, description: "The beauty in simplicity" },
-  { name: "IMG_6372", src: img6372, description: "Warm afternoon glow" },
-  { name: "IMG_6375", src: img6375, description: "Stories etched in stone" },
+  { name: "Golden hour reflections on still water", src: img8245 },
+  { name: "Urban geometry in morning light", src: img8281 },
+  { name: "A moment of quiet contemplation", src: img3507 },
+  { name: "Shadows dancing across textured walls", src: img3526 },
+  { name: "Nature's intricate patterns revealed", src: img4152 },
+  { name: "Street life in motion", src: img2510 },
+  { name: "Colors of the evening sky", src: img5991 },
+  { name: "Architectural symmetry", src: img8425 },
+  { name: "Peaceful solitude", src: img4529 },
+  { name: "Light breaking through clouds", src: img0579 },
+  { name: "Textures of the earth", src: img4715 },
+  { name: "A fleeting moment captured", src: img1632 },
+  { name: "The beauty in simplicity", src: img8895 },
+  { name: "Warm afternoon glow", src: img6372 },
+  { name: "Stories etched in stone", src: img6375 },
 ];
 
 const horizontalImages = [
-  { name: "IMG_5195", src: img5195, description: "Expansive horizons at dusk" },
-  { name: "IMG_0768", src: img0768, description: "Where land meets sky" },
-  { name: "IMG_4450", src: img4450, description: "Cityscape at twilight" },
-  { name: "IMG_3343", src: img3343, description: "Nature's endless canvas" },
-  { name: "IMG_3612", src: img3612, description: "Reflections on a calm day" },
-  { name: "IMG_4751", src: img4751, description: "The road less traveled" },
-  { name: "IMG_5653", src: img5653, description: "Whispers of the wind" },
-  { name: "IMG_5994", src: img5994, description: "Layers of light and shadow" },
-  { name: "IMG_2611", src: img2611, description: "Morning mist rising" },
-  { name: "IMG_3730", src: img3730, description: "A study in contrasts" },
-  { name: "IMG_9885", src: img9885, description: "Open spaces, open mind" },
-  { name: "IMG_4101", src: img4101, description: "Patterns in the landscape" },
-  { name: "IMG_3609", src: img3609, description: "Chasing the light" },
-  { name: "IMG_4963", src: img4963, description: "Serenity found" },
-  { name: "IMG_5183", src: img5183, description: "The world stretching out" },
+  { name: "Expansive horizons at dusk", src: img5195 },
+  { name: "Where land meets sky", src: img0768 },
+  { name: "Cityscape at twilight", src: img4450 },
+  { name: "Nature's endless canvas", src: img3343 },
+  { name: "Reflections on a calm day", src: img3612 },
+  { name: "The road less traveled", src: img4751 },
+  { name: "Whispers of the wind", src: img5653 },
+  { name: "Layers of light and shadow", src: img5994 },
+  { name: "Morning mist rising", src: img2611 },
+  { name: "A study in contrasts", src: img3730 },
+  { name: "Open spaces, open mind", src: img9885 },
+  { name: "Patterns in the landscape", src: img4101 },
+  { name: "Chasing the light", src: img3609 },
+  { name: "Serenity found", src: img4963 },
+  { name: "The world stretching out", src: img5183 },
 ];
 
 const verticalImages = [
-  { name: "IMG_3643", src: img3643, description: "Reaching for the sky" },
-  { name: "IMG_5586", src: img5586, description: "Urban canyons" },
-  { name: "IMG_9746", src: img9746, description: "Standing tall and proud" },
-  { name: "IMG_1987", src: img1987, description: "Paths leading upward" },
-  { name: "IMG_3314", src: img3314, description: "Vertical perspectives" },
-  { name: "IMG_3464", src: img3464, description: "Growth and aspiration" },
-  { name: "IMG_4308", src: img4308, description: "Towering presence" },
-  { name: "IMG_7387", src: img7387, description: "Lines converging skyward" },
-  { name: "IMG_1364", src: img1364, description: "The climb ahead" },
-  { name: "IMG_1826", src: img1826, description: "Silhouettes against the light" },
-  { name: "IMG_3653", src: img3653, description: "Height and depth" },
-  { name: "IMG_3844", src: img3844, description: "Ascending forms" },
-  { name: "IMG_3991", src: img3991, description: "Upward momentum" },
-  { name: "IMG_1911", src: img1911, description: "Nature's spires" },
-  { name: "IMG_3642", src: img3642, description: "Vertical rhythms" },
+  { name: "Reaching for the sky", src: img3643 },
+  { name: "Urban canyons", src: img5586 },
+  { name: "Standing tall and proud", src: img9746 },
+  { name: "Paths leading upward", src: img1987 },
+  { name: "Vertical perspectives", src: img3314 },
+  { name: "Growth and aspiration", src: img3464 },
+  { name: "Towering presence", src: img4308 },
+  { name: "Lines converging skyward", src: img7387 },
+  { name: "The climb ahead", src: img1364 },
+  { name: "Silhouettes against the light", src: img1826 },
+  { name: "Height and depth", src: img3653 },
+  { name: "Ascending forms", src: img3844 },
+  { name: "Upward momentum", src: img3991 },
+  { name: "Nature's spires", src: img1911 },
+  { name: "Vertical rhythms", src: img3642 },
 ];
 
 // Fisher-Yates shuffle (random, not seeded)
@@ -156,7 +156,6 @@ const buildGalleryItems = () => {
     return {
       id: index + 1,
       name: image.name,
-      description: image.description,
       aspectRatio,
       src: image.src,
     };
@@ -211,7 +210,6 @@ const itemVariants = {
 type GalleryItem = {
   id: number;
   name: string;
-  description: string;
   aspectRatio: "square" | "horizontal" | "vertical";
   src: string;
 };
@@ -361,18 +359,15 @@ const Gallery = () => {
                 )}
               </div>
 
-              {/* Image name and description */}
+              {/* Image description */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
                 className="mt-4 px-6 py-3 bg-card/80 backdrop-blur-sm text-center"
               >
-                <span className="font-display text-lg font-medium text-foreground block">
+                <span className="font-display text-lg font-medium text-foreground">
                   {selectedImage.name}
-                </span>
-                <span className="text-sm text-muted-foreground mt-1 block">
-                  {selectedImage.description}
                 </span>
               </motion.div>
             </motion.div>
