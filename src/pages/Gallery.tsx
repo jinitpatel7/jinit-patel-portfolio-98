@@ -105,20 +105,20 @@ const lockedLayoutPattern: ("square" | "horizontal" | "vertical")[] = [
 // AI-analyzed descriptions based on image content
 const squareImages = [
   { name: "Sun-drenched clouds frame a basketball hoop from below", src: img8245 },
-  { name: "Dramatic cumulus clouds behind orange basketball rim", src: img8281 },
-  { name: "Fiery sunset paints the sky in orange and purple hues", src: img3507 },
-  { name: "Vibrant autumn sunset with silhouetted tree line", src: img3526 },
-  { name: "Close-up of textured natural elements in warm light", src: img4152 },
-  { name: "Busy street intersection captured in urban motion", src: img2510 },
+  { name: "Lynd's Farm sunset", src: img8281 },
+  { name: "Toronto skyline", src: img3507 },
+  { name: "Niagra Falls rainbow", src: img3526 },
+  { name: "Lunar Corona", src: img4152 },
+  { name: "Travis Scott concert stage", src: img2510 },
   { name: "Deep orange and pink gradients across evening clouds", src: img5991 },
-  { name: "Modern architecture with geometric glass patterns", src: img8425 },
-  { name: "Serene lake reflection at golden hour", src: img4529 },
-  { name: "Rays of sunlight breaking through dramatic cloud cover", src: img0579 },
-  { name: "Evening Longboard Ride on South Campus OSU", src: img4715 },
-  { name: "Candid moment frozen in time on a city street", src: img1632 },
-  { name: "Minimalist composition with clean lines and soft tones", src: img8895 },
+  { name: "Lewis Center, OH parking lot sunset", src: img8425 },
+  { name: "Palm trees in Disney Springs", src: img4529 },
+  { name: "Small town sunset in Gujarat, India", src: img0579 },
+  { name: "Evening longboard ride on south campus OSU", src: img4715 },
+  { name: "Budd Dairy Food Hall", src: img1632 },
+  { name: "Cafe shop in Georgia Tech", src: img8895 },
   { name: "Late afternoon sun casting long shadows", src: img6372 },
-  { name: "Weathered stone surface telling stories of time", src: img6375 },
+  { name: "Riverwalk in Downtown Naperville, IL", src: img6375 },
 ];
 
 const horizontalImages = [
