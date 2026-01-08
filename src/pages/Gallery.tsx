@@ -143,7 +143,7 @@ const Gallery = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4"
+          className="columns-1 sm:columns-2 md:columns-3 gap-4"
         >
           {galleryItems.map((item) => (
             <motion.div
