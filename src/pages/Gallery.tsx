@@ -52,75 +52,115 @@ import img3991 from "@/assets/gallery/IMG_3991.jpg";
 import img1911 from "@/assets/gallery/IMG_1911.jpg";
 import img3642 from "@/assets/gallery/IMG_3642.jpg";
 
-// Gallery items with mixed aspect ratios - 45 total (all real images: 15 square, 15 horizontal, 15 vertical)
-// Ordered to maximize alternation: square → horizontal → vertical (repeating pattern)
-// aspectRatio: "square" (1:1), "horizontal" (4:3), "vertical" (3:4)
-const galleryItems = [
-  // Reordered to avoid adjacent same-aspect tiles per row for the desktop column layout.
-  // Pattern cycles per row: (S,H,V) → (H,V,S) → (V,S,H)
-  { id: 1, name: "IMG_8245-2", aspectRatio: "square" as const, src: img8245 },
-  { id: 2, name: "IMG_5195", aspectRatio: "horizontal" as const, src: img5195 },
-  { id: 3, name: "IMG_3643", aspectRatio: "vertical" as const, src: img3643 },
-
-  { id: 5, name: "IMG_0768", aspectRatio: "horizontal" as const, src: img0768 },
-  { id: 6, name: "IMG_5586", aspectRatio: "vertical" as const, src: img5586 },
-  { id: 4, name: "IMG_8281-2", aspectRatio: "square" as const, src: img8281 },
-
-  { id: 9, name: "IMG_9746", aspectRatio: "vertical" as const, src: img9746 },
-  { id: 7, name: "IMG_3507-2", aspectRatio: "square" as const, src: img3507 },
-  { id: 8, name: "IMG_4450", aspectRatio: "horizontal" as const, src: img4450 },
-
-  { id: 10, name: "IMG_3526-2", aspectRatio: "square" as const, src: img3526 },
-  { id: 11, name: "IMG_3343", aspectRatio: "horizontal" as const, src: img3343 },
-  { id: 12, name: "IMG_1987", aspectRatio: "vertical" as const, src: img1987 },
-
-  { id: 14, name: "IMG_3612", aspectRatio: "horizontal" as const, src: img3612 },
-  { id: 15, name: "IMG_3314", aspectRatio: "vertical" as const, src: img3314 },
-  { id: 13, name: "IMG_4152-2", aspectRatio: "square" as const, src: img4152 },
-
-  { id: 18, name: "IMG_3464", aspectRatio: "vertical" as const, src: img3464 },
-  { id: 16, name: "IMG_2510-2", aspectRatio: "square" as const, src: img2510 },
-  { id: 17, name: "IMG_4751", aspectRatio: "horizontal" as const, src: img4751 },
-
-  { id: 19, name: "IMG_5991-2", aspectRatio: "square" as const, src: img5991 },
-  { id: 20, name: "IMG_5653", aspectRatio: "horizontal" as const, src: img5653 },
-  { id: 21, name: "IMG_4308", aspectRatio: "vertical" as const, src: img4308 },
-
-  { id: 23, name: "IMG_5994", aspectRatio: "horizontal" as const, src: img5994 },
-  { id: 24, name: "IMG_7387", aspectRatio: "vertical" as const, src: img7387 },
-  { id: 22, name: "IMG_8425-2", aspectRatio: "square" as const, src: img8425 },
-
-  { id: 27, name: "IMG_1364", aspectRatio: "vertical" as const, src: img1364 },
-  { id: 25, name: "IMG_4529-2", aspectRatio: "square" as const, src: img4529 },
-  { id: 26, name: "IMG_2611", aspectRatio: "horizontal" as const, src: img2611 },
-
-  { id: 28, name: "IMG_0579-2", aspectRatio: "square" as const, src: img0579 },
-  { id: 29, name: "IMG_3730", aspectRatio: "horizontal" as const, src: img3730 },
-  { id: 30, name: "IMG_1826", aspectRatio: "vertical" as const, src: img1826 },
-
-  { id: 32, name: "IMG_9885", aspectRatio: "horizontal" as const, src: img9885 },
-  { id: 33, name: "IMG_3653", aspectRatio: "vertical" as const, src: img3653 },
-  { id: 31, name: "IMG_4715", aspectRatio: "square" as const, src: img4715 },
-
-  { id: 36, name: "IMG_3844", aspectRatio: "vertical" as const, src: img3844 },
-  { id: 34, name: "IMG_1632", aspectRatio: "square" as const, src: img1632 },
-  { id: 35, name: "IMG_4101", aspectRatio: "horizontal" as const, src: img4101 },
-
-  { id: 37, name: "IMG_8895", aspectRatio: "square" as const, src: img8895 },
-  { id: 38, name: "IMG_3609", aspectRatio: "horizontal" as const, src: img3609 },
-  { id: 39, name: "IMG_3991", aspectRatio: "vertical" as const, src: img3991 },
-
-  { id: 41, name: "IMG_4963", aspectRatio: "horizontal" as const, src: img4963 },
-  { id: 42, name: "IMG_1911", aspectRatio: "vertical" as const, src: img1911 },
-  { id: 40, name: "IMG_6372", aspectRatio: "square" as const, src: img6372 },
-
-  { id: 45, name: "IMG_3642", aspectRatio: "vertical" as const, src: img3642 },
-  { id: 43, name: "IMG_6375", aspectRatio: "square" as const, src: img6375 },
-  { id: 44, name: "IMG_5183", aspectRatio: "horizontal" as const, src: img5183 },
+// LOCKED aspect-ratio layout pattern (45 slots) - DO NOT CHANGE THIS ORDER
+const lockedLayoutPattern: ("square" | "horizontal" | "vertical")[] = [
+  "square", "horizontal", "vertical",
+  "horizontal", "vertical", "square",
+  "vertical", "square", "horizontal",
+  "square", "horizontal", "vertical",
+  "horizontal", "vertical", "square",
+  "vertical", "square", "horizontal",
+  "square", "horizontal", "vertical",
+  "horizontal", "vertical", "square",
+  "vertical", "square", "horizontal",
+  "square", "horizontal", "vertical",
+  "horizontal", "vertical", "square",
+  "vertical", "square", "horizontal",
+  "square", "horizontal", "vertical",
+  "horizontal", "vertical", "square",
+  "vertical", "square", "horizontal",
 ];
 
-// Gallery items are ordered as: square → horizontal → vertical (repeating)
-// This ensures no two adjacent images in any row share the same aspect ratio
+// Image pools by aspect ratio (15 each)
+const squareImages = [
+  { name: "IMG_8245-2", src: img8245 },
+  { name: "IMG_8281-2", src: img8281 },
+  { name: "IMG_3507-2", src: img3507 },
+  { name: "IMG_3526-2", src: img3526 },
+  { name: "IMG_4152-2", src: img4152 },
+  { name: "IMG_2510-2", src: img2510 },
+  { name: "IMG_5991-2", src: img5991 },
+  { name: "IMG_8425-2", src: img8425 },
+  { name: "IMG_4529-2", src: img4529 },
+  { name: "IMG_0579-2", src: img0579 },
+  { name: "IMG_4715", src: img4715 },
+  { name: "IMG_1632", src: img1632 },
+  { name: "IMG_8895", src: img8895 },
+  { name: "IMG_6372", src: img6372 },
+  { name: "IMG_6375", src: img6375 },
+];
+
+const horizontalImages = [
+  { name: "IMG_5195", src: img5195 },
+  { name: "IMG_0768", src: img0768 },
+  { name: "IMG_4450", src: img4450 },
+  { name: "IMG_3343", src: img3343 },
+  { name: "IMG_3612", src: img3612 },
+  { name: "IMG_4751", src: img4751 },
+  { name: "IMG_5653", src: img5653 },
+  { name: "IMG_5994", src: img5994 },
+  { name: "IMG_2611", src: img2611 },
+  { name: "IMG_3730", src: img3730 },
+  { name: "IMG_9885", src: img9885 },
+  { name: "IMG_4101", src: img4101 },
+  { name: "IMG_3609", src: img3609 },
+  { name: "IMG_4963", src: img4963 },
+  { name: "IMG_5183", src: img5183 },
+];
+
+const verticalImages = [
+  { name: "IMG_3643", src: img3643 },
+  { name: "IMG_5586", src: img5586 },
+  { name: "IMG_9746", src: img9746 },
+  { name: "IMG_1987", src: img1987 },
+  { name: "IMG_3314", src: img3314 },
+  { name: "IMG_3464", src: img3464 },
+  { name: "IMG_4308", src: img4308 },
+  { name: "IMG_7387", src: img7387 },
+  { name: "IMG_1364", src: img1364 },
+  { name: "IMG_1826", src: img1826 },
+  { name: "IMG_3653", src: img3653 },
+  { name: "IMG_3844", src: img3844 },
+  { name: "IMG_3991", src: img3991 },
+  { name: "IMG_1911", src: img1911 },
+  { name: "IMG_3642", src: img3642 },
+];
+
+// Fisher-Yates shuffle (random, not seeded)
+const shuffle = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
+// Build gallery items by mapping shuffled images to locked layout slots
+const buildGalleryItems = () => {
+  const shuffledSquare = shuffle(squareImages);
+  const shuffledHorizontal = shuffle(horizontalImages);
+  const shuffledVertical = shuffle(verticalImages);
+
+  let squareIdx = 0, horizontalIdx = 0, verticalIdx = 0;
+
+  return lockedLayoutPattern.map((aspectRatio, index) => {
+    let image;
+    if (aspectRatio === "square") {
+      image = shuffledSquare[squareIdx++];
+    } else if (aspectRatio === "horizontal") {
+      image = shuffledHorizontal[horizontalIdx++];
+    } else {
+      image = shuffledVertical[verticalIdx++];
+    }
+    return {
+      id: index + 1,
+      name: image.name,
+      aspectRatio,
+      src: image.src,
+    };
+  });
+};
 
 // Placeholder image URLs - replace these with actual image sources
 const getPlaceholderStyle = (aspectRatio: "square" | "horizontal" | "vertical") => {
@@ -167,10 +207,20 @@ const itemVariants = {
   },
 };
 
-const Gallery = () => {
-  const [selectedImage, setSelectedImage] = useState<typeof galleryItems[0] | null>(null);
+type GalleryItem = {
+  id: number;
+  name: string;
+  aspectRatio: "square" | "horizontal" | "vertical";
+  src: string;
+};
 
-  const handleImageClick = (item: typeof galleryItems[0]) => {
+const Gallery = () => {
+  // Build gallery items once on mount (randomized on each page load)
+  const galleryItems = useMemo(() => buildGalleryItems(), []);
+  
+  const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
+
+  const handleImageClick = (item: GalleryItem) => {
     setSelectedImage(item);
   };
 
