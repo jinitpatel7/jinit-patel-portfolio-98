@@ -194,7 +194,7 @@ const Home = () => {
               duration: 0.6,
               delay: 0.4
             }} className="flex flex-wrap gap-3 pt-4">
-                {["Problem Solving", "System Design", "Full Stack", "Cloud", "AI/ML"].map((skill, index) => <motion.span key={skill} initial={{
+                {["Multidisciplinary Collaboration", "System Design", "Full Stack", "Cloud", "AI/ML"].map((skill, index) => <motion.span key={skill} initial={{
                 opacity: 0,
                 scale: 0.8
               }} whileInView={{
