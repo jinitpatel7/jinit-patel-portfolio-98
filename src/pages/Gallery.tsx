@@ -138,18 +138,18 @@ const Gallery = () => {
           </motion.p>
         </motion.div>
 
-        {/* Photo Wall Grid - Fixed columns for even distribution */}
+        {/* Photo Wall Grid - Clean masonry-style with columns */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+          className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4"
         >
           {galleryItems.map((item) => (
             <motion.div
               key={item.id}
               variants={itemVariants}
-              className="group relative cursor-pointer"
+              className="group relative cursor-pointer mb-4 break-inside-avoid"
               onClick={() => handleImageClick(item.id)}
             >
               {/* Image tile */}
