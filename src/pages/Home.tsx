@@ -33,7 +33,11 @@ const itemVariants = {
 const Home = () => {
   return <main className="relative z-10 min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center px-4">
+      <section className="min-h-[90vh] flex flex-col items-center justify-between px-4 py-8">
+        {/* Spacer to push content to center */}
+        <div className="flex-1" />
+        
+        {/* Main hero content */}
         <div className="container mx-auto max-w-5xl">
           <motion.div variants={containerVariants} initial="hidden" animate="visible" className="text-center space-y-8">
             <motion.h1 variants={itemVariants} className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold">
@@ -109,37 +113,39 @@ const Home = () => {
           </motion.div>
         </div>
 
-        {/* Scroll Cue Button - Positioned at bottom of hero */}
-        <motion.button
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1 }}
-          onClick={() => {
-            document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' });
-          }}
-          className="absolute bottom-16 left-1/2 -translate-x-1/2 group"
-          aria-label="Scroll to About section"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
+        {/* Scroll Cue Button - Flex positioned below content with guaranteed spacing */}
+        <div className="flex-1 flex items-center justify-center min-h-[80px] mt-8">
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1 }}
+            onClick={() => {
+              document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            whileHover={{
-              scale: 1.15,
-              y: -2
-            }}
-            className="relative"
+            className="group"
+            aria-label="Scroll to About section"
           >
-            {/* Hover glow effect */}
-            <div className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-full" />
-            <div className="p-3 rounded-full border border-border bg-secondary/50 text-muted-foreground group-hover:text-primary group-hover:border-primary/50 transition-colors duration-200">
-              <ChevronDown className="w-6 h-6" />
-            </div>
-          </motion.div>
-        </motion.button>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              whileHover={{
+                scale: 1.15,
+                y: -2
+              }}
+              className="relative"
+            >
+              {/* Hover glow effect */}
+              <div className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-full" />
+              <div className="p-3 rounded-full border border-border bg-secondary/50 text-muted-foreground group-hover:text-primary group-hover:border-primary/50 transition-colors duration-200">
+                <ChevronDown className="w-6 h-6" />
+              </div>
+            </motion.div>
+          </motion.button>
+        </div>
       </section>
 
       {/* About Section */}
