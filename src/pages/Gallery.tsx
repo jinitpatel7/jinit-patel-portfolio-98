@@ -1,67 +1,58 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Import actual images
-import clockTowerSunset from "@/assets/gallery/clock-tower-sunset.jpg";
-import orchardThrow from "@/assets/gallery/orchard-throw.jpg";
-import cornfieldDusk from "@/assets/gallery/cornfield-dusk.jpg";
-import torontoSkyline from "@/assets/gallery/toronto-skyline.jpg";
-import niagaraRainbow from "@/assets/gallery/niagara-rainbow.jpg";
-import moonlitClouds from "@/assets/gallery/moonlit-clouds.jpg";
-import concertLights from "@/assets/gallery/concert-lights.jpg";
-import basketballHoop from "@/assets/gallery/basketball-hoop.jpg";
-import parkingLotSunset from "@/assets/gallery/parking-lot-sunset.jpg";
-import boathouseNight from "@/assets/gallery/boathouse-night.jpg";
-
-// Gallery items with mixed aspect ratios - randomized order
+// Gallery items with mixed aspect ratios - easily replaceable
 // aspectRatio: "square" (1:1), "horizontal" (4:3), "vertical" (3:4)
-type GalleryItem = {
-  id: number;
-  name: string;
-  aspectRatio: "square" | "horizontal" | "vertical";
-  image?: string;
-};
-
-const galleryItems: GalleryItem[] = [
-  // Randomized mix of all aspect ratios with real square images interspersed
-  { id: 1, name: "Concert Lights", aspectRatio: "square", image: concertLights },
-  { id: 2, name: "Ocean Horizon", aspectRatio: "horizontal" },
-  { id: 3, name: "Forest Path", aspectRatio: "vertical" },
-  { id: 4, name: "Niagara Rainbow", aspectRatio: "square", image: niagaraRainbow },
-  { id: 5, name: "City Lights", aspectRatio: "horizontal" },
-  { id: 6, name: "Autumn Leaves", aspectRatio: "vertical" },
-  { id: 7, name: "Toronto Skyline", aspectRatio: "square", image: torontoSkyline },
-  { id: 8, name: "Coastal Cliff", aspectRatio: "horizontal" },
-  { id: 9, name: "Urban Jungle", aspectRatio: "vertical" },
-  { id: 10, name: "Parking Lot Sunset", aspectRatio: "square", image: parkingLotSunset },
-  { id: 11, name: "Golden Hour", aspectRatio: "horizontal" },
-  { id: 12, name: "Neon Streets", aspectRatio: "vertical" },
-  { id: 13, name: "Basketball Hoop", aspectRatio: "square", image: basketballHoop },
-  { id: 14, name: "Snowy Summit", aspectRatio: "horizontal" },
-  { id: 15, name: "Cloud Canvas", aspectRatio: "vertical" },
-  { id: 16, name: "Orchard Throw", aspectRatio: "square", image: orchardThrow },
-  { id: 17, name: "Sunflower Field", aspectRatio: "horizontal" },
-  { id: 18, name: "Night Market", aspectRatio: "vertical" },
-  { id: 19, name: "Clock Tower Sunset", aspectRatio: "square", image: clockTowerSunset },
-  { id: 20, name: "Canyon Walls", aspectRatio: "horizontal" },
-  { id: 21, name: "Bamboo Grove", aspectRatio: "vertical" },
-  { id: 22, name: "Cornfield Dusk", aspectRatio: "square", image: cornfieldDusk },
-  { id: 23, name: "Prairie Wind", aspectRatio: "horizontal" },
-  { id: 24, name: "Temple Steps", aspectRatio: "vertical" },
-  { id: 25, name: "Moonlit Clouds", aspectRatio: "square", image: moonlitClouds },
-  { id: 26, name: "Bridge View", aspectRatio: "horizontal" },
-  { id: 27, name: "Lighthouse", aspectRatio: "vertical" },
-  { id: 28, name: "Boathouse Night", aspectRatio: "square", image: boathouseNight },
-  { id: 29, name: "Vineyard Rows", aspectRatio: "horizontal" },
-  { id: 30, name: "Market Spices", aspectRatio: "vertical" },
-  { id: 31, name: "Frozen Lake", aspectRatio: "horizontal" },
-  { id: 32, name: "Cafe Corner", aspectRatio: "vertical" },
-  { id: 33, name: "Rolling Hills", aspectRatio: "horizontal" },
-  { id: 34, name: "Waterfall Mist", aspectRatio: "vertical" },
-  { id: 35, name: "Sunset Pier", aspectRatio: "horizontal" },
+const galleryItems = [
+  // Mix of all aspect ratios interspersed throughout
+  { id: 1, name: "Mountain Peak", aspectRatio: "square" as const },
+  { id: 2, name: "Ocean Horizon", aspectRatio: "horizontal" as const },
+  { id: 3, name: "Forest Path", aspectRatio: "vertical" as const },
+  { id: 4, name: "City Lights", aspectRatio: "horizontal" as const },
+  { id: 5, name: "Desert Dunes", aspectRatio: "square" as const },
+  { id: 6, name: "Autumn Leaves", aspectRatio: "vertical" as const },
+  { id: 7, name: "Starry Night", aspectRatio: "square" as const },
+  { id: 8, name: "Coastal Cliff", aspectRatio: "horizontal" as const },
+  { id: 9, name: "Urban Jungle", aspectRatio: "vertical" as const },
+  { id: 10, name: "Golden Hour", aspectRatio: "horizontal" as const },
+  { id: 11, name: "Misty Valley", aspectRatio: "square" as const },
+  { id: 12, name: "Neon Streets", aspectRatio: "vertical" as const },
+  { id: 13, name: "Snowy Summit", aspectRatio: "horizontal" as const },
+  { id: 14, name: "River Bend", aspectRatio: "square" as const },
+  { id: 15, name: "Cloud Canvas", aspectRatio: "vertical" as const },
+  { id: 16, name: "Sunflower Field", aspectRatio: "horizontal" as const },
+  { id: 17, name: "Night Market", aspectRatio: "vertical" as const },
+  { id: 18, name: "Reflection Pool", aspectRatio: "square" as const },
+  { id: 19, name: "Canyon Walls", aspectRatio: "horizontal" as const },
+  { id: 20, name: "Bamboo Grove", aspectRatio: "vertical" as const },
+  { id: 21, name: "Harbor Dawn", aspectRatio: "square" as const },
+  { id: 22, name: "Prairie Wind", aspectRatio: "horizontal" as const },
+  { id: 23, name: "Temple Steps", aspectRatio: "vertical" as const },
+  { id: 24, name: "Wildflowers", aspectRatio: "square" as const },
+  { id: 25, name: "Bridge View", aspectRatio: "horizontal" as const },
+  { id: 26, name: "Lighthouse", aspectRatio: "vertical" as const },
+  { id: 27, name: "Rain Drops", aspectRatio: "square" as const },
+  { id: 28, name: "Vineyard Rows", aspectRatio: "horizontal" as const },
+  { id: 29, name: "Market Spices", aspectRatio: "vertical" as const },
+  { id: 30, name: "Frozen Lake", aspectRatio: "horizontal" as const },
+  { id: 31, name: "Cherry Blossom", aspectRatio: "square" as const },
+  { id: 32, name: "Cafe Corner", aspectRatio: "vertical" as const },
+  { id: 33, name: "Rolling Hills", aspectRatio: "horizontal" as const },
+  { id: 34, name: "Street Art", aspectRatio: "square" as const },
+  { id: 35, name: "Waterfall Mist", aspectRatio: "vertical" as const },
+  { id: 36, name: "Sunset Pier", aspectRatio: "horizontal" as const },
+  { id: 37, name: "Garden Path", aspectRatio: "square" as const },
+  { id: 38, name: "Old Town", aspectRatio: "vertical" as const },
+  { id: 39, name: "Wave Crash", aspectRatio: "horizontal" as const },
+  { id: 40, name: "Moon Rise", aspectRatio: "square" as const },
+  { id: 41, name: "Alley Light", aspectRatio: "vertical" as const },
+  { id: 42, name: "Field of Gold", aspectRatio: "horizontal" as const },
+  { id: 43, name: "Stone Bridge", aspectRatio: "square" as const },
+  { id: 44, name: "Morning Fog", aspectRatio: "vertical" as const },
+  { id: 45, name: "Last Light", aspectRatio: "horizontal" as const },
 ];
 
-// Placeholder gradient for items without images
+// Placeholder image URLs - replace these with actual image sources
 const getPlaceholderStyle = (aspectRatio: "square" | "horizontal" | "vertical") => {
   const gradients = {
     square: "from-primary/20 via-accent/10 to-secondary",
@@ -169,25 +160,17 @@ const Gallery = () => {
                 {/* Hover glow effect */}
                 <div className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-25 blur-lg transition-opacity duration-300 pointer-events-none" />
 
-                {item.image ? (
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                ) : (
-                  <>
-                    {/* Placeholder gradient */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${getPlaceholderStyle(item.aspectRatio)}`}
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-muted-foreground/40 text-sm select-none">
-                        {item.aspectRatio}
-                      </span>
-                    </div>
-                  </>
-                )}
+                {/* Placeholder gradient - replace with actual images */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${getPlaceholderStyle(item.aspectRatio)}`}
+                />
+
+                {/* Image placeholder content */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-muted-foreground/40 text-sm select-none">
+                    {item.aspectRatio}
+                  </span>
+                </div>
               </motion.div>
             </motion.div>
           ))}
@@ -226,24 +209,17 @@ const Gallery = () => {
                 className={`relative ${getAspectClass(selectedImage.aspectRatio)} w-full max-h-[75vh] bg-secondary overflow-hidden`}
                 style={{ maxWidth: selectedImage.aspectRatio === "vertical" ? "500px" : "100%" }}
               >
-                {selectedImage.image ? (
-                  <img
-                    src={selectedImage.image}
-                    alt={selectedImage.name}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                ) : (
-                  <>
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${getPlaceholderStyle(selectedImage.aspectRatio)}`}
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-muted-foreground/40 text-lg select-none">
-                        {selectedImage.aspectRatio}
-                      </span>
-                    </div>
-                  </>
-                )}
+                {/* Placeholder gradient - replace with actual images */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${getPlaceholderStyle(selectedImage.aspectRatio)}`}
+                />
+
+                {/* Image placeholder content */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-muted-foreground/40 text-lg select-none">
+                    {selectedImage.aspectRatio}
+                  </span>
+                </div>
               </div>
 
               {/* Image name */}
