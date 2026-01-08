@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
 
 // Gallery items with mixed aspect ratios - easily replaceable
 // aspectRatio: "square" (1:1), "horizontal" (4:3), "vertical" (3:4)
@@ -197,14 +196,6 @@ const Gallery = () => {
               className="absolute inset-0 bg-background/80 backdrop-blur-md"
             />
 
-            {/* Close button */}
-            <button
-              onClick={handleClose}
-              className="absolute top-6 right-6 z-50 p-2 text-foreground/70 hover:text-foreground transition-colors"
-            >
-              <X className="w-8 h-8" />
-            </button>
-
             {/* Enlarged image container */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -212,7 +203,6 @@ const Gallery = () => {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
               className="relative z-10 max-w-4xl w-full max-h-[85vh] flex flex-col items-center"
-              onClick={(e) => e.stopPropagation()}
             >
               {/* Image */}
               <div
