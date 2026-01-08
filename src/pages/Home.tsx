@@ -115,29 +115,30 @@ const Home = () => {
 
         {/* Scroll Cue Button - Flex positioned below content with guaranteed spacing */}
         <div className="flex-1 flex items-center justify-center min-h-[80px] mt-8">
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            onClick={() => {
-              document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="group"
-            aria-label="Scroll to About section"
-          >
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              whileHover={{
-                scale: 1.15,
-                y: -2
-              }}
-              className="relative"
-            >
+          <motion.button initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.6,
+          delay: 1
+        }} onClick={() => {
+          document.getElementById('about-section')?.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }} className="group" aria-label="Scroll to About section">
+            <motion.div animate={{
+            y: [0, 8, 0]
+          }} transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }} whileHover={{
+            scale: 1.15,
+            y: -2
+          }} className="relative">
               {/* Hover glow effect */}
               <div className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-full" />
               <div className="p-3 rounded-full border border-border bg-secondary/50 text-muted-foreground group-hover:text-primary group-hover:border-primary/50 transition-colors duration-200">
@@ -179,15 +180,12 @@ const Home = () => {
           }} className="space-y-6">
               <h2 className="font-display text-3xl md:text-4xl font-bold">about <span className="gradient-text">Me</span></h2>
               <p className="text-muted-foreground leading-relaxed">
-                I'm a dedicated engineer with a passion for building impactful solutions. 
-                My journey in technology has equipped me with a diverse skill set spanning 
-                software development, system design, and problem-solving.
+                I’m an engineer, builder, and problem-solver who’s curious about the world around us. Currently a 4th year Aerospace Engineering student at The Ohio State University, pursuing a Master's Degree. I love bringing ideas to life through building, testing, and iteration—whether that’s in the lab or on my own time. I’m always exploring new projects, learning new skills, and pushing myself to grow as a person!
+
+
+
               </p>
-              <p className="text-muted-foreground leading-relaxed">
-                When I'm not coding, you'll find me exploring new technologies, 
-                contributing to open-source projects, and continuously learning 
-                to stay at the forefront of innovation.
-              </p>
+              <p className="text-muted-foreground leading-relaxed">Outside of engineering, you'll find me lifting or playing basketball with friends, cooking, gaming, working on my car, hiking a new park, or listening to an album while skating. Always looking for a new hobby to master :)   </p>
               <motion.div initial={{
               opacity: 0,
               y: 20
