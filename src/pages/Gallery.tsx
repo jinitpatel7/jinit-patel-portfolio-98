@@ -29,6 +29,11 @@ import img5653 from "@/assets/gallery/IMG_5653.jpg";
 import img5994 from "@/assets/gallery/IMG_5994.jpg";
 import img2611 from "@/assets/gallery/IMG_2611.jpg";
 import img3730 from "@/assets/gallery/IMG_3730.jpg";
+import img9885 from "@/assets/gallery/IMG_9885.jpg";
+import img4101 from "@/assets/gallery/IMG_4101.jpg";
+import img3609 from "@/assets/gallery/IMG_3609.jpg";
+import img4963 from "@/assets/gallery/IMG_4963.jpg";
+import img5183 from "@/assets/gallery/IMG_5183.jpg";
 
 // Gallery items with mixed aspect ratios - 45 total (15 square real, 10 horizontal real + 5 placeholder, 15 vertical placeholder)
 // Ordered to maximize alternation: square → horizontal → vertical (repeating pattern)
@@ -67,19 +72,19 @@ const galleryItems = [
   { id: 29, name: "IMG_3730", aspectRatio: "horizontal" as const, src: img3730 },
   { id: 30, name: "Market Spices", aspectRatio: "vertical" as const },
   { id: 31, name: "IMG_4715", aspectRatio: "square" as const, src: img4715 },
-  { id: 32, name: "Frozen Lake", aspectRatio: "horizontal" as const },
+  { id: 32, name: "IMG_9885", aspectRatio: "horizontal" as const, src: img9885 },
   { id: 33, name: "Cafe Corner", aspectRatio: "vertical" as const },
   { id: 34, name: "IMG_1632", aspectRatio: "square" as const, src: img1632 },
-  { id: 35, name: "Rolling Hills", aspectRatio: "horizontal" as const },
+  { id: 35, name: "IMG_4101", aspectRatio: "horizontal" as const, src: img4101 },
   { id: 36, name: "Waterfall Mist", aspectRatio: "vertical" as const },
   { id: 37, name: "IMG_8895", aspectRatio: "square" as const, src: img8895 },
-  { id: 38, name: "Sunset Pier", aspectRatio: "horizontal" as const },
+  { id: 38, name: "IMG_3609", aspectRatio: "horizontal" as const, src: img3609 },
   { id: 39, name: "Old Town", aspectRatio: "vertical" as const },
   { id: 40, name: "IMG_6372", aspectRatio: "square" as const, src: img6372 },
-  { id: 41, name: "Wave Crash", aspectRatio: "horizontal" as const },
+  { id: 41, name: "IMG_4963", aspectRatio: "horizontal" as const, src: img4963 },
   { id: 42, name: "Alley Light", aspectRatio: "vertical" as const },
   { id: 43, name: "IMG_6375", aspectRatio: "square" as const, src: img6375 },
-  { id: 44, name: "Field of Gold", aspectRatio: "horizontal" as const },
+  { id: 44, name: "IMG_5183", aspectRatio: "horizontal" as const, src: img5183 },
   { id: 45, name: "Morning Fog", aspectRatio: "vertical" as const },
 ];
 
