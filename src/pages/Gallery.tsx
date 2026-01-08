@@ -54,21 +54,51 @@ import img3642 from "@/assets/gallery/IMG_3642.jpg";
 
 // LOCKED aspect-ratio layout pattern (45 slots) - DO NOT CHANGE THIS ORDER
 const lockedLayoutPattern: ("square" | "horizontal" | "vertical")[] = [
-  "square", "horizontal", "vertical",
-  "horizontal", "vertical", "square",
-  "vertical", "square", "horizontal",
-  "square", "horizontal", "vertical",
-  "horizontal", "vertical", "square",
-  "vertical", "square", "horizontal",
-  "square", "horizontal", "vertical",
-  "horizontal", "vertical", "square",
-  "vertical", "square", "horizontal",
-  "square", "horizontal", "vertical",
-  "horizontal", "vertical", "square",
-  "vertical", "square", "horizontal",
-  "square", "horizontal", "vertical",
-  "horizontal", "vertical", "square",
-  "vertical", "square", "horizontal",
+  "square",
+  "horizontal",
+  "vertical",
+  "horizontal",
+  "vertical",
+  "square",
+  "vertical",
+  "square",
+  "horizontal",
+  "square",
+  "horizontal",
+  "vertical",
+  "horizontal",
+  "vertical",
+  "square",
+  "vertical",
+  "square",
+  "horizontal",
+  "square",
+  "horizontal",
+  "vertical",
+  "horizontal",
+  "vertical",
+  "square",
+  "vertical",
+  "square",
+  "horizontal",
+  "square",
+  "horizontal",
+  "vertical",
+  "horizontal",
+  "vertical",
+  "square",
+  "vertical",
+  "square",
+  "horizontal",
+  "square",
+  "horizontal",
+  "vertical",
+  "horizontal",
+  "vertical",
+  "square",
+  "vertical",
+  "square",
+  "horizontal",
 ];
 
 // Image pools by aspect ratio (15 each) - name is used as the description
@@ -84,7 +114,7 @@ const squareImages = [
   { name: "Modern architecture with geometric glass patterns", src: img8425 },
   { name: "Serene lake reflection at golden hour", src: img4529 },
   { name: "Rays of sunlight breaking through dramatic cloud cover", src: img0579 },
-  { name: "Rocky terrain with intricate natural formations", src: img4715 },
+  { name: "Evening Longboard Ride on South Campus OSU", src: img4715 },
   { name: "Candid moment frozen in time on a city street", src: img1632 },
   { name: "Minimalist composition with clean lines and soft tones", src: img8895 },
   { name: "Late afternoon sun casting long shadows", src: img6372 },
@@ -143,7 +173,9 @@ const buildGalleryItems = () => {
   const shuffledHorizontal = shuffle(horizontalImages);
   const shuffledVertical = shuffle(verticalImages);
 
-  let squareIdx = 0, horizontalIdx = 0, verticalIdx = 0;
+  let squareIdx = 0,
+    horizontalIdx = 0,
+    verticalIdx = 0;
 
   return lockedLayoutPattern.map((aspectRatio, index) => {
     let image;
@@ -218,7 +250,7 @@ type GalleryItem = {
 const Gallery = () => {
   // Build gallery items once on mount (randomized on each page load)
   const galleryItems = useMemo(() => buildGalleryItems(), []);
-  
+
   const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
 
   const handleImageClick = (item: GalleryItem) => {
@@ -245,8 +277,7 @@ const Gallery = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-display text-4xl md:text-5xl lg:text-6xl font-bold"
           >
-            <span className="font-display">my</span>{" "}
-            <span className="gradient-text">Gallery</span>
+            <span className="font-display">my</span> <span className="gradient-text">Gallery</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -291,13 +322,9 @@ const Gallery = () => {
                   />
                 ) : (
                   <>
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${getPlaceholderStyle(item.aspectRatio)}`}
-                    />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${getPlaceholderStyle(item.aspectRatio)}`} />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-muted-foreground/40 text-sm select-none">
-                        {item.aspectRatio}
-                      </span>
+                      <span className="text-muted-foreground/40 text-sm select-none">{item.aspectRatio}</span>
                     </div>
                   </>
                 )}
@@ -352,9 +379,7 @@ const Gallery = () => {
                       className={`absolute inset-0 bg-gradient-to-br ${getPlaceholderStyle(selectedImage.aspectRatio)}`}
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-muted-foreground/40 text-lg select-none">
-                        {selectedImage.aspectRatio}
-                      </span>
+                      <span className="text-muted-foreground/40 text-lg select-none">{selectedImage.aspectRatio}</span>
                     </div>
                   </>
                 )}
@@ -367,9 +392,7 @@ const Gallery = () => {
                 transition={{ duration: 0.3, delay: 0.1 }}
                 className="mt-4 px-6 py-3 bg-card/80 backdrop-blur-sm text-center"
               >
-                <span className="font-display text-lg font-medium text-foreground">
-                  {selectedImage.name}
-                </span>
+                <span className="font-display text-lg font-medium text-foreground">{selectedImage.name}</span>
               </motion.div>
             </motion.div>
           </motion.div>
