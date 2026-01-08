@@ -179,7 +179,7 @@ const Home = () => {
             delay: 0.2
           }} className="space-y-6">
               <h2 className="font-display text-3xl md:text-4xl font-bold">about <span className="gradient-text">Me</span></h2>
-              <p className="text-muted-foreground leading-relaxed">I'm an engineer, builder, and problem-solver who's curious about the world around us. Born in Philadelphia, PA moved to Columbus, OH at the age of 10, currently a 4th year Aerospace Engineering student at The Ohio State University, pursuing a Master's Degree.</p>
+              <p className="text-muted-foreground leading-relaxed">I'm an engineer, builder, and problem-solver who's curious about the world around us. Born in Philadelphia, PA then moved to Columbus, OH at the age of 10. Currently a 4th year Aerospace Engineering student at The Ohio State University, pursuing a Master's Degree.</p>
               <p className="text-muted-foreground leading-relaxed">I love bringing ideas to life through building, testing, and iteration—whether that's in the lab or on my own time. I'm always exploring new projects, learning new skills, and pushing myself to grow as a person!</p>
               <p className="text-muted-foreground leading-relaxed">Outside of engineering, you'll find me lifting or playing basketball with friends, cooking, gaming, working on my car, hiking a new park, or listening to an album while skating. Always looking for a new hobby to master :)</p>
               <motion.div initial={{
