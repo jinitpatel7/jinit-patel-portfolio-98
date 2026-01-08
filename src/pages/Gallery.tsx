@@ -105,27 +105,8 @@ const galleryItems = [
   { id: 45, name: "IMG_3642", aspectRatio: "vertical" as const, src: img3642 },
 ];
 
-// Seeded shuffle function for consistent randomization
-const seededShuffle = <T,>(array: T[], seed: number): T[] => {
-  const shuffled = [...array];
-  let currentIndex = shuffled.length;
-  
-  const random = () => {
-    seed = (seed * 9301 + 49297) % 233280;
-    return seed / 233280;
-  };
-
-  while (currentIndex !== 0) {
-    const randomIndex = Math.floor(random() * currentIndex);
-    currentIndex--;
-    [shuffled[currentIndex], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[currentIndex]];
-  }
-
-  return shuffled;
-};
-
-// Pre-shuffled gallery items with consistent order
-const shuffledGalleryItems = seededShuffle(galleryItems, 42);
+// Gallery items are ordered as: square → horizontal → vertical (repeating)
+// This ensures no two adjacent images in any row share the same aspect ratio
 
 // Placeholder image URLs - replace these with actual image sources
 const getPlaceholderStyle = (aspectRatio: "square" | "horizontal" | "vertical") => {
@@ -219,7 +200,7 @@ const Gallery = () => {
           animate="visible"
           className="columns-1 sm:columns-2 md:columns-3 gap-8"
         >
-          {shuffledGalleryItems.map((item) => (
+          {galleryItems.map((item) => (
             <motion.div
               key={item.id}
               variants={itemVariants}
