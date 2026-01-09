@@ -285,7 +285,7 @@ const Gallery = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-muted-foreground max-w-2xl mx-auto"
           >
-            The world through my lens.
+            The world through my lens:
           </motion.p>
         </motion.div>
 
