@@ -6,33 +6,32 @@ import heroPhoto from "@/assets/hero-photo.jpg";
 import aboutPhoto from "@/assets/about-photo.jpg";
 const containerVariants = {
   hidden: {
-    opacity: 0,
+    opacity: 0
   },
   visible: {
     opacity: 1,
     transition: {
       staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
-  },
+      delayChildren: 0.2
+    }
+  }
 };
 const itemVariants = {
   hidden: {
     opacity: 0,
-    y: 40,
+    y: 40
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [0.25, 0.46, 0.45, 0.94] as const,
-    },
-  },
+      ease: [0.25, 0.46, 0.45, 0.94] as const
+    }
+  }
 };
 const Home = () => {
-  return (
-    <main className="relative z-10 min-h-screen pt-20">
+  return <main className="relative z-10 min-h-screen pt-20">
       {/* Hero Section */}
       <section className="min-h-[90vh] flex flex-col items-center justify-between px-4 py-8">
         {/* Spacer to push content to center */}
@@ -41,10 +40,7 @@ const Home = () => {
         {/* Main hero content */}
         <div className="container mx-auto max-w-5xl">
           <motion.div variants={containerVariants} initial="hidden" animate="visible" className="text-center space-y-8">
-            <motion.h1
-              variants={itemVariants}
-              className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold"
-            >
+            <motion.h1 variants={itemVariants} className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold">
               <span className="gradient-text">Jinit Patel</span>
             </motion.h1>
 
@@ -59,116 +55,75 @@ const Home = () => {
               </div>
             </motion.div>
 
-            <motion.p
-              variants={itemVariants}
-              className="text-muted-foreground max-w-lg mx-auto leading-relaxed font-medium"
-            >
+            <motion.p variants={itemVariants} className="text-muted-foreground max-w-lg mx-auto leading-relaxed font-medium">
               Hey! Welcome to my personal portfolio website. Feel free to look around to learn more about myself and my
               work!
             </motion.p>
 
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
-            >
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Link to="/projects">
-                <motion.div
-                  whileHover={{
-                    scale: 1.05,
-                    y: -3,
-                  }}
-                  whileTap={{
-                    scale: 0.98,
-                  }}
-                  transition={{
-                    duration: 0.15,
-                    ease: "easeOut",
-                  }}
-                  className="relative group"
-                >
+                <motion.div whileHover={{
+                scale: 1.05,
+                y: -3
+              }} whileTap={{
+                scale: 0.98
+              }} transition={{
+                duration: 0.15,
+                ease: "easeOut"
+              }} className="relative group">
                   <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-lg" />
-                  <Button
-                    size="lg"
-                    className="relative bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8"
-                  >
+                  <Button size="lg" className="relative bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8">
                     <FolderOpen className="mr-2 w-4 h-4" />
                     View Projects
                   </Button>
                 </motion.div>
               </Link>
               <Link to="/experience">
-                <motion.div
-                  whileHover={{
-                    scale: 1.05,
-                    y: -3,
-                  }}
-                  whileTap={{
-                    scale: 0.98,
-                  }}
-                  transition={{
-                    duration: 0.15,
-                    ease: "easeOut",
-                  }}
-                  className="relative group"
-                >
+                <motion.div whileHover={{
+                scale: 1.05,
+                y: -3
+              }} whileTap={{
+                scale: 0.98
+              }} transition={{
+                duration: 0.15,
+                ease: "easeOut"
+              }} className="relative group">
                   <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-30 blur-lg transition-opacity duration-200 rounded-lg" />
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="relative border-border hover:border-primary/50 hover:bg-secondary/80 text-foreground hover:text-foreground"
-                  >
+                  <Button variant="outline" size="lg" className="relative border-border hover:border-primary/50 hover:bg-secondary/80 text-foreground hover:text-foreground">
                     <Briefcase className="mr-2 w-4 h-4" />
                     Experience
                   </Button>
                 </motion.div>
               </Link>
               <Link to="/gallery">
-                <motion.div
-                  whileHover={{
-                    scale: 1.05,
-                    y: -3,
-                  }}
-                  whileTap={{
-                    scale: 0.98,
-                  }}
-                  transition={{
-                    duration: 0.15,
-                    ease: "easeOut",
-                  }}
-                  className="relative group"
-                >
+                <motion.div whileHover={{
+                scale: 1.05,
+                y: -3
+              }} whileTap={{
+                scale: 0.98
+              }} transition={{
+                duration: 0.15,
+                ease: "easeOut"
+              }} className="relative group">
                   <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-30 blur-lg transition-opacity duration-200 rounded-lg" />
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="relative border-border hover:border-primary/50 hover:bg-secondary/80 text-foreground hover:text-foreground"
-                  >
+                  <Button variant="outline" size="lg" className="relative border-border hover:border-primary/50 hover:bg-secondary/80 text-foreground hover:text-foreground">
                     <Image className="mr-2 w-4 h-4" />
                     Gallery
                   </Button>
                 </motion.div>
               </Link>
               <Link to="/contact">
-                <motion.div
-                  whileHover={{
-                    scale: 1.05,
-                    y: -3,
-                  }}
-                  whileTap={{
-                    scale: 0.98,
-                  }}
-                  transition={{
-                    duration: 0.15,
-                    ease: "easeOut",
-                  }}
-                  className="relative group"
-                >
+                <motion.div whileHover={{
+                scale: 1.05,
+                y: -3
+              }} whileTap={{
+                scale: 0.98
+              }} transition={{
+                duration: 0.15,
+                ease: "easeOut"
+              }} className="relative group">
                   <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-30 blur-lg transition-opacity duration-200 rounded-lg" />
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="relative border-border hover:border-primary/50 hover:bg-secondary/80 text-foreground hover:text-foreground"
-                  >
+                  <Button variant="outline" size="lg" className="relative border-border hover:border-primary/50 hover:bg-secondary/80 text-foreground hover:text-foreground">
                     <MessageSquare className="mr-2 w-4 h-4" />
                     Contact
                   </Button>
@@ -180,42 +135,30 @@ const Home = () => {
 
         {/* Scroll Cue Button - Flex positioned below content with guaranteed spacing */}
         <div className="flex-1 flex items-center justify-center min-h-[80px] mt-8">
-          <motion.button
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.6,
-              delay: 1,
-            }}
-            onClick={() => {
-              document.getElementById("about-section")?.scrollIntoView({
-                behavior: "smooth",
-              });
-            }}
-            className="group"
-            aria-label="Scroll to About section"
-          >
-            <motion.div
-              animate={{
-                y: [0, 8, 0],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              whileHover={{
-                scale: 1.15,
-                y: -2,
-              }}
-              className="relative"
-            >
+          <motion.button initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.6,
+          delay: 1
+        }} onClick={() => {
+          document.getElementById("about-section")?.scrollIntoView({
+            behavior: "smooth"
+          });
+        }} className="group" aria-label="Scroll to About section">
+            <motion.div animate={{
+            y: [0, 8, 0]
+          }} transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }} whileHover={{
+            scale: 1.15,
+            y: -2
+          }} className="relative">
               {/* Hover glow effect */}
               <div className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-full" />
               <div className="p-3 rounded-full border border-border bg-secondary/50 text-muted-foreground group-hover:text-primary group-hover:border-primary/50 transition-colors duration-200">
@@ -229,44 +172,32 @@ const Home = () => {
       {/* About Section */}
       <section id="about-section" className="py-24 px-4">
         <div className="container mx-auto max-w-6xl">
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 50,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-              margin: "-100px",
-            }}
-            transition={{
-              duration: 0.8,
-              ease: "easeOut",
-            }}
-            className="grid md:grid-cols-2 gap-12 items-center"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 50
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true,
+          margin: "-100px"
+        }} transition={{
+          duration: 0.8,
+          ease: "easeOut"
+        }} className="grid md:grid-cols-2 gap-12 items-center">
             {/* Text Content */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                x: -30,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.6,
-                delay: 0.2,
-              }}
-              className="space-y-6"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            x: -30
+          }} whileInView={{
+            opacity: 1,
+            x: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6,
+            delay: 0.2
+          }} className="space-y-6">
               <h2 className="font-display text-3xl md:text-4xl font-bold">
                 about <span className="gradient-text">Me</span>
               </h2>
@@ -285,82 +216,56 @@ const Home = () => {
                 working on my car, hiking a new park, or listening to an album while skating. Always looking for a new
                 hobby to master :)
               </p>
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.4,
-                }}
-                className="flex flex-wrap gap-3 pt-4"
-              >
-                {["Multidisciplinary Collaboration", "Open Communication", "CFD + FEA", "CAD", "Machine Learning"].map(
-                  (skill, index) => (
-                    <motion.span
-                      key={skill}
-                      initial={{
-                        opacity: 0,
-                        scale: 0.8,
-                      }}
-                      whileInView={{
-                        opacity: 1,
-                        scale: 1,
-                      }}
-                      viewport={{
-                        once: true,
-                      }}
-                      transition={{
-                        duration: 0.4,
-                        delay: 0.5 + index * 0.1,
-                      }}
-                      className="px-4 py-2 text-sm font-medium rounded-full bg-secondary text-muted-foreground border border-border"
-                    >
+              <motion.div initial={{
+              opacity: 0,
+              y: 20
+            }} whileInView={{
+              opacity: 1,
+              y: 0
+            }} viewport={{
+              once: true
+            }} transition={{
+              duration: 0.6,
+              delay: 0.4
+            }} className="flex flex-wrap gap-3 pt-4">
+                {["Multidisciplinary Collaboration", "Open Communication", "CFD + FEA", "CAD", "Machine Learning"].map((skill, index) => <motion.span key={skill} initial={{
+                opacity: 0,
+                scale: 0.8
+              }} whileInView={{
+                opacity: 1,
+                scale: 1
+              }} viewport={{
+                once: true
+              }} transition={{
+                duration: 0.4,
+                delay: 0.5 + index * 0.1
+              }} className="px-4 py-2 text-sm font-medium rounded-full bg-secondary text-muted-foreground border border-border">
                       {skill}
-                    </motion.span>
-                  ),
-                )}
+                    </motion.span>)}
               </motion.div>
             </motion.div>
 
             {/* Profile Image Placeholder */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                x: 30,
-                scale: 0.9,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-                scale: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.8,
-                delay: 0.3,
-              }}
-              className="relative"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            x: 30,
+            scale: 0.9
+          }} whileInView={{
+            opacity: 1,
+            x: 0,
+            scale: 1
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.8,
+            delay: 0.3
+          }} className="relative">
               {/* Decorative elements - behind media */}
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-2xl -z-10 pointer-events-none" />
               <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-2xl -z-10 pointer-events-none" />
-              <div
-                className="relative max-w-md mx-auto"
-                style={{
-                  aspectRatio: "3/4",
-                }}
-              >
+              <div className="relative max-w-md mx-auto" style={{
+              aspectRatio: "3/4"
+            }}>
                 {/* Gradient outline - sits behind media */}
                 <div className="absolute -inset-[2px] rounded-2xl bg-gradient-to-br from-primary via-accent to-primary opacity-70 -z-10" />
                 <div className="w-full h-full rounded-2xl bg-secondary overflow-hidden relative z-10">
@@ -372,44 +277,31 @@ const Home = () => {
 
           {/* Scroll Cue Button - About to Resume */}
           <div className="flex items-center justify-center mt-16">
-            <motion.button
-              initial={{
-                opacity: 0,
-                y: 20,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.6,
-              }}
-              onClick={() => {
-                document.getElementById("resume-section")?.scrollIntoView({
-                  behavior: "smooth",
-                });
-              }}
-              className="group"
-              aria-label="Scroll to Resume section"
-            >
-              <motion.div
-                animate={{
-                  y: [0, 8, 0],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                whileHover={{
-                  scale: 1.15,
-                  y: -2,
-                }}
-                className="relative"
-              >
+            <motion.button initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }} onClick={() => {
+            document.getElementById("resume-section")?.scrollIntoView({
+              behavior: "smooth"
+            });
+          }} className="group" aria-label="Scroll to Resume section">
+              <motion.div animate={{
+              y: [0, 8, 0]
+            }} transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }} whileHover={{
+              scale: 1.15,
+              y: -2
+            }} className="relative">
                 {/* Hover glow effect */}
                 <div className="absolute -inset-2 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-full" />
                 <div className="p-3 rounded-full border border-border bg-secondary/50 text-muted-foreground group-hover:text-primary group-hover:border-primary/50 transition-colors duration-200">
@@ -424,52 +316,37 @@ const Home = () => {
       {/* Resume Download Card */}
       <section id="resume-section" className="py-16 px-4">
         <div className="container mx-auto max-w-3xl">
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 50,
-              scale: 0.95,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              scale: 1,
-            }}
-            viewport={{
-              once: true,
-              margin: "-50px",
-            }}
-            transition={{
-              duration: 0.5,
-              ease: "easeOut",
-            }}
-            whileHover={{
-              scale: 1.03,
-              y: -4,
-            }}
-            className="relative group glass rounded-2xl p-8 md:p-12 text-center space-y-6 will-change-transform"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 50,
+          scale: 0.95
+        }} whileInView={{
+          opacity: 1,
+          y: 0,
+          scale: 1
+        }} viewport={{
+          once: true,
+          margin: "-50px"
+        }} transition={{
+          duration: 0.5,
+          ease: "easeOut"
+        }} whileHover={{
+          scale: 1.03,
+          y: -4
+        }} className="relative group glass rounded-2xl p-8 md:p-12 text-center space-y-6 will-change-transform">
             {/* Hover glow */}
             <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-200 rounded-2xl pointer-events-none" />
             <h3 className="font-display text-2xl md:text-3xl font-bold relative">Interested in my work?</h3>
             <p className="text-muted-foreground max-w-md mx-auto relative">
               Download my resume to learn more about my experience, skills, and achievements.
             </p>
-            <motion.div
-              whileHover={{
-                scale: 1.05,
-              }}
-              whileTap={{
-                scale: 0.98,
-              }}
-              className="relative inline-block will-change-transform"
-            >
+            <motion.div whileHover={{
+            scale: 1.05
+          }} whileTap={{
+            scale: 0.98
+          }} className="relative inline-block will-change-transform">
               <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-lg" />
-              <Button
-                asChild
-                size="lg"
-                className="relative bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8"
-              >
+              <Button asChild size="lg" className="relative bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8">
                 <a href="/Patel_Jinit_Resume.pdf" target="_blank" rel="noopener noreferrer">
                   <Download className="mr-2 w-4 h-4" />
                   Download Resume
@@ -483,74 +360,50 @@ const Home = () => {
       {/* Social Icons */}
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-xl">
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 40,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.6,
-            }}
-            className="text-center space-y-8"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 40
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.6
+        }} className="text-center space-y-8">
             <h3 className="font-display text-xl font-semibold text-muted-foreground">Let's Connect</h3>
             <div className="flex items-center justify-center gap-6">
-              {[
-                {
-                  icon: Linkedin,
-                  label: "LinkedIn",
-                  href: "https://www.linkedin.com/in/jinitpatel1/",
-                },
-                {
-                  icon: Github,
-                  label: "GitHub",
-                  href: "https://github.com/jinitpatel7",
-                },
-                {
-                  icon: Mail,
-                  label: "Email",
-                  href: "mailto:patel.4780@osu.edu",
-                },
-              ].map((social, index) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{
-                    opacity: 0,
-                    y: 20,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.1,
-                  }}
-                  whileHover={{
-                    scale: 1.15,
-                    y: -4,
-                  }}
-                  whileTap={{
-                    scale: 0.95,
-                  }}
-                  className="p-4 rounded-xl bg-secondary border border-border text-muted-foreground hover:text-primary hover:border-primary/30 hover:glow-primary transition-all duration-300"
-                >
+              {[{
+              icon: Linkedin,
+              label: "LinkedIn",
+              href: "https://www.linkedin.com/in/jinitpatel1/"
+            }, {
+              icon: Github,
+              label: "GitHub",
+              href: "https://github.com/jinitpatel7"
+            }, {
+              icon: Mail,
+              label: "Email",
+              href: "mailto:patel.4780@osu.edu"
+            }].map((social, index) => <motion.a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" initial={{
+              opacity: 0,
+              y: 20
+            }} whileInView={{
+              opacity: 1,
+              y: 0
+            }} viewport={{
+              once: true
+            }} transition={{
+              duration: 0.5,
+              delay: index * 0.1
+            }} whileHover={{
+              scale: 1.15,
+              y: -4
+            }} whileTap={{
+              scale: 0.95
+            }} className="p-4 rounded-xl bg-secondary border border-border text-muted-foreground hover:text-primary hover:border-primary/30 hover:glow-primary transition-all duration-300">
                   <social.icon size={24} />
-                </motion.a>
-              ))}
+                </motion.a>)}
             </div>
           </motion.div>
         </div>
@@ -559,10 +412,9 @@ const Home = () => {
       {/* Footer */}
       <footer className="py-8 px-4 border-t border-border">
         <div className="container mx-auto text-center">
-          <p className="text-sm text-muted-foreground">© Jinit Patel 2025</p>
+          <p className="text-sm text-muted-foreground">© Jinit Patel 2026</p>
         </div>
       </footer>
-    </main>
-  );
+    </main>;
 };
 export default Home;
