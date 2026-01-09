@@ -117,7 +117,7 @@ const squareImages = [
   { name: "Evening longboard ride on south campus OSU", src: img4715 },
   { name: "Budd Dairy Food Hall", src: img1632 },
   { name: "Cafe shop in Georgia Tech", src: img8895 },
-  { name: "Late afternoon sun casting long shadows", src: img6372 },
+  { name: "Riverwalk in Downtown Naperville, IL", src: img6372 },
   { name: "Riverwalk in Downtown Naperville, IL", src: img6375 },
 ];
 
