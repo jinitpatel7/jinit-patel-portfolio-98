@@ -74,31 +74,15 @@ const ProjectCard = ({
             {/* Media container - above gradient */}
             <div className="relative z-10 w-full h-full flex items-center justify-center">
               {videoUrl ? (
-                <>
-                  {/* Static image (poster) - shown when not hovered */}
-                  {imageUrl && (
-                    <img
-                      src={imageUrl}
-                      alt={title}
-                      className="w-full h-full object-cover group-[[data-hovered='true']]:opacity-0 transition-opacity duration-300"
-                    />
-                  )}
-                  {/* Video - plays on hover */}
-                  <video
-                    ref={videoRef}
-                    src={videoUrl}
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover absolute inset-0 opacity-0 group-[[data-hovered='true']]:opacity-100 transition-opacity duration-300"
-                  />
-                  {/* Fallback if no poster image */}
-                  {!imageUrl && (
-                    <div className="text-muted-foreground text-sm group-[[data-hovered='true']]:opacity-0 transition-opacity duration-300">
-                      Hover to preview
-                    </div>
-                  )}
-                </>
+                <video
+                  ref={videoRef}
+                  src={videoUrl}
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
               ) : imageUrl ? (
                 <img
                   src={imageUrl}
