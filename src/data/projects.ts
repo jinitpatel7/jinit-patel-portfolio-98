@@ -1,6 +1,8 @@
 import kazeX1Video from "@/assets/projects/Kaze_X1_Thumbnail.mp4";
 import calorieBurnVideo from "@/assets/projects/Calorie_Burn_Machine_Learning_Thumbnail.mp4";
 import switchHandleVideo from "@/assets/projects/Switch_Handle_Lever_Thumbnail.mp4";
+import thrustVectoringImage from "@/assets/projects/Thrust_Vectoring_Jet_Thumbnail.jpg";
+import speakerStandImage from "@/assets/projects/Speaker_Thumbnail.jpg";
 
 export interface Project {
   id: string;
@@ -50,6 +52,7 @@ export const projects: Project[] = [
     description: "Investigating localized arc-filament plasma actuators (LAFPAs) for active control over jet attachment and deflection. Designed and fabricated SLA nozzles, performed 2D RANS CFD analysis, and supported experimental testing using schlieren imaging, pressure measurements, and PIV.",
     skills: ["SolidWorks", "MATLAB", "SLA 3D Printing", "ANSYS Fluent", "2D RANS Simulations", "Schlieren Imaging", "Particle Image Velocimetry", "Data Acquisition", "Data Analysis"],
     dates: "August 2023 - Present",
+    imageUrl: thrustVectoringImage,
     hidden: false
   },
   {
@@ -67,6 +70,7 @@ export const projects: Project[] = [
     description: "Designed and optimized a satellite speaker stand for my apartment surround sound system. Modeled the structure, ran FEA for strength verification, and 3D printed an ergonomic and aesthetically clean final design.",
     skills: ["Onshape", "Ansys Mechanical", "FEA", "FDM 3D Printing", "Tolerancing", "Calipers"],
     dates: "October 2025",
+    imageUrl: speakerStandImage,
     hidden: false
   },
   {
