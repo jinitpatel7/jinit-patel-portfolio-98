@@ -1,3 +1,7 @@
+import kazeX1Video from "@/assets/projects/Kaze_X1_Thumbnail.mp4";
+import calorieBurnVideo from "@/assets/projects/Calorie_Burn_Machine_Learning_Thumbnail.mp4";
+import switchHandleVideo from "@/assets/projects/Switch_Handle_Lever_Thumbnail.mp4";
+
 export interface Project {
   id: string;
   title: string;
@@ -28,6 +32,7 @@ export const projects: Project[] = [
     description: "Currently in the process of designing, fabricating, and flight-testing an LW-PLA FDM 3D-printed sport/trainer hybrid RC aircraft, including CAD, aerodynamic validation, and avionics integration.",
     skills: ["SolidWorks", "ANSYS Fluent", "FDM 3D Printing", "Bambu Studio", "Soldering", "FDM/FDA", "Avionics Integration", "Flight Testing", "Mechanical Design"],
     dates: "November 2025 - Present",
+    videoUrl: kazeX1Video,
     hidden: false
   },
   {
@@ -36,6 +41,7 @@ export const projects: Project[] = [
     description: "Utilized convolution neural networks within Python Libraries to create a model that can accurately predict calorie expenditure for specific activities, taking into account the user's biological, genetic, and lifestyle factors.",
     skills: ["Neural Networks", "Machine Learning", "Python", "TensorFlow", "NumPy", "Scikit-learn", "Matplotlib", "Hyperparameter Tuning"],
     dates: "November 2025 - December 2025",
+    videoUrl: calorieBurnVideo,
     hidden: false
   },
   {
@@ -52,6 +58,7 @@ export const projects: Project[] = [
     description: "Filed a provisional patent application for a switch handle lever mechanism I engineered for a Static Switch unit at Vertiv. Led the full rapid prototyping cycle of design, fabrication, and iteration until internal end users' needs were met.",
     skills: ["Creo", "Large BOM Management", "Ansys Mechanical", "Oracle PLM", "Rapid Prototyping", "FDM 3D Printing", "GD&T", "Testing & Iteration", "Mechanical Design"],
     dates: "May 2025 - August 2025",
+    videoUrl: switchHandleVideo,
     hidden: false
   },
   {
