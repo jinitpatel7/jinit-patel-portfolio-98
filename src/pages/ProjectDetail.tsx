@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Github, Calendar, Tag } from "lucide-react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { projects } from "./Projects";
+import { projects } from "@/data/projects";
 
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();

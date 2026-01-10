@@ -117,11 +117,11 @@ const ProjectCard = ({
 
           {/* Content - use flex-grow and min-height to ensure uniform card sizes */}
           <div className="p-6 space-y-4 flex flex-col min-h-[220px]">
-            <div className="flex items-start justify-between gap-4">
-              <h3 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
+            <div className="flex flex-col gap-2">
+              <h3 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-200 text-center">
                 {title}
               </h3>
-              <div className="p-2 rounded-lg bg-secondary text-muted-foreground group-hover:text-primary group-hover:bg-primary/10 transition-all duration-200 flex-shrink-0 hover:scale-110 will-change-transform">
+              <div className="absolute top-6 right-6 p-2 rounded-lg bg-secondary text-muted-foreground group-hover:text-primary group-hover:bg-primary/10 transition-all duration-200 flex-shrink-0 hover:scale-110 will-change-transform">
                 <ExternalLink size={18} />
               </div>
             </div>
