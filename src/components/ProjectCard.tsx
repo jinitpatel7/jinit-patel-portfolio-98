@@ -132,7 +132,7 @@ const ProjectCard = ({
 
             {/* Skills & Tools */}
             <div className="flex flex-wrap gap-2">
-              {skills.map((skill) => (
+              {skills.slice(0, 6).map((skill) => (
                 <span
                   key={skill}
                   className="px-3 py-1 text-xs font-medium rounded-full bg-secondary text-muted-foreground border border-border group-hover:border-primary/30 transition-colors duration-200"
@@ -140,6 +140,11 @@ const ProjectCard = ({
                   {skill}
                 </span>
               ))}
+              {skills.length > 6 && (
+                <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/30">
+                  +{skills.length - 6} more
+                </span>
+              )}
             </div>
 
             <p className="text-xs text-muted-foreground mt-auto">{dates}</p>
