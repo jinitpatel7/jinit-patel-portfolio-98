@@ -67,49 +67,104 @@ const ProjectDetail = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:col-span-2 space-y-8"
+            className="md:col-span-2 space-y-10"
           >
+            {/* Section 1: Motivation & Overview */}
             <div className="space-y-4">
-              <h2 className="font-display text-2xl font-bold">Overview</h2>
+              <h2 className="font-display text-2xl font-bold">Motivation & Overview</h2>
               <p className="text-muted-foreground leading-relaxed">
-                {project.description}
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                This is an extended description placeholder for the project detail page. 
-                Here you can add more comprehensive information about the project's goals, 
-                challenges faced during development, and the solutions implemented to overcome them.
+                {project.sections?.motivationOverview || project.description}
               </p>
             </div>
 
-            <div className="space-y-4">
-              <h2 className="font-display text-2xl font-bold">Key Features</h2>
-              <ul className="space-y-2 text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2" />
-                  Feature one placeholder - Describe a key feature of the project
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2" />
-                  Feature two placeholder - Another important functionality
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2" />
-                  Feature three placeholder - Additional capability implemented
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2" />
-                  Feature four placeholder - Final notable feature
-                </li>
-              </ul>
+            {/* Section 2: Engineering Methodology */}
+            <div className="space-y-6">
+              <h2 className="font-display text-2xl font-bold">Engineering Methodology</h2>
+              {project.sections?.engineeringMethodology ? (
+                project.sections.engineeringMethodology.map((subsection, index) => (
+                  <div key={index} className="space-y-3">
+                    <h3 className="font-semibold text-foreground">{subsection.header}</h3>
+                    <ul className="space-y-2 text-muted-foreground">
+                      {subsection.points.map((point, pointIndex) => (
+                        <li key={pointIndex} className="flex items-start gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))
+              ) : (
+                <p className="text-muted-foreground leading-relaxed">
+                  Engineering methodology details coming soon.
+                </p>
+              )}
             </div>
 
-            <div className="space-y-4">
-              <h2 className="font-display text-2xl font-bold">Challenges & Solutions</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                Placeholder text describing the main challenges encountered during development 
-                and the innovative solutions implemented to address them. This section would 
-                highlight problem-solving skills and technical decision-making.
-              </p>
+            {/* Section 3: Results & Impacts */}
+            <div className="space-y-6">
+              <h2 className="font-display text-2xl font-bold">Results & Impacts</h2>
+              {project.sections?.resultsImpacts ? (
+                project.sections.resultsImpacts.map((result, index) => (
+                  <div key={index} className="space-y-2">
+                    <h3 className="font-semibold text-foreground">{result.header}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{result.content}</p>
+                  </div>
+                ))
+              ) : (
+                <p className="text-muted-foreground leading-relaxed">
+                  Results and impacts details coming soon.
+                </p>
+              )}
+            </div>
+
+            {/* Section 4: Challenges, Takeaways & Next Steps */}
+            <div className="space-y-6">
+              <h2 className="font-display text-2xl font-bold">Challenges, Takeaways & Next Steps</h2>
+              
+              {project.sections?.challengesTakeaways ? (
+                <>
+                  <div className="space-y-3">
+                    <h3 className="font-semibold text-foreground">Challenges</h3>
+                    <ul className="space-y-2 text-muted-foreground">
+                      {project.sections.challengesTakeaways.challenges.map((challenge, index) => (
+                        <li key={index} className="flex items-start gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                          {challenge}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="font-semibold text-foreground">Takeaways</h3>
+                    <ul className="space-y-2 text-muted-foreground">
+                      {project.sections.challengesTakeaways.takeaways.map((takeaway, index) => (
+                        <li key={index} className="flex items-start gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                          {takeaway}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="font-semibold text-foreground">Next Steps</h3>
+                    <ul className="space-y-2 text-muted-foreground">
+                      {project.sections.challengesTakeaways.nextSteps.map((step, index) => (
+                        <li key={index} className="flex items-start gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                          {step}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </>
+              ) : (
+                <p className="text-muted-foreground leading-relaxed">
+                  Challenges and takeaways details coming soon.
+                </p>
+              )}
             </div>
           </motion.div>
 
