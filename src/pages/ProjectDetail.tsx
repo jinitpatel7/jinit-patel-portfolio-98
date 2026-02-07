@@ -3,6 +3,8 @@ import { ArrowLeft, ExternalLink, Github, Calendar, Tag } from "lucide-react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/data/projects";
+import ProjectMediaHero from "@/components/ProjectMediaHero";
+import SectionHeader from "@/components/SectionHeader";
 
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -48,16 +50,18 @@ const ProjectDetail = () => {
           </div>
         </motion.div>
 
-        {/* Project Image */}
+        {/* Project Media */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
           className="gradient-border aspect-video mb-12 overflow-hidden"
         >
-          <div className="w-full h-full bg-secondary flex items-center justify-center">
-            <span className="text-muted-foreground">Project Screenshot / Demo</span>
-          </div>
+          <ProjectMediaHero
+            imageUrl={project.imageUrl}
+            videoUrl={project.videoUrl}
+            title={project.title}
+          />
         </motion.div>
 
         {/* Project Details */}
@@ -71,7 +75,7 @@ const ProjectDetail = () => {
           >
             {/* Section 1: Motivation & Overview */}
             <div className="space-y-4">
-              <h2 className="font-display text-2xl font-bold">Motivation & Overview</h2>
+              <SectionHeader>Motivation & Overview</SectionHeader>
               <p className="text-muted-foreground leading-relaxed">
                 {project.sections?.motivationOverview || project.description}
               </p>
@@ -79,7 +83,7 @@ const ProjectDetail = () => {
 
             {/* Section 2: Engineering Methodology */}
             <div className="space-y-6">
-              <h2 className="font-display text-2xl font-bold">Engineering Methodology</h2>
+              <SectionHeader>Engineering Methodology</SectionHeader>
               {project.sections?.engineeringMethodology ? (
                 project.sections.engineeringMethodology.map((subsection, index) => (
                   <div key={index} className="space-y-3">
@@ -103,7 +107,7 @@ const ProjectDetail = () => {
 
             {/* Section 3: Results & Impacts */}
             <div className="space-y-6">
-              <h2 className="font-display text-2xl font-bold">Results & Impacts</h2>
+              <SectionHeader>Results & Impacts</SectionHeader>
               {project.sections?.resultsImpacts ? (
                 project.sections.resultsImpacts.map((result, index) => (
                   <div key={index} className="space-y-2">
@@ -120,7 +124,7 @@ const ProjectDetail = () => {
 
             {/* Section 4: Challenges, Takeaways & Next Steps */}
             <div className="space-y-6">
-              <h2 className="font-display text-2xl font-bold">Challenges, Takeaways & Next Steps</h2>
+              <SectionHeader>Challenges, Takeaways & Next Steps</SectionHeader>
               
               {project.sections?.challengesTakeaways ? (
                 <>
