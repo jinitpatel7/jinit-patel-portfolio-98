@@ -82,12 +82,12 @@ const ProjectDetail = () => {
             </div>
 
             {/* Section 2: Engineering Methodology */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               <SectionHeader>Engineering Methodology</SectionHeader>
               {project.sections?.engineeringMethodology ? (
                 project.sections.engineeringMethodology.map((subsection, index) => (
-                  <div key={index} className="space-y-3">
-                    <h3 className="font-semibold text-foreground">{subsection.header}</h3>
+                  <div key={index} className="space-y-1.5">
+                    <h3 className="font-semibold text-muted-foreground">{subsection.header}</h3>
                     <ul className="space-y-2 text-muted-foreground">
                       {subsection.points.map((point, pointIndex) => (
                         <li key={pointIndex} className="flex items-start gap-2">
@@ -106,12 +106,12 @@ const ProjectDetail = () => {
             </div>
 
             {/* Section 3: Results & Impacts */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               <SectionHeader>Results & Impacts</SectionHeader>
               {project.sections?.resultsImpacts ? (
                 project.sections.resultsImpacts.map((result, index) => (
-                  <div key={index} className="space-y-2">
-                    <h3 className="font-semibold text-foreground">{result.header}</h3>
+                  <div key={index} className="space-y-1">
+                    <h3 className="font-semibold text-muted-foreground">{result.header}</h3>
                     <p className="text-muted-foreground leading-relaxed">{result.content}</p>
                   </div>
                 ))
@@ -123,47 +123,23 @@ const ProjectDetail = () => {
             </div>
 
             {/* Section 4: Challenges, Takeaways & Next Steps */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               <SectionHeader>Challenges, Takeaways & Next Steps</SectionHeader>
               
               {project.sections?.challengesTakeaways ? (
-                <>
-                  <div className="space-y-3">
-                    <h3 className="font-semibold text-foreground">Challenges</h3>
+                project.sections.challengesTakeaways.map((subsection, index) => (
+                  <div key={index} className="space-y-1.5">
+                    <h3 className="font-semibold text-muted-foreground">{subsection.label}</h3>
                     <ul className="space-y-2 text-muted-foreground">
-                      {project.sections.challengesTakeaways.challenges.map((challenge, index) => (
-                        <li key={index} className="flex items-start gap-2">
+                      {subsection.items.map((item, itemIndex) => (
+                        <li key={itemIndex} className="flex items-start gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                          {challenge}
+                          {item}
                         </li>
                       ))}
                     </ul>
                   </div>
-
-                  <div className="space-y-3">
-                    <h3 className="font-semibold text-foreground">Takeaways</h3>
-                    <ul className="space-y-2 text-muted-foreground">
-                      {project.sections.challengesTakeaways.takeaways.map((takeaway, index) => (
-                        <li key={index} className="flex items-start gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                          {takeaway}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="space-y-3">
-                    <h3 className="font-semibold text-foreground">Next Steps</h3>
-                    <ul className="space-y-2 text-muted-foreground">
-                      {project.sections.challengesTakeaways.nextSteps.map((step, index) => (
-                        <li key={index} className="flex items-start gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                          {step}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </>
+                ))
               ) : (
                 <p className="text-muted-foreground leading-relaxed">
                   Challenges and takeaways details coming soon.
