@@ -65,13 +65,14 @@ const ProjectDetail = () => {
         </motion.div>
 
         {/* Project Details */}
+        {/* Sidebar - renders first on mobile (order), side on desktop */}
         <div className="grid lg:grid-cols-[1fr_280px] gap-8">
           {/* Main Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-10 min-w-0"
+            className="space-y-10 min-w-0 max-w-none"
           >
             {/* Section 1: Motivation & Overview */}
             <div className="space-y-4">
@@ -153,7 +154,7 @@ const ProjectDetail = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="space-y-6"
+            className="space-y-6 lg:sticky lg:top-24 lg:self-start"
           >
             {/* Skills & Tools */}
             <div className="glass rounded-xl p-6 space-y-4">
@@ -174,25 +175,30 @@ const ProjectDetail = () => {
             </div>
 
             {/* Links */}
-            <div className="glass rounded-xl p-6 space-y-4">
-              <h3 className="font-display text-lg font-semibold">Links</h3>
-              <div className="space-y-3">
-                <Button
-                  variant="outline"
-                  className="w-full justify-start card-hover-glow"
-                >
-                  <ExternalLink className="mr-2 w-4 h-4" />
-                  Live Demo
-                </Button>
-                <Button
-                  variant="outline"
-                  className="w-full justify-start card-hover-glow"
-                >
-                  <Github className="mr-2 w-4 h-4" />
-                  Source Code
-                </Button>
+            {project.links && project.links.length > 0 && (
+              <div className="glass rounded-xl p-6 space-y-4">
+                <h3 className="font-display text-lg font-semibold">Links</h3>
+                <div className="space-y-3">
+                  {project.links.map((link, index) => {
+                    const hasUrl = link.url && link.url.length > 0;
+                    const Icon = link.icon === "github" ? Github : ExternalLink;
+                    return hasUrl ? (
+                      <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" className="block">
+                        <Button variant="outline" className="w-full justify-start card-hover-glow">
+                          <Icon className="mr-2 w-4 h-4" />
+                          {link.label}
+                        </Button>
+                      </a>
+                    ) : (
+                      <Button key={index} variant="outline" className="w-full justify-start opacity-50 cursor-not-allowed" disabled>
+                        <Icon className="mr-2 w-4 h-4" />
+                        {link.label} — Coming soon
+                      </Button>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+            )}
           </motion.div>
         </div>
       </div>
