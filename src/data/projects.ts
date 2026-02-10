@@ -20,6 +20,12 @@ export interface ProjectSection {
   }[];
 }
 
+export interface ProjectLink {
+  label: string;
+  url: string;
+  icon: "external" | "github";
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -29,6 +35,7 @@ export interface Project {
   imageUrl?: string;
   videoUrl?: string;
   hidden: boolean;
+  links?: ProjectLink[];
   sections?: ProjectSection;
 }
 
@@ -53,6 +60,7 @@ export const projects: Project[] = [
     dates: "November 2025 - Present",
     videoUrl: kazeX1Video,
     hidden: false,
+    links: [{ label: "View Project", url: "", icon: "external" }],
     sections: {
       motivationOverview: "Most commercial RC aircraft kits are expensive, fragile, and difficult to repair after crashes—a significant barrier for hobbyists learning to fly. Existing 3D-printed designs often sacrifice structural integrity or aerodynamic performance for printability. I set out to design a fully 3D-printable sport/trainer aircraft that balances durability, repairability, and flight characteristics suitable for both learning and sport flying. The Kaze X1 is a complete fixed-wing aircraft designed from scratch in SolidWorks, validated through CFD analysis, and manufactured using FDM printing with LW-PLA. Scope includes full CAD design, aerodynamic validation, avionics integration, and flight testing. Composite reinforcement and advanced autopilot systems are intentionally out of scope for this iteration.",
       engineeringMethodology: [
@@ -131,6 +139,7 @@ export const projects: Project[] = [
     dates: "November 2025 - December 2025",
     videoUrl: calorieBurnVideo,
     hidden: false,
+    links: [{ label: "Source Code", url: "", icon: "github" }],
     sections: {
       motivationOverview: "Existing calorie burn calculators rely on simplistic MET-based formulas that ignore individual physiological differences, leading to errors of 20-40% for many users. This inaccuracy undermines fitness tracking, nutrition planning, and clinical applications. I developed a neural network-based predictor that incorporates user-specific biological factors (age, weight, heart rate, body temperature) alongside activity parameters to significantly improve prediction accuracy. The model was trained on a dataset of exercise sessions with measured calorie expenditure. Scope included data preprocessing, model architecture design, hyperparameter optimization, and validation. Real-time sensor integration and mobile deployment were out of scope.",
       engineeringMethodology: [
@@ -209,6 +218,7 @@ export const projects: Project[] = [
     dates: "August 2023 - Present",
     imageUrl: thrustVectoringImage,
     hidden: false,
+    links: [{ label: "View Project", url: "", icon: "external" }],
     sections: {
       motivationOverview: "Traditional mechanical thrust vectoring systems add significant weight, complexity, and maintenance burden to propulsion systems. Plasma-based actuation offers the potential for fluidic thrust vectoring with no moving parts—but the interaction between localized arc-filament plasma actuators (LAFPAs) and subsonic jets is not well understood. This research investigates how LAFPAs can induce controlled jet deflection through thermal perturbation of the shear layer. My contributions include designing and fabricating custom SLA nozzles, performing 2D RANS CFD simulations to guide experimental design, and supporting experimental campaigns using schlieren imaging, pressure measurements, and PIV. Scope focuses on subsonic axisymmetric jets; supersonic applications and closed-loop control are out of scope for this phase.",
       engineeringMethodology: [
@@ -288,6 +298,7 @@ export const projects: Project[] = [
     dates: "May 2025 - August 2025",
     videoUrl: switchHandleVideo,
     hidden: false,
+    links: [{ label: "View Project", url: "", icon: "external" }],
     sections: {
       motivationOverview: "The existing switch handle mechanism on Vertiv's Static Switch units required excessive operator force and lacked ergonomic consideration, leading to user complaints and potential repetitive strain issues during frequent operations. Additionally, the legacy design's complexity increased manufacturing costs and assembly time. I engineered a new lever mechanism that reduces required actuation force while maintaining reliable electrical contact engagement. The design progressed through multiple rapid prototyping iterations based on internal user feedback, ultimately resulting in a provisional patent application. Scope included mechanism design, structural analysis, prototype fabrication, and user testing. Production tooling design and manufacturing scale-up were handled by other teams.",
       engineeringMethodology: [
@@ -366,6 +377,7 @@ export const projects: Project[] = [
     dates: "October 2025",
     imageUrl: speakerStandImage,
     hidden: false,
+    links: [{ label: "View Project", url: "", icon: "external" }],
     sections: {
       motivationOverview: "Commercial speaker stands are often expensive, aesthetically generic, and sized for standard speaker dimensions that don't match my specific satellite speakers. Existing mounting solutions also failed to integrate cleanly with my apartment's furniture arrangement. I designed a custom stand optimized for my exact speaker dimensions and mounting requirements, validated through FEA to ensure adequate strength under static and dynamic loading. The design prioritizes clean aesthetics while maintaining structural integrity. Scope included dimensional surveying, CAD modeling, structural analysis, and FDM fabrication. Multi-material or metal fabrication was out of scope for this personal project.",
       engineeringMethodology: [
