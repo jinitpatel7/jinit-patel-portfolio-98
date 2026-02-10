@@ -15,10 +15,9 @@ export interface ProjectSection {
     content: string;
   }[];
   challengesTakeaways: {
-    challenges: string[];
-    takeaways: string[];
-    nextSteps: string[];
-  };
+    label: string;
+    items: string[];
+  }[];
 }
 
 export interface Project {
@@ -96,23 +95,32 @@ export const projects: Project[] = [
           content: "Full airframe printable in under 24 hours of machine time, with material costs under $30."
         }
       ],
-      challengesTakeaways: {
-        challenges: [
-          "LW-PLA foaming consistency varies significantly with ambient temperature and humidity",
-          "Balancing structural weight distribution with CG requirements required multiple design iterations",
-          "Surface finish quality from FDM printing affects aerodynamic performance at low Reynolds numbers"
-        ],
-        takeaways: [
-          "Parametric CAD approach dramatically accelerated design iteration cycles",
-          "LW-PLA's unique properties require manufacturing-aware design decisions from the start",
-          "CFD validation, even 2D, caught potential stability issues before physical prototyping"
-        ],
-        nextSteps: [
-          "Complete flight testing campaign and document handling characteristics",
-          "Develop reinforcement strategies for high-stress areas using continuous fiber inlays",
-          "Explore higher-fidelity 3D CFD analysis for full aircraft stability derivatives"
-        ]
-      }
+      challengesTakeaways: [
+        {
+          label: "Challenges",
+          items: [
+            "LW-PLA foaming consistency varies significantly with ambient temperature and humidity",
+            "Balancing structural weight distribution with CG requirements required multiple design iterations",
+            "Surface finish quality from FDM printing affects aerodynamic performance at low Reynolds numbers"
+          ]
+        },
+        {
+          label: "Takeaways",
+          items: [
+            "Parametric CAD approach dramatically accelerated design iteration cycles",
+            "LW-PLA's unique properties require manufacturing-aware design decisions from the start",
+            "CFD validation, even 2D, caught potential stability issues before physical prototyping"
+          ]
+        },
+        {
+          label: "Next Steps",
+          items: [
+            "Complete flight testing campaign and document handling characteristics",
+            "Develop reinforcement strategies for high-stress areas using continuous fiber inlays",
+            "Explore higher-fidelity 3D CFD analysis for full aircraft stability derivatives"
+          ]
+        }
+      ]
     }
   },
   {
@@ -165,23 +173,32 @@ export const projects: Project[] = [
           content: "Analysis revealed heart rate and duration as dominant predictors, with body temperature providing meaningful secondary signal."
         }
       ],
-      challengesTakeaways: {
-        challenges: [
-          "Dataset bias toward certain activity types required careful validation across underrepresented categories",
-          "Preventing model from learning dataset-specific artifacts rather than physiological relationships",
-          "Balancing model complexity against interpretability for potential clinical applications"
-        ],
-        takeaways: [
-          "Feature engineering based on domain knowledge outperformed purely automated feature selection",
-          "Regularization techniques were essential given the relatively small dataset size",
-          "Visualization of prediction errors revealed systematic biases guiding model improvements"
-        ],
-        nextSteps: [
-          "Expand training data to include more diverse activity types and user demographics",
-          "Explore recurrent architectures to capture temporal patterns in continuous monitoring scenarios",
-          "Investigate model compression techniques for edge deployment on wearable devices"
-        ]
-      }
+      challengesTakeaways: [
+        {
+          label: "Challenges",
+          items: [
+            "Dataset bias toward certain activity types required careful validation across underrepresented categories",
+            "Preventing model from learning dataset-specific artifacts rather than physiological relationships",
+            "Balancing model complexity against interpretability for potential clinical applications"
+          ]
+        },
+        {
+          label: "Takeaways",
+          items: [
+            "Feature engineering based on domain knowledge outperformed purely automated feature selection",
+            "Regularization techniques were essential given the relatively small dataset size",
+            "Visualization of prediction errors revealed systematic biases guiding model improvements"
+          ]
+        },
+        {
+          label: "Next Steps",
+          items: [
+            "Expand training data to include more diverse activity types and user demographics",
+            "Explore recurrent architectures to capture temporal patterns in continuous monitoring scenarios",
+            "Investigate model compression techniques for edge deployment on wearable devices"
+          ]
+        }
+      ]
     }
   },
   {
@@ -235,23 +252,32 @@ export const projects: Project[] = [
           content: "Identified operating regimes where plasma actuation produces significant deflection with minimal power input."
         }
       ],
-      challengesTakeaways: {
-        challenges: [
-          "2D axisymmetric assumption limits ability to capture azimuthal instabilities",
-          "Plasma-flow interaction physics difficult to model accurately in RANS framework",
-          "Electrode durability and consistent arc formation across extended test campaigns"
-        ],
-        takeaways: [
-          "CFD is valuable for design guidance but experimental validation remains essential for plasma-flow systems",
-          "Schlieren imaging provides rapid qualitative feedback for iterating actuator configurations",
-          "Strouhal number matching is critical for resonant amplification of deflection response"
-        ],
-        nextSteps: [
-          "Extend to 3D LES simulations to capture azimuthal mode interactions",
-          "Investigate higher jet velocities approaching compressible regime",
-          "Develop closed-loop control strategies using real-time pressure feedback"
-        ]
-      }
+      challengesTakeaways: [
+        {
+          label: "Challenges",
+          items: [
+            "2D axisymmetric assumption limits ability to capture azimuthal instabilities",
+            "Plasma-flow interaction physics difficult to model accurately in RANS framework",
+            "Electrode durability and consistent arc formation across extended test campaigns"
+          ]
+        },
+        {
+          label: "Takeaways",
+          items: [
+            "CFD is valuable for design guidance but experimental validation remains essential for plasma-flow systems",
+            "Schlieren imaging provides rapid qualitative feedback for iterating actuator configurations",
+            "Strouhal number matching is critical for resonant amplification of deflection response"
+          ]
+        },
+        {
+          label: "Next Steps",
+          items: [
+            "Extend to 3D LES simulations to capture azimuthal mode interactions",
+            "Investigate higher jet velocities approaching compressible regime",
+            "Develop closed-loop control strategies using real-time pressure feedback"
+          ]
+        }
+      ]
     }
   },
   {
@@ -304,23 +330,32 @@ export const projects: Project[] = [
           content: "Novel mechanism design resulted in provisional patent application filing."
         }
       ],
-      challengesTakeaways: {
-        challenges: [
-          "Balancing force reduction against mechanism envelope constraints within existing chassis",
-          "Ensuring reliable engagement across tolerance stack-up variations",
-          "Translating 3D-printed prototype characteristics to injection-molded production parts"
-        ],
-        takeaways: [
-          "Early and frequent user testing prevented costly late-stage design changes",
-          "Rapid prototyping dramatically accelerated the iteration cycle compared to traditional machining",
-          "GD&T discipline from the start streamlined transition to production design"
-        ],
-        nextSteps: [
-          "Support production tooling team with design-for-manufacturing refinements",
-          "Develop test fixtures for quality validation of production units",
-          "Explore mechanism variants for other product lines in the Static Switch family"
-        ]
-      }
+      challengesTakeaways: [
+        {
+          label: "Challenges",
+          items: [
+            "Balancing force reduction against mechanism envelope constraints within existing chassis",
+            "Ensuring reliable engagement across tolerance stack-up variations",
+            "Translating 3D-printed prototype characteristics to injection-molded production parts"
+          ]
+        },
+        {
+          label: "Takeaways",
+          items: [
+            "Early and frequent user testing prevented costly late-stage design changes",
+            "Rapid prototyping dramatically accelerated the iteration cycle compared to traditional machining",
+            "GD&T discipline from the start streamlined transition to production design"
+          ]
+        },
+        {
+          label: "Next Steps",
+          items: [
+            "Support production tooling team with design-for-manufacturing refinements",
+            "Develop test fixtures for quality validation of production units",
+            "Explore mechanism variants for other product lines in the Static Switch family"
+          ]
+        }
+      ]
     }
   },
   {
@@ -373,23 +408,32 @@ export const projects: Project[] = [
           content: "Clean integration with room décor; cable routing hidden from view as intended."
         }
       ],
-      challengesTakeaways: {
-        challenges: [
-          "Balancing wall thickness for strength against material usage and print time",
-          "Achieving adequate surface finish with FDM process constraints",
-          "Ensuring print orientation compatible with structural load paths"
-        ],
-        takeaways: [
-          "Careful dimensional surveying eliminated fit issues that often plague custom mounts",
-          "FEA investment was worthwhile even for a simple part—caught a stress riser that would have caused cracking",
-          "Print orientation is a design decision that must be considered from the start, not an afterthought"
-        ],
-        nextSteps: [
-          "Design matching stands for rear surround speakers with cable management integration",
-          "Explore resin printing for improved surface finish on visible surfaces",
-          "Consider TPU vibration isolation interface between speaker and stand"
-        ]
-      }
+      challengesTakeaways: [
+        {
+          label: "Challenges",
+          items: [
+            "Balancing wall thickness for strength against material usage and print time",
+            "Achieving adequate surface finish with FDM process constraints",
+            "Ensuring print orientation compatible with structural load paths"
+          ]
+        },
+        {
+          label: "Takeaways",
+          items: [
+            "Careful dimensional surveying eliminated fit issues that often plague custom mounts",
+            "FEA investment was worthwhile even for a simple part—caught a stress riser that would have caused cracking",
+            "Print orientation is a design decision that must be considered from the start, not an afterthought"
+          ]
+        },
+        {
+          label: "Next Steps",
+          items: [
+            "Design matching stands for rear surround speakers with cable management integration",
+            "Explore resin printing for improved surface finish on visible surfaces",
+            "Consider TPU vibration isolation interface between speaker and stand"
+          ]
+        }
+      ]
     }
   },
   {
