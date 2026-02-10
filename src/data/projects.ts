@@ -55,61 +55,66 @@ export const projects: Project[] = [
   {
     id: "kaze-x1-rc-aircraft",
     title: "Kaze X1: 3D Printed RC Fixed-Wing Aircraft Build",
-    description: "Currently in the process of designing, fabricating, and flight-testing an LW-PLA FDM 3D-printed sport/trainer hybrid RC aircraft, including CAD, aerodynamic validation, and avionics integration.",
+    description: "Currently in the process of designing, fabricating, and flight testing a LW-PLA, FDM 3D-printed fixed-wing RC aircraft, including CAD, aerodynamic validation, and avionics integration.",
     skills: ["SolidWorks", "ANSYS Fluent", "FDM 3D Printing", "Bambu Studio", "Soldering", "FDM/FDA", "Avionics Integration", "Flight Testing", "Mechanical Design"],
     dates: "November 2025 - Present",
     videoUrl: kazeX1Video,
     hidden: false,
     links: [{ label: "View Project", url: "", icon: "external" }],
     sections: {
-      motivationOverview: "Most commercial RC aircraft kits are expensive, fragile, and difficult to repair after crashes—a significant barrier for hobbyists learning to fly. Existing 3D-printed designs often sacrifice structural integrity or aerodynamic performance for printability. I set out to design a fully 3D-printable sport/trainer aircraft that balances durability, repairability, and flight characteristics suitable for both learning and sport flying. The Kaze X1 is a complete fixed-wing aircraft designed from scratch in SolidWorks, validated through CFD analysis, and manufactured using FDM printing with LW-PLA. Scope includes full CAD design, aerodynamic validation, avionics integration, and flight testing. Composite reinforcement and advanced autopilot systems are intentionally out of scope for this iteration.",
+      motivationOverview: "Most commercial RC aircraft kits are expensive and hard to repair after crashes. Existing 3D-printed designs are often compromise structural integrity or aerodynamic performance for printability. That's why I set out to design a fully 3D-printable sport/trainer hybrid aircraft that is designed for both learning and sport flying. My goal is to create a durable, modular, and over-engineered platform that I can iterate on in the future! \n\n Kaze X1 is a fixed-wing aircraft designed and handmade from scratch in SolidWorks, validated through computational methods in ANSYS, and manufactured using FDM printing with LW-PLA filament. Scope includes full CAD design, aerodynamic validation, avionics integration, and flight testing. My goal is to create a durable, modular, and over-engineered platform that I can iterate on in the future! Composites, VTOL capabilities, and autopilot/telemetry systems are intentionally out of scope for this iteration.",
       engineeringMethodology: [
         {
           header: "CAD & Structural Design",
           points: [
             "Parametric modeling in SolidWorks allowing rapid iteration on wing geometry and fuselage cross-sections",
-            "Internal spar structure designed for LW-PLA's unique strength-to-weight characteristics",
-            "Modular assembly design enabling field repairs with replacement printed components"
+            "Fully custom internal spar/rib and fuselage structure designed specifically to be printed with 0% slicer infill due to LW-PLA's high strength-to-weight characteristics",
+            "Modular assembly design allowing for field repairs and future upgrades (some include: composite reinforcement, autopilot & telemetry systems, and VTOL conversion)",
+            "At low Reynold's Numbers like ours (~ Re_c = 102,700 at 15 m/s, density = 1.2 kg/m³, viscocity = 1.789e-5 Pa*s), the effects of winglets on wingtip vorticies and induced drag is weakened. However, they look sick, manufacturing/assembling them with FDM printing is easy, and the weight penalty is small, so I decided to include them in the design anyway :)"
           ]
         },
         {
           header: "Aerodynamic Analysis",
           points: [
             "2D RANS CFD analysis in ANSYS Fluent to validate airfoil selection (modified Clark-Y)",
+            "AoA sweep from -5 to +15 degrees to confirm lift, drag and stall characteristics match values from Airfoil Tools and XLFR5",
+            "10, 15, and 20 m/s velocity cases were tested to confirm performance across expected flight envelope of takeoff, cruise, and landing speeds respectively",
             "k-ω SST turbulence model selected for accurate boundary layer prediction at low Reynolds numbers",
-            "Mesh refinement study conducted to ensure solution independence"
+            "Mesh was refined to make sure the results were independent of mesh density."
           ]
         },
         {
           header: "Manufacturing & Integration",
           points: [
-            "Bambu Studio slicing optimized for LW-PLA foaming characteristics",
+            "FDM 3D Printing on the Bambu Labs P1P, uising the Bambu Studio slicer. Utilized LW-PLA filament for the wing sections, winglets, horizontal and vertical stabilizer, for its low weight and relatively high strength. PETG filament was used for the fuselage sections and motor mount for its increased vibration resistance and dampening.",
             "Print orientation strategy to maximize layer adhesion in high-stress regions",
-            "Avionics bay designed for accessible servo and receiver installation"
+            "Avionics bay was designed for accessible servo, receiver, ESC, and motor installation"
           ]
         }
       ],
       resultsImpacts: [
         {
-          header: "Weight & Performance",
-          content: "Achieved target all-up weight under 800g with predicted stall speed suitable for trainer-style approaches."
+          header: "Aircraft Specifications",
+          content: "Wingspan: 760mm, Length: 560mm, Wing Area: 777.53cm², Target Weight: <450g (All-Up-Weight(AUW) assuming a Wing Loading of 17.5oz/ft²), Root Chord: 140mm, Tip Chord: 76.21mm, Winglet Chord: 40mm, Airfoil: Modified Clark-Y, Dihedral: 4°, Wing Incidence: 2°, Washout/Twist: 3°, Battery: 3S (11.1V) 1400mAh 50C LiPo, Motor: A2212 1400KV Brushless, Propeller: 7x5E, Electronic Speed Controller (ESC): 30A, Servos: 4x SG90"
         },
-        {
-          header: "Structural Validation",
-          content: "Wing loading tests confirmed adequate safety margins for sport maneuvers without composite reinforcement."
-        },
+
         {
           header: "Manufacturing Efficiency",
           content: "Full airframe printable in under 24 hours of machine time, with material costs under $30."
+        },
+        {
+          header: "Flight Test Performance and Characteristics",
+          content: "Yet to come, stay tuned for results and videos ...."
         }
       ],
       challengesTakeaways: [
         {
           label: "Challenges",
           items: [
-            "LW-PLA foaming consistency varies significantly with ambient temperature and humidity",
+            "LW-PLA foaming consistency varies with ambient temperature and humidity, and was prone to printing defects like stringing, clogging, and under-extrusion. Took a week of testing and tuning to dial in consistent print settings!",
             "Balancing structural weight distribution with CG requirements required multiple design iterations",
-            "Surface finish quality from FDM printing affects aerodynamic performance at low Reynolds numbers"
+            "Surface finish quality from FDM printing affected aerodynamic performance at low Reynolds numbers. LW-PLA's surface imperfections had to be sanded down then painted to allow for a smoother finish and lower skin friction drag.",
+            "Complex internal geometries of the wing and fuselage structure required careful design for printability (DFM), and extensive DAYS of troubleshooting SolidWorks geometries and constraints."
           ]
         },
         {
@@ -124,8 +129,9 @@ export const projects: Project[] = [
           label: "Next Steps",
           items: [
             "Complete flight testing campaign and document handling characteristics",
-            "Develop reinforcement strategies for high-stress areas using continuous fiber inlays",
-            "Explore higher-fidelity 3D CFD analysis for full aircraft stability derivatives"
+            "Integrate carbon fiber rods in the wing structure for reinforcement and weight reduction",
+            "Next iterations should include FPV & VTOL capabilities and autopilot/telemetry systems.",
+            "Explore higher fidelity 3D-CFD analysis for full aircraft stability and flight characteristics",
           ]
         }
       ]
