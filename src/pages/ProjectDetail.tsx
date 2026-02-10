@@ -16,7 +16,7 @@ const ProjectDetail = () => {
 
   return (
     <main className="relative z-10 min-h-screen pt-24 pb-16 px-4">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-5xl">
         {/* Back Button */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -65,13 +65,13 @@ const ProjectDetail = () => {
         </motion.div>
 
         {/* Project Details */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-[1fr_280px] gap-8">
           {/* Main Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:col-span-2 space-y-10"
+            className="space-y-10 min-w-0"
           >
             {/* Section 1: Motivation & Overview */}
             <div className="space-y-4">
