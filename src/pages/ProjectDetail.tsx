@@ -192,7 +192,7 @@ const ProjectDetail = () => {
                     ) : (
                       <Button key={index} variant="outline" className="w-full justify-start opacity-50 cursor-not-allowed" disabled>
                         <Icon className="mr-2 w-4 h-4" />
-                        {link.label} — Coming soon
+                        {link.label}
                       </Button>
                     );
                   })}
