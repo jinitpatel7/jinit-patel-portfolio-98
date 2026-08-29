@@ -15,7 +15,7 @@ const navLinks = [
 const initialDarkMode = () => {
   const saved = localStorage.getItem("portfolio-theme");
   if (saved) return saved === "dark";
-  return !window.matchMedia("(prefers-color-scheme: light)").matches;
+  return true;
 };
 
 const Header = () => {
