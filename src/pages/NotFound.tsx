@@ -1,18 +1,15 @@
 import { useLocation, Link } from "react-router-dom";
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Home, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import PageMeta from "@/components/PageMeta";
 
 const NotFound = () => {
   const location = useLocation();
 
-  useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
-
   return (
-    <main className="relative z-10 min-h-screen pt-20 flex items-center justify-center px-4">
+    <main id="main-content" className="relative z-10 min-h-screen pt-20 flex items-center justify-center px-4">
+      <PageMeta title="Page Not Found" description="The requested page could not be found." path={location.pathname} noIndex />
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}

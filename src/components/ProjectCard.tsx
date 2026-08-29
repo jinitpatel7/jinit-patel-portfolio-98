@@ -11,6 +11,7 @@ interface ProjectCardProps {
   dates: string;
   imageUrl?: string;
   videoUrl?: string;
+  posterUrl?: string;
   index: number;
 }
 
@@ -22,6 +23,7 @@ const ProjectCard = ({
   dates,
   imageUrl,
   videoUrl,
+  posterUrl,
   index,
 }: ProjectCardProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -56,6 +58,8 @@ const ProjectCard = ({
         whileHover={{ scale: 1.02, y: -4 }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onFocus={handleMouseEnter}
+        onBlur={handleMouseLeave}
         ref={cardRef}
         data-hovered="false"
         className="group relative cursor-pointer"
@@ -77,16 +81,19 @@ const ProjectCard = ({
                 <video
                   ref={videoRef}
                   src={videoUrl}
+                  poster={posterUrl}
                   muted
                   loop
                   playsInline
-                  preload="metadata"
+                  preload="none"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
               ) : imageUrl ? (
                 <img
                   src={imageUrl}
                   alt={title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
               ) : (
@@ -106,7 +113,7 @@ const ProjectCard = ({
                 {title}
               </h3>
               <div className="absolute top-6 right-6 p-2 rounded-lg bg-secondary text-muted-foreground group-hover:text-primary group-hover:bg-primary/10 transition-all duration-200 flex-shrink-0 hover:scale-110 will-change-transform">
-                <ExternalLink size={18} />
+                <ExternalLink size={18} aria-hidden="true" />
               </div>
             </div>
 

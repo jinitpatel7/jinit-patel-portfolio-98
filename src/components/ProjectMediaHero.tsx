@@ -1,50 +1,31 @@
-import { useRef, useCallback, useState } from "react";
-
 interface ProjectMediaHeroProps {
   imageUrl?: string;
   videoUrl?: string;
+  posterUrl?: string;
   title: string;
 }
 
-const ProjectMediaHero = ({ imageUrl, videoUrl, title }: ProjectMediaHeroProps) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = useCallback(() => {
-    setIsHovered(true);
-    if (videoRef.current) {
-      videoRef.current.play();
-    }
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    setIsHovered(false);
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  }, []);
-
+const ProjectMediaHero = ({ imageUrl, videoUrl, posterUrl, title }: ProjectMediaHeroProps) => {
   return (
-    <div 
-      className="w-full h-full bg-secondary flex items-center justify-center"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div className="w-full h-full bg-secondary flex items-center justify-center">
       {videoUrl ? (
         <video
-          ref={videoRef}
           src={videoUrl}
+          poster={posterUrl}
           muted
           loop
           playsInline
-          preload="metadata"
+          controls
+          preload="none"
+          aria-label={`Video demonstration of ${title}`}
           className="w-full h-full object-cover"
         />
       ) : imageUrl ? (
         <img
           src={imageUrl}
           alt={title}
+          loading="eager"
+          decoding="async"
           className="w-full h-full object-cover"
         />
       ) : (

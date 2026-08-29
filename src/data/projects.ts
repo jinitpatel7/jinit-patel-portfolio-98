@@ -1,6 +1,9 @@
 import kazeX1Video from "@/assets/projects/Kaze_X1_Thumbnail.mp4";
 import calorieBurnVideo from "@/assets/projects/Calorie_Burn_Machine_Learning_Thumbnail.mp4";
 import switchHandleVideo from "@/assets/projects/Switch_Handle_Lever_Thumbnail.mp4";
+import kazeX1Poster from "@/assets/projects/Kaze_X1_Poster.jpg";
+import calorieBurnPoster from "@/assets/projects/Calorie_Burn_Poster.jpg";
+import switchHandlePoster from "@/assets/projects/Switch_Handle_Lever_Poster.jpg";
 import thrustVectoringImage from "@/assets/projects/Thrust_Vectoring_Jet_Thumbnail.jpg";
 import speakerStandImage from "@/assets/projects/Speaker_Thumbnail.jpg";
 
@@ -34,6 +37,7 @@ export interface Project {
   dates: string;
   imageUrl?: string;
   videoUrl?: string;
+  posterUrl?: string;
   hidden: boolean;
   links?: ProjectLink[];
   sections?: ProjectSection;
@@ -56,13 +60,13 @@ export const projects: Project[] = [
     id: "kaze-x1-rc-aircraft",
     title: "Kaze X1: 3D Printed RC Fixed-Wing Aircraft Build",
     description: "Currently in the process of designing, fabricating, and flight testing a LW-PLA, FDM 3D-printed fixed-wing RC aircraft, including CAD, aerodynamic validation, and avionics integration.",
-    skills: ["SolidWorks", "ANSYS Fluent", "FDM 3D Printing", "Bambu Studio", "Soldering", "FDM/FDA", "Avionics Integration", "Flight Testing", "Mechanical Design"],
+    skills: ["SolidWorks", "ANSYS Fluent", "FDM 3D Printing", "Bambu Studio", "Soldering", "DFM/DFA", "Avionics Integration", "Flight Testing", "Mechanical Design"],
     dates: "November 2025 - Present",
     videoUrl: kazeX1Video,
+    posterUrl: kazeX1Poster,
     hidden: false,
-    links: [{ label: "View Project", url: "", icon: "external" }],
     sections: {
-      motivationOverview: "Most commercial RC aircraft kits are expensive and hard to repair after crashes while existing 3D-printed designs compromise structural integrity or aerodynamic performance for printability. That's why I set out to design a fully 3D-printable sport/trainer hybrid aircraft that is designed for both learning and sport flying. My goal is to create a durable, modular, and over-engineered platform that I can iterate on in the future! Kaze X1 is a fixed-wing aircraft designed and handmade from scratch in SolidWorks, validated through computational methods in ANSYS, and manufactured using FDM printing with LW-PLA filament. Scope includes full CAD design, aerodynamic validation, avionics integration, and flight testing. My goal is to create a durable, modular, and over-engineered platform that I can iterate on in the future! Composites, VTOL capabilities, and autopilot/telemetry systems are intentionally out of scope for this iteration.",
+      motivationOverview: "Most commercial RC aircraft kits are expensive and hard to repair after crashes, while existing 3D-printed designs can compromise structural integrity or aerodynamic performance for printability. I set out to design a fully 3D-printable sport/trainer hybrid aircraft for both learning and sport flying. Kaze X1 is a fixed-wing aircraft designed from scratch in SolidWorks, validated through computational methods in ANSYS, and manufactured using FDM printing with LW-PLA filament. Scope includes full CAD design, aerodynamic validation, avionics integration, and flight testing. Composites, VTOL capabilities, and autopilot/telemetry systems are intentionally out of scope for this iteration.",
       engineeringMethodology: [
         {
           header: "CAD & Structural Design",
@@ -70,14 +74,14 @@ export const projects: Project[] = [
             "Parametric modeling in SolidWorks allowing rapid iteration on wing geometry and fuselage cross-sections",
             "Fully custom internal spar/rib and fuselage structure designed specifically to be printed with 0% slicer infill due to LW-PLA's high strength-to-weight characteristics",
             "Modular assembly design allowing for field repairs and future upgrades (some include: composite reinforcement, autopilot & telemetry systems, and VTOL conversion)",
-            "At low Reynold's Numbers like ours (~ Re_c = 102,700 at 15 m/s, density = 1.2 kg/m³, viscocity = 1.789e-5 Pa*s), the effects of winglets on wingtip vorticies and induced drag is weakened. However, they look sick, manufacturing/assembling them with FDM printing is easy, and the weight penalty is small, so I decided to include them in the design anyway :)"
+            "At low Reynolds numbers like ours (~ Re_c = 102,700 at 15 m/s, density = 1.2 kg/m³, viscosity = 1.789e-5 Pa·s), the effect of winglets on wingtip vortices and induced drag is weakened. However, they look sick, manufacturing and assembly with FDM printing is straightforward, and the weight penalty is small, so I decided to include them in the design anyway :)"
           ]
         },
         {
           header: "Aerodynamic Analysis",
           points: [
             "2D RANS CFD analysis in ANSYS Fluent to validate airfoil selection (modified Clark-Y)",
-            "AoA sweep from -5 to +15 degrees to confirm lift, drag and stall characteristics match values from Airfoil Tools and XLFR5",
+            "AoA sweep from -5 to +15 degrees to confirm lift, drag, and stall characteristics match values from Airfoil Tools and XFLR5",
             "10, 15, and 20 m/s velocity cases were tested to confirm performance across expected flight envelope of takeoff, cruise, and landing speeds respectively",
             "k-ω SST turbulence model selected for accurate boundary layer prediction at low Reynolds numbers",
             "Mesh was refined to make sure the results were independent of mesh density."
@@ -86,7 +90,7 @@ export const projects: Project[] = [
         {
           header: "Manufacturing & Integration",
           points: [
-            "FDM 3D Printing on the Bambu Labs P1P, uising the Bambu Studio slicer. Utilized LW-PLA filament for the wing sections, winglets, horizontal and vertical stabilizer, for its low weight and relatively high strength. PETG filament was used for the fuselage sections and motor mount for its increased vibration resistance and dampening.",
+            "FDM 3D printing on the Bambu Lab P1P using the Bambu Studio slicer. LW-PLA filament was used for the wing sections, winglets, and horizontal and vertical stabilizers because of its low weight and relatively high strength. PETG filament was used for the fuselage sections and motor mount for increased vibration resistance and damping.",
             "Print orientation strategy to maximize layer adhesion in high-stress regions",
             "Avionics bay was designed for accessible servo, receiver, ESC, and motor installation"
           ]
@@ -140,14 +144,14 @@ export const projects: Project[] = [
   {
     id: "calorie-burn-predictor",
     title: "Precise Calorie Burn Predictor (Machine Learning)",
-    description: "Utilized convolution neural networks within Python Libraries to create a model that can accurately predict calorie expenditure for specific activities, taking into account the user's biological, genetic, and lifestyle factors.",
+    description: "Built a feed-forward neural network in Python to predict calorie expenditure using physiological and activity features such as age, weight, heart rate, body temperature, and exercise duration.",
     skills: ["Neural Networks", "Machine Learning", "Python", "TensorFlow", "NumPy", "Scikit-learn", "Matplotlib", "Hyperparameter Tuning"],
     dates: "November 2025 - December 2025",
     videoUrl: calorieBurnVideo,
+    posterUrl: calorieBurnPoster,
     hidden: false,
-    links: [{ label: "Source Code", url: "", icon: "github" }],
     sections: {
-      motivationOverview: "Existing calorie burn calculators rely on simplistic MET-based formulas that ignore individual physiological differences, leading to errors of 20-40% for many users. This inaccuracy undermines fitness tracking, nutrition planning, and clinical applications. I developed a neural network-based predictor that incorporates user-specific biological factors (age, weight, heart rate, body temperature) alongside activity parameters to significantly improve prediction accuracy. The model was trained on a dataset of exercise sessions with measured calorie expenditure. Scope included data preprocessing, model architecture design, hyperparameter optimization, and validation. Real-time sensor integration and mobile deployment were out of scope.",
+      motivationOverview: "Many calorie-burn calculators rely on MET-based formulas that can overlook individual physiological differences. I developed a neural-network predictor that incorporates age, weight, heart rate, body temperature, and activity duration. The model was trained on a dataset of exercise sessions with measured calorie expenditure. Scope included data preprocessing, model architecture design, hyperparameter optimization, and validation. Real-time sensor integration and mobile deployment were out of scope.",
       engineeringMethodology: [
         {
           header: "Data Pipeline",
@@ -177,11 +181,11 @@ export const projects: Project[] = [
       resultsImpacts: [
         {
           header: "Prediction Accuracy",
-          content: "Achieved R² score of 0.97+ on test set, representing significant improvement over MET-based baseline calculations."
+          content: "The project model achieved an R² score above 0.97 on its held-out test set; this result is reported for the project dataset and is not a clinical-performance claim."
         },
         {
           header: "Error Analysis",
-          content: "Mean absolute error reduced to within acceptable range for fitness tracking applications across diverse user profiles."
+          content: "Mean absolute error was evaluated alongside R² to identify where the model performed less consistently across the held-out profiles."
         },
         {
           header: "Feature Importance",
@@ -224,7 +228,6 @@ export const projects: Project[] = [
     dates: "August 2023 - Present",
     imageUrl: thrustVectoringImage,
     hidden: false,
-    links: [{ label: "View Project", url: "", icon: "external" }],
     sections: {
       motivationOverview: "Traditional mechanical thrust vectoring systems add significant weight, complexity, and maintenance burden to propulsion systems. Plasma-based actuation offers the potential for fluidic thrust vectoring with no moving parts—but the interaction between localized arc-filament plasma actuators (LAFPAs) and subsonic jets is not well understood. This research investigates how LAFPAs can induce controlled jet deflection through thermal perturbation of the shear layer. My contributions include designing and fabricating custom SLA nozzles, performing 2D RANS CFD simulations to guide experimental design, and supporting experimental campaigns using schlieren imaging, pressure measurements, and PIV. Scope focuses on subsonic axisymmetric jets; supersonic applications and closed-loop control are out of scope for this phase.",
       engineeringMethodology: [
@@ -303,8 +306,8 @@ export const projects: Project[] = [
     skills: ["Creo", "Large BOM Management", "Ansys Mechanical", "Oracle PLM", "Rapid Prototyping", "FDM 3D Printing", "GD&T", "Testing & Iteration", "Mechanical Design"],
     dates: "May 2025 - August 2025",
     videoUrl: switchHandleVideo,
+    posterUrl: switchHandlePoster,
     hidden: false,
-    links: [{ label: "View Project", url: "", icon: "external" }],
     sections: {
       motivationOverview: "The existing switch handle mechanism on Vertiv's Static Switch units required excessive operator force and lacked ergonomic consideration, leading to user complaints and potential repetitive strain issues during frequent operations. Additionally, the legacy design's complexity increased manufacturing costs and assembly time. I engineered a new lever mechanism that reduces required actuation force while maintaining reliable electrical contact engagement. The design progressed through multiple rapid prototyping iterations based on internal user feedback, ultimately resulting in a provisional patent application. Scope included mechanism design, structural analysis, prototype fabrication, and user testing. Production tooling design and manufacturing scale-up were handled by other teams.",
       engineeringMethodology: [
@@ -383,7 +386,6 @@ export const projects: Project[] = [
     dates: "October 2025",
     imageUrl: speakerStandImage,
     hidden: false,
-    links: [{ label: "View Project", url: "", icon: "external" }],
     sections: {
       motivationOverview: "Commercial speaker stands are often expensive, aesthetically generic, and sized for standard speaker dimensions that don't match my specific satellite speakers. Existing mounting solutions also failed to integrate cleanly with my apartment's furniture arrangement. I designed a custom stand optimized for my exact speaker dimensions and mounting requirements, validated through FEA to ensure adequate strength under static and dynamic loading. The design prioritizes clean aesthetics while maintaining structural integrity. Scope included dimensional surveying, CAD modeling, structural analysis, and FDM fabrication. Multi-material or metal fabrication was out of scope for this personal project.",
       engineeringMethodology: [

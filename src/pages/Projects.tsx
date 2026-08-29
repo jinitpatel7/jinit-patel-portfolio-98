@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/data/projects";
+import Footer from "@/components/Footer";
+import PageMeta from "@/components/PageMeta";
 const containerVariants = {
   hidden: {
     opacity: 0
@@ -14,7 +16,8 @@ const containerVariants = {
   }
 };
 const Projects = () => {
-  return <main className="relative z-10 min-h-screen pt-24 pb-16 px-4">
+  return <main id="main-content" className="relative z-10 min-h-screen pt-24 pb-16 px-4">
+      <PageMeta title="Engineering Projects" description="Explore Jinit Patel's aerospace engineering, CFD, aircraft design, additive manufacturing, and machine-learning projects." path="/projects" />
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
         <motion.div initial={{
@@ -57,14 +60,7 @@ const Projects = () => {
         </motion.div>
       </div>
 
-      {/* Footer */}
-      <footer className="mt-24 py-8 px-4 border-t border-border">
-        <div className="container mx-auto text-center">
-          <p className="text-sm text-muted-foreground">
-            © Jinit Patel 2025
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </main>;
 };
 export default Projects;

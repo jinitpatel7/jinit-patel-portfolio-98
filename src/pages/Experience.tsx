@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import ExperienceCard from "@/components/ExperienceCard";
+import Footer from "@/components/Footer";
+import PageMeta from "@/components/PageMeta";
 import vertivLogo from "@/assets/logos/vertiv.png";
 import osuArcLogo from "@/assets/logos/osu-arc.jpg";
 import sgtLogo from "@/assets/logos/sgt.jpg";
@@ -8,9 +10,9 @@ import bsliLogo from "@/assets/logos/bsli.png";
 import hondajetLogo from "@/assets/logos/hondajet.png";
 const experiences = [{
   company: "Honda Aircraft Company",
-  role: "Propulsion Engineering Intern",
+  role: "Propulsion & Fuel Systems Engineering Intern",
   dates: "May 2026 – August 2026",
-  description: "Incoming Summer 2026",
+  description: "Completed a summer internship supporting propulsion and fuel-systems engineering.",
   logoUrl: hondajetLogo,
   companyUrl: "https://www.hondajet.com/"
 }, {
@@ -50,7 +52,8 @@ const experiences = [{
   companyUrl: "https://www.bsli.space/"
 }];
 const Experience = () => {
-  return <main className="relative z-10 min-h-screen pt-24 pb-16 px-4">
+  return <main id="main-content" className="relative z-10 min-h-screen pt-24 pb-16 px-4">
+      <PageMeta title="Experience" description="Jinit Patel's aerospace engineering experience across propulsion, mechanical design, research, student leadership, and hands-on fabrication." path="/experience" />
       <div className="container mx-auto max-w-4xl">
         {/* Header */}
         <motion.div initial={{
@@ -116,14 +119,7 @@ const Experience = () => {
         </motion.div>
       </div>
 
-      {/* Footer */}
-      <footer className="mt-24 py-8 px-4 border-t border-border">
-        <div className="container mx-auto text-center">
-          <p className="text-sm text-muted-foreground">
-            © Jinit Patel 2025
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </main>;
 };
 export default Experience;

@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Linkedin, Github, Mail, Briefcase, MessageSquare, ChevronDown, Image, FolderOpen } from "lucide-react";
+import { Download, Linkedin, Github, Mail, Briefcase, MessageSquare, ChevronDown, Image, FolderOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import Footer from "@/components/Footer";
+import PageMeta from "@/components/PageMeta";
 import heroPhoto from "@/assets/hero-photo.jpg";
 import aboutPhoto from "@/assets/about-photo.jpg";
 const containerVariants = {
@@ -31,7 +33,8 @@ const itemVariants = {
   }
 };
 const Home = () => {
-  return <main className="relative z-10 min-h-screen pt-20">
+  return <main id="main-content" className="relative z-10 min-h-screen pt-20">
+      <PageMeta title="Jinit Patel" description="Aerospace engineering portfolio of Jinit Patel, featuring propulsion research, aircraft design, simulation, fabrication, and machine-learning projects." path="/" />
       {/* Hero Section */}
       <section className="min-h-[90vh] flex flex-col items-center justify-between px-4 py-8">
         {/* Spacer to push content to center */}
@@ -50,7 +53,7 @@ const Home = () => {
                 {/* Permanent glow effect - behind the image */}
                 <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-30 blur-xl -z-10" />
                 <div className="w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full bg-secondary flex items-center justify-center overflow-hidden relative z-10">
-                  <img src={heroPhoto} alt="Jinit Patel" className="w-full h-full object-cover" />
+                  <img src={heroPhoto} alt="Jinit Patel" fetchPriority="high" width="320" height="320" className="w-full h-full object-cover" />
                 </div>
               </div>
             </motion.div>
@@ -202,9 +205,9 @@ const Home = () => {
                 about <span className="gradient-text">Me</span>
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                I'm an engineer, builder, and problem-solver who's curious about the world around us. Born in
-                Philadelphia, PA then moved to Columbus, OH at the age of 10. Currently a 4th year Aerospace Engineering
-                student at The Ohio State University, pursuing a Master's Degree.
+                I'm an engineer, builder, and problem-solver who's curious about the world around us. I completed my
+                B.S. in Aerospace Engineering with a minor in Computer Science at The Ohio State University in May 2026,
+                and I am continuing in Ohio State's combined B.S./M.S. program with my M.S. expected in May 2027.
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 I love bringing ideas to life through building, testing, and iteration—whether that's in the lab or on
@@ -269,7 +272,7 @@ const Home = () => {
                 {/* Gradient outline - sits behind media */}
                 <div className="absolute -inset-[2px] rounded-2xl bg-gradient-to-br from-primary via-accent to-primary opacity-70 -z-10" />
                 <div className="w-full h-full rounded-2xl bg-secondary overflow-hidden relative z-10">
-                  <img src={aboutPhoto} alt="Jinit Patel" className="w-full h-full object-cover object-top" />
+                  <img src={aboutPhoto} alt="Jinit Patel" loading="lazy" decoding="async" width="800" height="1000" className="w-full h-full object-cover object-top" />
                 </div>
               </div>
             </motion.div>
@@ -347,7 +350,7 @@ const Home = () => {
           }} className="relative inline-block will-change-transform">
               <div className="absolute -inset-1 bg-gradient-primary opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-200 rounded-lg" />
               <Button asChild size="lg" className="relative bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium px-8">
-                <a href="/Patel_Jinit_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                <a href="/Patel_Jinit_Resume.pdf" download="Jinit_Patel_Resume.pdf">
                   <Download className="mr-2 w-4 h-4" />
                   Download Resume
                 </a>
@@ -385,7 +388,7 @@ const Home = () => {
               icon: Mail,
               label: "Email",
               href: "mailto:patel.4780@osu.edu"
-            }].map((social, index) => <motion.a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" initial={{
+            }].map((social, index) => <motion.a key={social.label} href={social.href} aria-label={social.label === "Email" ? "Email Jinit Patel" : `Jinit Patel on ${social.label}`} target={social.label !== "Email" ? "_blank" : undefined} rel={social.label !== "Email" ? "noopener noreferrer" : undefined} initial={{
               opacity: 0,
               y: 20
             }} whileInView={{
@@ -409,12 +412,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 px-4 border-t border-border">
-        <div className="container mx-auto text-center">
-          <p className="text-sm text-muted-foreground">© Jinit Patel 2026</p>
-        </div>
-      </footer>
+      <Footer />
     </main>;
 };
 export default Home;

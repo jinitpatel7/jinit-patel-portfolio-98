@@ -1,5 +1,8 @@
-import { useState, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
+import Footer from "@/components/Footer";
+import PageMeta from "@/components/PageMeta";
 
 // Import new gallery images
 import img8245 from "@/assets/gallery/IMG_8245-2.jpg";
@@ -252,17 +255,41 @@ const Gallery = () => {
   const galleryItems = useMemo(() => buildGalleryItems(), []);
 
   const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const openerRef = useRef<HTMLButtonElement | null>(null);
 
-  const handleImageClick = (item: GalleryItem) => {
+  const handleImageClick = (item: GalleryItem, opener: HTMLButtonElement) => {
+    openerRef.current = opener;
     setSelectedImage(item);
   };
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setSelectedImage(null);
-  };
+    requestAnimationFrame(() => openerRef.current?.focus());
+  }, []);
+
+  useEffect(() => {
+    if (!selectedImage) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") handleClose();
+      if (event.key === "Tab") {
+        event.preventDefault();
+        closeButtonRef.current?.focus();
+      }
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+    requestAnimationFrame(() => closeButtonRef.current?.focus());
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleClose, selectedImage]);
 
   return (
-    <main className="relative z-10 min-h-screen pt-24 pb-16 px-4">
+    <main id="main-content" className="relative z-10 min-h-screen pt-24 pb-16 px-4">
+      <PageMeta title="Photography Gallery" description="A photography gallery by Jinit Patel, featuring landscapes, architecture, travel, city scenes, and everyday moments." path="/gallery" />
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
@@ -297,11 +324,13 @@ const Gallery = () => {
           className="columns-1 sm:columns-2 md:columns-3 gap-8"
         >
           {galleryItems.map((item) => (
-            <motion.div
+            <motion.button
+              type="button"
               key={item.id}
               variants={itemVariants}
-              className="group relative cursor-pointer mb-8 break-inside-avoid"
-              onClick={() => handleImageClick(item)}
+              className="group relative cursor-pointer mb-8 break-inside-avoid block w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+              onClick={(event) => handleImageClick(item, event.currentTarget)}
+              aria-label={`Open photo: ${item.name}`}
             >
               {/* Image tile */}
               <motion.div
@@ -319,6 +348,7 @@ const Gallery = () => {
                     alt={item.name}
                     className="absolute inset-0 w-full h-full object-cover"
                     loading="lazy"
+                    decoding="async"
                   />
                 ) : (
                   <>
@@ -329,7 +359,7 @@ const Gallery = () => {
                   </>
                 )}
               </motion.div>
-            </motion.div>
+            </motion.button>
           ))}
         </motion.div>
       </div>
@@ -338,12 +368,17 @@ const Gallery = () => {
       <AnimatePresence>
         {selectedImage && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label={selectedImage.name}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
-            onClick={handleClose}
+            onMouseDown={(event) => {
+              if (event.currentTarget === event.target) handleClose();
+            }}
           >
             {/* Backdrop */}
             <motion.div
@@ -351,6 +386,7 @@ const Gallery = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="absolute inset-0 bg-background/80 backdrop-blur-md"
+              onMouseDown={handleClose}
             />
 
             {/* Enlarged image container */}
@@ -361,6 +397,9 @@ const Gallery = () => {
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
               className="relative z-10 max-w-4xl w-full max-h-[85vh] flex flex-col items-center"
             >
+              <button ref={closeButtonRef} type="button" onClick={handleClose} aria-label="Close image" className="absolute -top-12 right-0 z-20 p-2 rounded-full bg-card text-foreground border border-border hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                <X aria-hidden="true" />
+              </button>
               {/* Image */}
               <div
                 className={`relative ${getAspectClass(selectedImage.aspectRatio)} w-full max-h-[75vh] bg-secondary overflow-hidden`}
@@ -399,12 +438,7 @@ const Gallery = () => {
         )}
       </AnimatePresence>
 
-      {/* Footer */}
-      <footer className="mt-24 py-8 px-4 border-t border-border">
-        <div className="container mx-auto text-center">
-          <p className="text-sm text-muted-foreground">© Jinit Patel 2025</p>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 };

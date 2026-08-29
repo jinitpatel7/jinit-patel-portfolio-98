@@ -1,28 +1,24 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Particles from "./components/particles";
-import Home from "./pages/Home";
-import Projects from "./pages/Projects";
-import ProjectDetail from "./pages/ProjectDetail";
-import Experience from "./pages/Experience";
-import Gallery from "./pages/Gallery";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Header from "@/components/Header";
+import Particles from "@/components/particles";
+import RouteEffects from "@/components/RouteEffects";
 
-const queryClient = new QueryClient();
+const Home = lazy(() => import("@/pages/Home"));
+const Projects = lazy(() => import("@/pages/Projects"));
+const ProjectDetail = lazy(() => import("@/pages/ProjectDetail"));
+const Experience = lazy(() => import("@/pages/Experience"));
+const Gallery = lazy(() => import("@/pages/Gallery"));
+const Contact = lazy(() => import("@/pages/Contact"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Particles className="fixed inset-0 -z-10 pointer-events-none" quantity={50} />
-        <Header />
+  <BrowserRouter>
+    <a className="skip-link" href="#main-content">Skip to main content</a>
+    <RouteEffects />
+    <Particles className="fixed inset-0 -z-10 pointer-events-none" quantity={50} />
+    <Header />
+    <Suspense fallback={<div className="min-h-screen pt-32 text-center text-muted-foreground" role="status">Loading page…</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
@@ -32,9 +28,8 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+    </Suspense>
+  </BrowserRouter>
 );
 
 export default App;

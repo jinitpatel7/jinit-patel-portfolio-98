@@ -1,200 +1,110 @@
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { Github, Linkedin, Menu, Moon, Sun, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { Moon, Sun, Linkedin, Github, Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+
+const navLinks = [
+  { path: "/", label: "Home" },
+  { path: "/projects", label: "Projects" },
+  { path: "/experience", label: "Experience" },
+  { path: "/gallery", label: "Gallery" },
+  { path: "/contact", label: "Contact" },
+];
+
+const initialDarkMode = () => {
+  const saved = localStorage.getItem("portfolio-theme");
+  if (saved) return saved === "dark";
+  return !window.matchMedia("(prefers-color-scheme: light)").matches;
+};
 
 const Header = () => {
   const location = useLocation();
-  const [isDark, setIsDark] = useState(true);
+  const reduceMotion = useReducedMotion();
+  const [isDark, setIsDark] = useState(initialDarkMode);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (isDark) {
-      root.classList.remove("light");
-    } else {
-      root.classList.add("light");
-    }
+    document.documentElement.classList.toggle("light", !isDark);
+    localStorage.setItem("portfolio-theme", isDark ? "dark" : "light");
+    document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')?.setAttribute("content", isDark ? "#0d0d12" : "#f8f7fc");
   }, [isDark]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { path: "/", label: "Home" },
-    { path: "/projects", label: "Projects" },
-    { path: "/experience", label: "Experience" },
-    { path: "/gallery", label: "Gallery" },
-    { path: "/contact", label: "Contact" },
-  ];
+  useEffect(() => setIsMobileMenuOpen(false), [location.pathname]);
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
+  const toggleLabel = isDark ? "Switch to light theme" : "Switch to dark theme";
+
+  const socialLinks = (
+    <>
+      <a href="https://www.linkedin.com/in/jinitpatel1/" target="_blank" rel="noopener noreferrer" aria-label="Jinit Patel on LinkedIn" className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-secondary transition-all">
+        <Linkedin size={18} aria-hidden="true" />
+      </a>
+      <a href="https://github.com/jinitpatel7" target="_blank" rel="noopener noreferrer" aria-label="Jinit Patel on GitHub" className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-secondary transition-all">
+        <Github size={18} aria-hidden="true" />
+      </a>
+    </>
+  );
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "glass py-3" : "py-5"
-      }`}
-    >
-      <nav className="container mx-auto px-4 md:px-8 flex items-center justify-between">
-        {/* Logo */}
-        <Link
-          to="/"
-          className="group relative flex items-baseline transition-all duration-200"
-        >
-          <motion.span 
-            className="font-display text-2xl md:text-3xl font-bold relative header-name group-hover:text-primary transition-colors duration-200"
-            whileHover={{ scale: 1.03, y: -2 }}
-            transition={{ duration: 0.15, ease: "easeOut" }}
-          >
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "glass py-3" : "py-5"}`}>
+      <nav aria-label="Primary navigation" className="container mx-auto px-4 md:px-8 flex items-center justify-between">
+        <Link to="/" aria-label="Jinit Patel portfolio home" className="group relative flex items-baseline transition-all duration-200">
+          <motion.span whileHover={reduceMotion ? undefined : { scale: 1.03, y: -2 }} className="font-display text-2xl md:text-3xl font-bold relative header-name group-hover:text-primary transition-colors duration-200">
             Jinit Patel
-            {/* Gradient underline */}
             <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-primary rounded-full" />
           </motion.span>
-          <span className="text-sm md:text-base font-medium text-muted-foreground pointer-events-none select-none ml-3">
-            –
-          </span>
-          <span className="text-sm md:text-base font-medium text-muted-foreground pointer-events-none select-none ml-2">
-            Portfolio
-          </span>
+          <span aria-hidden="true" className="text-sm md:text-base font-medium text-muted-foreground ml-3">–</span>
+          <span className="text-sm md:text-base font-medium text-muted-foreground ml-2">Portfolio</span>
         </Link>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           <ul className="flex items-center gap-8">
             {navLinks.map((link) => (
               <li key={link.path}>
-                <Link
-                  to={link.path}
-                  className={`relative font-medium text-sm transition-colors duration-200 hover:text-primary ${
-                    isActive(link.path) ? "text-primary" : "text-muted-foreground"
-                  }`}
-                >
+                <Link to={link.path} aria-current={isActive(link.path) ? "page" : undefined} className={`relative font-medium text-sm transition-colors duration-200 hover:text-primary ${isActive(link.path) ? "text-primary" : "text-muted-foreground"}`}>
                   {link.label}
-                  {isActive(link.path) && (
-                    <motion.span
-                      layoutId="activeNav"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-primary rounded-full"
-                    />
-                  )}
+                  {isActive(link.path) && <motion.span layoutId={reduceMotion ? undefined : "activeNav"} className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-primary rounded-full" />}
                 </Link>
               </li>
             ))}
           </ul>
-
-          {/* Social Icons */}
           <div className="flex items-center gap-3">
-            <a
-              href="https://www.linkedin.com/in/jinitpatel1/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-secondary transition-all"
-            >
-              <Linkedin size={18} />
-            </a>
-            <a
-              href="https://github.com/jinitpatel7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-secondary transition-all"
-            >
-              <Github size={18} />
-            </a>
-
-            {/* Theme Toggle */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsDark(!isDark)}
-              className="rounded-lg text-muted-foreground hover:text-primary hover:bg-secondary"
-            >
-              <motion.div
-                key={isDark ? "sun" : "moon"}
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                exit={{ scale: 0, rotate: 180 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-              >
-                {isDark ? <Sun size={18} /> : <Moon size={18} />}
-              </motion.div>
+            {socialLinks}
+            <Button variant="ghost" size="icon" onClick={() => setIsDark((value) => !value)} aria-label={toggleLabel} title={toggleLabel} className="rounded-lg text-muted-foreground hover:text-primary hover:bg-secondary">
+              {isDark ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
             </Button>
           </div>
         </div>
 
-        {/* Mobile Menu Button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMobileMenuOpen((value) => !value)} aria-expanded={isMobileMenuOpen} aria-controls="mobile-menu" aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}>
+          {isMobileMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
         </Button>
       </nav>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-border"
-          >
+          <motion.div id="mobile-menu" initial={reduceMotion ? false : { opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={reduceMotion ? undefined : { opacity: 0, height: 0 }} className="md:hidden glass border-t border-border">
             <div className="container mx-auto px-4 py-4">
               <ul className="flex flex-col gap-4">
                 {navLinks.map((link) => (
                   <li key={link.path}>
-                    <Link
-                      to={link.path}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className={`block py-2 font-medium transition-colors ${
-                        isActive(link.path) ? "text-primary" : "text-muted-foreground"
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
+                    <Link to={link.path} aria-current={isActive(link.path) ? "page" : undefined} className={`block py-2 font-medium transition-colors ${isActive(link.path) ? "text-primary" : "text-muted-foreground"}`}>{link.label}</Link>
                   </li>
                 ))}
               </ul>
               <div className="flex items-center gap-4 mt-4 pt-4 border-t border-border">
-                <a
-                  href="https://www.linkedin.com/in/jinitpatel1/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg text-muted-foreground hover:text-primary"
-                >
-                  <Linkedin size={20} />
-                </a>
-                <a
-                  href="https://github.com/jinitpatel7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg text-muted-foreground hover:text-primary"
-                >
-                  <Github size={20} />
-                </a>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setIsDark(!isDark)}
-                  className="ml-auto"
-                >
-                  <motion.div
-                    key={isDark ? "sun-mobile" : "moon-mobile"}
-                    initial={{ scale: 0, rotate: -180 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                  >
-                    {isDark ? <Sun size={20} /> : <Moon size={20} />}
-                  </motion.div>
+                {socialLinks}
+                <Button variant="ghost" size="icon" onClick={() => setIsDark((value) => !value)} aria-label={toggleLabel} className="ml-auto">
+                  {isDark ? <Sun size={20} aria-hidden="true" /> : <Moon size={20} aria-hidden="true" />}
                 </Button>
               </div>
             </div>

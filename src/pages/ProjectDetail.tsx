@@ -1,21 +1,25 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Github, Calendar, Tag } from "lucide-react";
-import { Link, useParams, Navigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/data/projects";
 import ProjectMediaHero from "@/components/ProjectMediaHero";
 import SectionHeader from "@/components/SectionHeader";
+import Footer from "@/components/Footer";
+import PageMeta from "@/components/PageMeta";
+import NotFound from "@/pages/NotFound";
 
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
   const project = projects.find((p) => p.id === id);
 
   if (!project) {
-    return <Navigate to="/projects" replace />;
+    return <NotFound />;
   }
 
   return (
-    <main className="relative z-10 min-h-screen pt-24 pb-16 px-4">
+    <main id="main-content" className="relative z-10 min-h-screen pt-24 pb-16 px-4">
+      <PageMeta title={project.title} description={project.description} path={`/projects/${project.id}`} />
       <div className="container mx-auto max-w-5xl">
         {/* Back Button */}
         <motion.div
@@ -60,6 +64,7 @@ const ProjectDetail = () => {
           <ProjectMediaHero
             imageUrl={project.imageUrl}
             videoUrl={project.videoUrl}
+            posterUrl={project.posterUrl}
             title={project.title}
           />
         </motion.div>
@@ -175,25 +180,19 @@ const ProjectDetail = () => {
             </div>
 
             {/* Links */}
-            {project.links && project.links.length > 0 && (
+            {project.links?.some((link) => link.url) && (
               <div className="glass rounded-xl p-6 space-y-4">
                 <h3 className="font-display text-lg font-semibold">Links</h3>
                 <div className="space-y-3">
-                  {project.links.map((link, index) => {
-                    const hasUrl = link.url && link.url.length > 0;
+                  {project.links.filter((link) => link.url).map((link) => {
                     const Icon = link.icon === "github" ? Github : ExternalLink;
-                    return hasUrl ? (
-                      <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" className="block">
+                    return (
+                      <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="block">
                         <Button variant="outline" className="w-full justify-start card-hover-glow">
-                          <Icon className="mr-2 w-4 h-4" />
+                          <Icon aria-hidden="true" className="mr-2 w-4 h-4" />
                           {link.label}
                         </Button>
                       </a>
-                    ) : (
-                      <Button key={index} variant="outline" className="w-full justify-start opacity-50 cursor-not-allowed" disabled>
-                        <Icon className="mr-2 w-4 h-4" />
-                        {link.label}
-                      </Button>
                     );
                   })}
                 </div>
@@ -203,14 +202,7 @@ const ProjectDetail = () => {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="mt-24 py-8 px-4 border-t border-border">
-        <div className="container mx-auto text-center">
-          <p className="text-sm text-muted-foreground">
-            © Jinit Patel 2025
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 };
