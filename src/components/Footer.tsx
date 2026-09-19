@@ -1,9 +1,3 @@
-const Footer = () => (
-  <footer className="mt-24 py-8 px-4 border-t border-border">
-    <div className="container mx-auto text-center">
-      <p className="text-sm text-muted-foreground">© Jinit Patel {new Date().getFullYear()}</p>
-    </div>
-  </footer>
-);
-
-export default Footer;
+import { Link } from 'react-router-dom';
+import { ArrowUpRight, Github, Linkedin } from 'lucide-react';
+export default function Footer() { return <footer className="site-footer shell"><div className="footer-top"><div><span className="eyebrow">THE NEXT CONVERSATION</span><Link className="footer-title" to="/contact">Let's build something.<ArrowUpRight/></Link></div><a className="text-link" href="mailto:patel.4780@osu.edu">patel.4780@osu.edu <ArrowUpRight size={16}/></a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Jinit Patel</span><span>Aerospace engineer. Always curious.</span><div><a href="https://www.linkedin.com/in/jinitpatel1/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={18}/></a><a href="https://github.com/jinitpatel7" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={18}/></a><a href="#main-content">Back to top ↑</a></div></div></footer>; }

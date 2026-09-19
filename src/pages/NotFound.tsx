@@ -1,69 +1,7 @@
-import { useLocation, Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { Home, ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import PageMeta from "@/components/PageMeta";
-
-const NotFound = () => {
-  const location = useLocation();
-
-  return (
-    <main id="main-content" className="relative z-10 min-h-screen pt-20 flex items-center justify-center px-4">
-      <PageMeta title="Page Not Found" description="The requested page could not be found." path={location.pathname} noIndex />
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center space-y-8 max-w-md"
-      >
-        <motion.h1
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="font-display text-8xl md:text-9xl font-bold gradient-text"
-        >
-          404
-        </motion.h1>
-        
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="space-y-4"
-        >
-          <h2 className="font-display text-2xl font-semibold text-foreground">
-            Page Not Found
-          </h2>
-          <p className="text-muted-foreground">
-            The page you're looking for doesn't exist or has been moved.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <Link to="/">
-            <Button size="lg" className="bg-gradient-primary hover:opacity-90 text-foreground">
-              <Home className="mr-2 w-4 h-4" />
-              Back to Home
-            </Button>
-          </Link>
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => window.history.back()}
-            className="border-border hover:border-primary/50"
-          >
-            <ArrowLeft className="mr-2 w-4 h-4" />
-            Go Back
-          </Button>
-        </motion.div>
-      </motion.div>
-    </main>
-  );
-};
-
-export default NotFound;
+import { Link, useLocation } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
+import PageMeta from '@/components/PageMeta';
+export default function NotFound() {
+  const { pathname } = useLocation();
+  return <main id="main-content"><PageMeta title="Page Not Found" description="The requested page could not be found." path={pathname} noIndex/><div className="shell page-heading"><span className="eyebrow">404 / OFF THE FLIGHT PATH</span><h1>Let's get you back.</h1><p>This page has moved or doesn't exist. There's plenty more to explore.</p><Link className="button primary mt-8" to="/"><ArrowLeft size={18}/>Back to home</Link></div></main>;
+}
