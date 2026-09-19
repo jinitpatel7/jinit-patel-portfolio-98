@@ -1,113 +1,12 @@
-import { FormEvent, useState } from "react";
-import { motion } from "framer-motion";
-import { Download, Github, Linkedin, Mail, Phone, Send } from "lucide-react";
-import AnimatedButtonWrapper from "@/components/AnimatedButtonWrapper";
-import Footer from "@/components/Footer";
-import PageMeta from "@/components/PageMeta";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-
-const contactInfo = [
-  { icon: Mail, label: "Email", value: "patel.4780@osu.edu", href: "mailto:patel.4780@osu.edu" },
-  { icon: Phone, label: "Phone", value: "(740) 803-4681", href: "tel:+17408034681" },
-  { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/jinitpatel1", href: "https://www.linkedin.com/in/jinitpatel1/" },
-  { icon: Github, label: "GitHub", value: "github.com/jinitpatel7", href: "https://github.com/jinitpatel7" },
-];
-
-type SubmitState = "idle" | "submitting" | "success" | "error";
-
-const Contact = () => {
-  const [submitState, setSubmitState] = useState<SubmitState>("idle");
-
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const data = new FormData(form);
-    if (data.get("_gotcha")) return;
-    setSubmitState("submitting");
-    try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
-      });
-      if (!response.ok) throw new Error("Form submission failed");
-      form.reset();
-      setSubmitState("success");
-    } catch {
-      setSubmitState("error");
-    }
-  };
-
-  return (
-    <main id="main-content" className="relative z-10 min-h-screen pt-24 pb-16 px-4">
-      <PageMeta title="Contact" description="Contact aerospace engineer Jinit Patel about engineering opportunities, research, collaboration, or portfolio projects." path="/contact" />
-      <div className="container mx-auto max-w-4xl">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center mb-16 space-y-4">
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold">get in <span className="gradient-text">Touch</span></h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">Have a question or want to work together? I'd love to hear from you. Feel free to reach out to talk about anything :)</p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="space-y-8">
-            <h2 className="font-display text-2xl font-bold">Contact Information</h2>
-            <div className="space-y-4">
-              {contactInfo.map((item, index) => (
-                <motion.a key={item.label} href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }} whileHover={{ x: 8 }} className="group flex items-center gap-4 p-4 rounded-xl glass border border-border hover:border-primary/30 transition-all">
-                  <div className="p-3 rounded-lg bg-secondary group-hover:bg-primary/10 transition-colors"><item.icon aria-hidden="true" className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" /></div>
-                  <div><p className="text-sm text-muted-foreground">{item.label}</p><p className="font-medium text-foreground group-hover:text-primary transition-colors">{item.value}</p></div>
-                </motion.a>
-              ))}
-            </div>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.7 }} className="pt-4">
-              <AnimatedButtonWrapper className="w-full">
-                <Button asChild size="lg" className="relative w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium">
-                  <a href="/Patel_Jinit_Resume.pdf" download="Jinit_Patel_Resume.pdf"><Download aria-hidden="true" className="mr-2 w-4 h-4" />Download Resume</a>
-                </Button>
-              </AnimatedButtonWrapper>
-            </motion.div>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="glass rounded-2xl p-8 border border-border">
-            <h2 className="font-display text-2xl font-bold mb-6">Send a Message</h2>
-            <form action="https://formspree.io/f/xpwvoljo" method="POST" onSubmit={handleSubmit} className="space-y-6">
-              <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
-              <input type="hidden" name="_subject" value="Portfolio contact form submission" />
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-muted-foreground">Name</label>
-                  <Input id="name" name="name" required autoComplete="name" placeholder="Your name" className="bg-secondary border-border focus:border-primary/50" />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-muted-foreground">Email</label>
-                  <Input id="email" name="email" type="email" required autoComplete="email" inputMode="email" placeholder="your@email.com" className="bg-secondary border-border focus:border-primary/50" />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="subject" className="text-sm font-medium text-muted-foreground">Subject</label>
-                <Input id="subject" name="subject" required autoComplete="off" placeholder="What's this about?" className="bg-secondary border-border focus:border-primary/50" />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium text-muted-foreground">Message</label>
-                <Textarea id="message" name="message" required minLength={10} autoComplete="off" placeholder="Your message..." rows={5} className="bg-secondary border-border focus:border-primary/50 resize-y" />
-              </div>
-              <AnimatedButtonWrapper className="w-full">
-                <Button type="submit" size="lg" disabled={submitState === "submitting"} className="relative w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium">
-                  <Send aria-hidden="true" className="mr-2 w-4 h-4" />{submitState === "submitting" ? "Sending…" : "Send Message"}
-                </Button>
-              </AnimatedButtonWrapper>
-              <div aria-live="polite" role="status" className="min-h-6 text-sm">
-                {submitState === "success" && <p className="text-green-500">Thanks—your message was sent successfully.</p>}
-                {submitState === "error" && <p className="text-destructive">The message could not be sent. Please try again or email me directly.</p>}
-              </div>
-            </form>
-          </motion.div>
-        </div>
-      </div>
-      <Footer />
-    </main>
-  );
-};
-
-export default Contact;
+import { FormEvent, useState } from 'react';
+import { Mail, Phone, Linkedin, Github, ArrowUpRight, Send, Download } from 'lucide-react';
+import PageMeta from '@/components/PageMeta';
+import Footer from '@/components/Footer';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+const contacts = [{Icon:Mail,label:'Email',value:'patel.4780@osu.edu',href:'mailto:patel.4780@osu.edu'},{Icon:Linkedin,label:'LinkedIn',value:'Connect with me',href:'https://www.linkedin.com/in/jinitpatel1/'},{Icon:Github,label:'GitHub',value:'See what I’m building',href:'https://github.com/jinitpatel7'},{Icon:Phone,label:'Phone',value:'(740) 803-4681',href:'tel:+17408034681'}];
+export default function Contact() {
+ const [status,setStatus]=useState<'idle'|'sending'|'success'|'error'>('idle');
+ async function submit(e:FormEvent<HTMLFormElement>) {e.preventDefault();const form=e.currentTarget;const data=new FormData(form);if(data.get('_gotcha'))return;setStatus('sending');try {const r=await fetch(form.action,{method:'POST',body:data,headers:{Accept:'application/json'}});if(!r.ok)throw new Error();form.reset();setStatus('success');}catch{setStatus('error');}}
+ return <main id="main-content"><PageMeta title="Contact" description="Get in touch with aerospace engineer Jinit Patel about engineering, research, and collaboration." path="/contact"/><div className="shell"><header className="page-heading"><span className="eyebrow">GOOD WORK STARTS WITH A CONVERSATION</span><h1>Let's connect.</h1><p>A technical question, an interesting project, or just a shared curiosity. I'd love to hear from you.</p></header><div className="contact-grid"><div><div className="contact-links">{contacts.map(({Icon,...c})=><a key={c.label} href={c.href} target={c.href.startsWith('http')?'_blank':undefined} rel={c.href.startsWith('http')?'noreferrer':undefined}><Icon size={22}/><span><small>{c.label}</small>{c.value}</span><ArrowUpRight size={18}/></a>)}</div><a className="text-link mt-8" href="/Patel_Jinit_Resume.pdf" download="Jinit_Patel_Resume.pdf">Download my résumé <Download size={17}/></a></div><form className="contact-form" action="https://formspree.io/f/xpwvoljo" method="POST" onSubmit={submit}><h2>Send a note.</h2><input type="text" name="_gotcha" style={{display:'none'}} tabIndex={-1} autoComplete="off" aria-hidden="true"/><input type="hidden" name="_subject" value="Portfolio contact form submission"/><div className="form-row"><div className="field"><label htmlFor="name">Name</label><Input id="name" name="name" required autoComplete="name" placeholder="Your name"/></div><div className="field"><label htmlFor="email">Email</label><Input id="email" name="email" required type="email" autoComplete="email" placeholder="you@example.com"/></div></div><div className="field"><label htmlFor="subject">Subject</label><Input id="subject" name="subject" required placeholder="What’s on your mind?"/></div><div className="field"><label htmlFor="message">Message</label><Textarea id="message" name="message" rows={5} minLength={10} required placeholder="Tell me a little about it…"/></div><button className="button primary" type="submit" disabled={status==='sending'}>{status==='sending'?'Sending…':'Send message'}<Send size={17}/></button><div className="form-status" role="status" aria-live="polite">{status==='success'&&<p className="success">Thanks! Your message was sent.</p>}{status==='error'&&<p className="error">Your message couldn’t be sent. Try again or <a href="mailto:patel.4780@osu.edu" className="underline">email me directly</a>.</p>}</div></form></div></div><Footer/></main>;
+}
