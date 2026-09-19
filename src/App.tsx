@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import Header from "@/components/Header";
 import Particles from "@/components/particles";
 import RouteEffects from "@/components/RouteEffects";
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
     </Suspense>
+    <Analytics />
   </BrowserRouter>
 );
 
